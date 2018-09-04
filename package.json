@@ -1,0 +1,26 @@
+{
+  "name": "cainelli.rocks",
+  "version": "2.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vicainelli/cainelli.rocks.git",
+  "author": "Vinicius Cainelli <vicainelli@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.18.0",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "postcss": "^7.0.2",
+    "purgecss": "^1.1.0",
+    "style-loader": "^0.23.0",
+    "tailwind": "^2.2.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.7"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  }
+}
