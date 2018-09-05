@@ -1,0 +1,147 @@
+[{
+  "personal_info": {
+    "display_name": "Vinicius Cainelli",
+    "full_name": "Vinicius Cainelli dos Santos",
+    "nickname": "Vini",
+    "title": "Frontend Engineer",
+    "age": 31,
+    "from": {
+      "city": "São Paulo",
+      "statte": "São Paulo",
+      "country": "Brasil"
+    },
+    "about_me": [
+      "My name is Vinicius and I'm a Brazilian developer passionate about technology, innovation, music, and travel.", [
+        "Strong knowledge and experience with HTML, CSS, and Javascript.",
+        "Knowledge and professional experience with AngularJS, Sass, Pug, Gulp, jQuery, Git, PHP, and MySQL.",
+        "Knowledge of VueJS, ES6, NodeJS, Laravel, AWS, Ubuntu, Serverless, and Docker."
+      ]
+    ]
+  },
+  "contat": [{
+    "email": "vicainelli@gmail.com",
+    "phones": [
+      "+55 11 982 883 354"
+    ],
+    "linkedin": "https://www.linkedin.com/in/vicainelli/",
+    "twitter": "https://twitter.com/vicainelli",
+    "dribble": "https://dribbble.com/vicainelli",
+    "codepen": "https://codepen.io/vicainelli"
+  }],
+  "education": [{
+    "title": "PGCert, Web Engineering",
+    "scholl": "SENAC",
+    "start": "2014",
+    "end": "2015"
+  }, {
+    "title": "Bachelor of Advertising and Marketing",
+    "scholl": "Mackenzie",
+    "start": "2005",
+    "end": "2009"
+  }],
+  "professional_experience": [{
+      "role": "Front End Developer",
+      "company": {
+        "name": "Mandaê",
+        "market": [
+          "logistic",
+          "package delivery",
+          "SAAS"
+        ],
+        "website": "https://mandae.com.br",
+        "stack": [
+          "AngularJS",
+          "Sass",
+          "HTML",
+          "Javascript",
+          "CSS",
+          "GruntJS",
+          "PugJS"
+        ]
+      },
+      "description": [
+        "At Mandaê, besides writing code, I also create and develop solutions that are helping hundreds of customers.", [
+          "Build UI applications using AngularJS and Bootstrap",
+          "Develop responsive UIs while working directly with Design team",
+          "Responsible for the development of the new institutional website",
+          "Store and consume data from Restful Web APIs and Services"
+        ]
+      ],
+      "start": "2016",
+      "current": false,
+      "end": "2018"
+    },
+    {
+      "role": "Front End Developer",
+      "company": {
+        "name": "Bcash / PayU",
+        "market": [
+          "fintech",
+          "payments"
+        ],
+        "website": "https://payu.com.br",
+        "stack": [
+          "PHP",
+          "HTML",
+          "CSS",
+          "AngularJS",
+          "GruntJS",
+          "Sass"
+        ]
+      },
+      "description": [
+        "At Bcash, I worked in two different teams, Product and IT.", [
+          "Prototype new concepts along with a UX Designer",
+          "A/B testings to improve a checkout conversions",
+          "Hotsites and emails for  marketing campaigns",
+          "Rebranding project: From Bcash to PayU."
+        ]
+      ],
+      "start": "2013",
+      "current": false,
+      "end": "2016"
+    },
+    {
+      "role": "Web Developer",
+      "company": {
+        "name": "Creative House",
+        "market": [
+          "advertising",
+          "design",
+          "marketing",
+          "agency"
+        ],
+        "website": "http://creativehouse.com.br",
+        "stack": [
+          "PHP",
+          "MySQL",
+          "HTML",
+          "CSS",
+          "Javascript",
+          "jQuery",
+          "Sass"
+        ]
+      },
+      "description": [
+        "At Creative House, I was like the \"Full Stack Developer\" these days.",
+        "I developed and created web applications, intranets and custom CMS using Apache, MySQL, and PHP."
+      ],
+      "start": "2009",
+      "current": false,
+      "end": "2013"
+    }
+  ],
+  "skils": [
+    "HTML",
+    "CSS",
+    "Javascript",
+    "PHP",
+    "MySQL"
+  ],
+  "frameworks": [
+    "VueJS",
+    "AngularJS",
+    "Laravel",
+    "PugJS"
+  ]
+}]
