@@ -74,8 +74,15 @@
     <a href="https://linkedin.com/in/vicainelli" rel="noopener" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'Go to Linkedin');">Linkedin</a>
     <a href="https://codepen.io/vicainelli/" rel="noopener" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'Go to CodePen');">CodePen</a>
   </nav>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125154245-1"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-125154245-1');</script>
+
+  <script>
+    (function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
+    ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
+    ;c.parentNode.insertBefore(a,c)
+    })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js");
+    galite('create', 'UA-125154245-1', 'auto');
+    galite('send', 'pageview');
+  </script>
   <script>
     if('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(registration) { console.log('Service Worker Registered'); });
