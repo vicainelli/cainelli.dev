@@ -3,8 +3,8 @@
  *  Vinicius Cainelli
  */
 
-// Version 0.8
-let version = '0.8';
+// Version 0.9
+let version = '0.9';
 
 self.addEventListener('install', e => {
   let timeStamp = Date.now();
@@ -13,7 +13,7 @@ self.addEventListener('install', e => {
       return cache.addAll([
         `/`,
         `/index.html?timestamp=${timeStamp}`,
-        // `/resume/index.html?timestamp=${timeStamp}`,
+        `/resume.pdf?timestamp=${timeStamp}`,
         // `/assets/css/style.min.css?timestamp=${timeStamp}`,
         // `/assets/css/style-resume.min.css?timestamp=${timeStamp}`
       ])
