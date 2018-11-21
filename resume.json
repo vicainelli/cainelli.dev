@@ -3,7 +3,7 @@
     "display_name": "Vinicius Cainelli",
     "full_name": "Vinicius Cainelli dos Santos",
     "nickname": "Vini",
-    "title": "Frontend Engineer",
+    "title": "Frontend Developer",
     "age": 31,
     "from": {
       "city": "São Paulo",
@@ -11,7 +11,7 @@
       "country": "Brasil"
     },
     "about_me": [
-      "My name is Vinicius and I'm a Brazilian developer passionate about technology, innovation, music, and travel.", [
+      "My name is Vinicius and I'm a Brazilian Frontend Developer passionate about technology, innovation, music, and travel.", [
         "Strong knowledge and experience with HTML, CSS, and Javascript.",
         "Knowledge and professional experience with AngularJS, Sass, Pug, Gulp, jQuery, Git, PHP, and MySQL.",
         "Knowledge of VueJS, ES6, NodeJS, Laravel, AWS, Ubuntu, Serverless, and Docker."
