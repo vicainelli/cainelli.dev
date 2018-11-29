@@ -3,8 +3,8 @@
  *  Vinicius Cainelli
  */
 
-// Version 0.9
-let version = '0.9';
+// Version 0.10
+let version = '0.10';
 
 self.addEventListener('install', e => {
   let timeStamp = Date.now();
