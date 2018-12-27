@@ -6,6 +6,6 @@
     {"task": "Learn VUEJS", "done": true, "created": "2017" },
     {"task": "Learn Laravel", "done": true, "created": "2017" },
     {"task": "Back to swimming and lose 6kg", "done": false, "created": "2017" },
-    {"task": "Get a job outside Brasil", "done": fals, "created": "2017"e }
+    {"task": "Get a job outside Brasil", "done": false, "created": "2017" }
   ]
 }
