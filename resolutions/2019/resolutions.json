@@ -1,11 +1,38 @@
 {
-  "tasks": [
-    {"task": "English exchange in the USA", "done": true, "created": "2017" },
-    {"task": "EURO Trip", "done": true, "created": "2017" },
-    {"task": "Launch Menyoo", "done": false, "created": "2017" },
-    {"task": "Learn VUEJS", "done": true, "created": "2017" },
-    {"task": "Learn Laravel", "done": true, "created": "2017" },
-    {"task": "Back to swimming and lose 6kg", "done": false, "created": "2017" },
-    {"task": "Get a job outside Brasil", "done": false, "created": "2017" }
+  "tasks": [{
+      "task": "English exchange in the USA",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "EURO Trip",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "Launch Menyoo",
+      "done": false,
+      "created": "2017"
+    },
+    {
+      "task": "Learn VUEJS",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "Learn Laravel",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "Back to swimming and lose 6kg",
+      "done": false,
+      "created": "2017"
+    },
+    {
+      "task": "Get a job outside Brasil",
+      "done": false,
+      "created": "2017"
+    }
   ]
 }
