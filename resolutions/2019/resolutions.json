@@ -20,7 +20,27 @@
       "created": "2018"
     },
     {
-      "task": "Improve my JS Test Skills with a Udemy Course I've bought",
+      "task": "Finish JS com TDD na Prática",
+      "done": false,
+      "created": "2018"
+    },
+    {
+      "task": "Finish Curso JavaScript Ninja",
+      "done": false,
+      "created": "2018"
+    },
+    {
+      "task": "Finish ES6 for Everyone",
+      "done": false,
+      "created": "2018"
+    },
+    {
+      "task": "Finish JavaScript30",
+      "done": false,
+      "created": "2018"
+    },
+    {
+      "task": "Finish Curso React.js Ninja - React Completo",
       "done": false,
       "created": "2018"
     },
