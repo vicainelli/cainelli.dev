@@ -1,7 +1,12 @@
 {
   "tasks": [{
-      "task": "Back to swimming and lose 6kg",
-      "done": false,
+      "task": "English exchange in the USA",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "EURO Trip",
+      "done": true,
       "created": "2017"
     },
     {
@@ -10,39 +15,24 @@
       "created": "2017"
     },
     {
-      "task": "Learn ReactJS",
+      "task": "Learn VUEJS",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "Learn Laravel",
+      "done": true,
+      "created": "2017"
+    },
+    {
+      "task": "Back to swimming and lose 6kg",
       "done": false,
       "created": "2017"
     },
     {
-      "task": "Get My Own Space To Live",
-      "done": false,
-      "created": "2018"
-    },
-    {
-      "task": "Improve my JS Test Skills with a Udemy Course I've bought",
-      "done": false,
-      "created": "2018"
-    },
-    {
-      "task": "Improve my UI Skils with a Refactoring UI course",
-      "done": false,
-      "created": "2018"
-    },
-    {
       "task": "Get a job outside Brasil",
       "done": false,
-      "created": "2018"
-    },
-    {
-      "task": "Reading or listening, at least, 4 books",
-      "done": false,
-      "created": "2018"
-    },
-    {
-      "task": "Write one post each 2 months",
-      "done": false,
-      "created": "2018"
+      "created": "2017"
     }
   ]
 }
