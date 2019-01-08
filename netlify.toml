@@ -1,0 +1,8 @@
+[Settings]
+  ID="97165b86-9af5-40c8-8f28-4aa2b132714f"
+
+# A basic redirect rule
+[[redirects]]
+  from = "/*"
+  to = "404.html"
+  status = 404
