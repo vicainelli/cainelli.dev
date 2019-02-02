@@ -18,11 +18,11 @@
 	<meta name="twitter:url" content="https://cainelli.rocks/" />
 	<meta name="p:domain_verify" content="429431a878ec3b2373ef8008233704ed" />
 	<title>Vinicius Cainelli - Frontend Developer, Problem Solver And Team Player.</title>
-	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./style.css">
 	<link rel="stylesheet" href="https://use.typekit.net/pxp8kcr.css">
 	<link rel="manifest" href="/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="assets/images/icons/ms-icon-144x144.png">
+	<!-- <meta name="msapplication-TileImage" content="assets/images/icons/ms-icon-144x144.png"> -->
 	<meta name="theme-color" content="#ffffff">
 	<script type="application/ld+json">
 		{
@@ -58,7 +58,7 @@
 </head>
 
 <body>
-	<div class="section section--v-centralized bg-bittersweet-dark">
+	<div class="section section--v-centralized bg-ocean-green-darker">
 		<div class="section__inner">
 			<p class="font-sans text-white">Hi, my name is</p>
 			<h1 class="font-serif text-grey-lightest">Vinicius Cainelli</h1>
@@ -69,7 +69,7 @@
 
 	<div class="section section--v-centralized">
 		<div class="section__inner">
-			<h2 class="text-bittersweet font-serif">Skills</h2>
+			<h2 class="text-bittersweet-dark font-serif">Skills</h2>
 			<ul class="font-sans text-grey-darker">
 				<li>🤓 Problem Solver</li>
 				<li>💪 Strong knowledge and work experience with HTML, CSS, and Javascript</li>
@@ -112,10 +112,10 @@
 		a.ma={trackEvent:function o(r,s,t,u){return n("event",r,s,t,u)},
 		trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
 		(window,"UA-125154245-1",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});
-		// if('serviceWorker' in navigator) {
-		//   navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(registration) { console.log('Service Worker Registered'); });
-		//   navigator.serviceWorker.ready.then(function(registration) { console.log('Service Worker Ready'); });
-		// }
+		if('serviceWorker' in navigator) {
+		  navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(registration) { console.log('Service Worker Registered'); });
+		  navigator.serviceWorker.ready.then(function(registration) { console.log('Service Worker Ready'); });
+		}
 	</script>
 </body>
 
