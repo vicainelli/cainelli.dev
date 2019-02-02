@@ -3,96 +3,80 @@ body {
   margin: 0;
 }
 /** Text Color */
-.text-grey-darkest {
-  color: #373A3D
-}
-.text-grey-darker {
-  color: #6E747A
-}
-.text-grey-dark {
-  color: #A6AFB8
-}
-.text-grey {
-  color: #B8C2CC
-}
-.text-grey-light {
-  color: #CDD4DB
-}
-.text-grey-lighter {
-  color: #E3E7EB
-}
-.text-grey-lightest {
-  color: #F8F9FA
-}
-.text-white {
-  color: #FFFFFF
-}
+.text-black { color: #22292F }
+.text-grey-darkest { color: #373A3D }
+.text-grey-darker { color: #6E747A }
+.text-grey-dark { color: #A6AFB8 }
+.text-grey { color: #B8C2CC }
+.text-grey-light { color: #CDD4DB }
+.text-grey-lighter { color: #E3E7EB }
+.text-grey-lightest { color: #F8F9FA }
+.text-white { color: #FFFFFF }
+
+.bg-black { background: #22292F }
+.bg-grey-darkest { background: #373A3D }
+.bg-grey-darker { background: #6E747A }
+.bg-grey-dark { background: #A6AFB8 }
+.bg-grey { background: #B8C2CC }
+.bg-grey-light { background: #CDD4DB }
+.bg-grey-lighter { background: #E3E7EB }
+.bg-grey-lightest { background: #F8F9FA }
+.bg-white { background: #FFFFFF }
 
 /** Regal */
-.text-regal-darkest {
-  color: #001723;
-}
-.text-regal-darker {
-  color: #002E46;
-}
-.text-regal-dark {
-  color: #004568;
-}
-.text-regal {
-  color: #004D74;
-}
-.text-regal-light {
-  color: #4D829E;
-}
-.text-regal-lighter {
-  color: #99B8C7;
-}
-.text-regal-lightest {
-  color: #E6EDF1;
-}
+.text-regal-darkest { color: #001723; }
+.text-regal-darker { color: #002E46; }
+.text-regal-dark { color: #004568; }
+.text-regal { color: #004D74; }
+.text-regal-light { color: #4D829E; }
+.text-regal-lighter { color: #99B8C7; }
+.text-regal-lightest { color: #E6EDF1; }
+
+.bg-regal-darkest { background: #001723; }
+.bg-regal-darker { background: #002E46; }
+.bg-regal-dark { background: #004568; }
+.bg-regal { background: #004D74; }
+.bg-regal-light { background: #4D829E; }
+.bg-regal-lighter { background: #99B8C7; }
+.bg-regal-lightest { background: #E6EDF1; }
 
 /** Bittersweet */
-.text-bittersweet-darkest {
-  color: #4B221F;
-}
-.text-bittersweet-darker {
-  color: #96443E;
-}
-.text-bittersweet-dark {
-  color: #E1675E;
-}
-.text-bittersweet {
-  color: #FA7268;
-}
-.text-bittersweet-light {
-  color: #FC9C95;
-}
-.text-bittersweet-lighter {
-  color: #FDC7C3;
-}
-.text-bittersweet-lightest {
-  color: #FFF1F0;
-}
+.text-bittersweet-darkest { color: #4B221F; }
+.text-bittersweet-darker { color: #96443E; }
+.text-bittersweet-dark { color: #E1675E; }
+.text-bittersweet { color: #FA7268; }
+.text-bittersweet-light { color: #FC9C95; }
+.text-bittersweet-lighter { color: #FDC7C3; }
+.text-bittersweet-lightest { color: #FFF1F0; }
 
-/** BACKGROUNDS */
-.bg-bittersweet-dark {
-  background: #E1675E;
-}
+.bg-bittersweet-darkest { background: #4B221F; }
+.bg-bittersweet-darker { background: #96443E; }
+.bg-bittersweet-dark { background: #E1675E; }
+.bg-bittersweet { background: #FA7268; }
+.bg-bittersweet-light { background: #FC9C95; }
+.bg-bittersweet-lighter { background: #FDC7C3; }
+.bg-bittersweet-lightest { background: #FFF1F0; }
 
-.bg-regal-dark {
-  background: #004568;
-}
+/** Ocean Green */
+.text-ocean-green-darkest { color: #17332B }
+.text-ocean-green-darker { color: #2D6756 }
+.text-ocean-green-dark { color: #449A82 }
+.text-ocean-green { color: #4BAB90 }
+.text-ocean-green-light { color: #81C4B1 }
+.text-ocean-green-lighter { color: #B7DDD3 }
+.text-ocean-green-lightest { color: #EDF7F4 }
+
+.bg-ocean-green-darkest { background: #17332B }
+.bg-ocean-green-darker { background: #2D6756 }
+.bg-ocean-green-dark { background: #449A82 }
+.bg-ocean-green { background: #4BAB90 }
+.bg-ocean-green-light { background: #81C4B1 }
+.bg-ocean-green-lighter { background: #B7DDD3 }
+.bg-ocean-green-lightest { background: #EDF7F4 }
 
 /** Font Family */
-.font-sans {
-  font-family: cresta, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-.font-serif {
-  font-family: embury-text, Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
-}
-.font-mono {
-  font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-}
+.font-sans { font-family: cresta, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; }
+.font-serif { font-family: embury-text, Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif; }
 
 p, li, a {
   font-size: 18px;
