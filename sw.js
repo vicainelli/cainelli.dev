@@ -2,8 +2,8 @@
  *  Vinicius Cainelli
  */
 
-// Version 0.13
-let version = '0.13';
+// Version 0.14
+let version = '0.14';
 
 self.addEventListener('install', e => {
   let timeStamp = Date.now();
@@ -13,7 +13,7 @@ self.addEventListener('install', e => {
         `/`,
         `/index.html?timestamp=${timeStamp}`,
         `/resume.pdf?timestamp=${timeStamp}`,
-        // `/assets/css/style.min.css?timestamp=${timeStamp}`,
+        `/css/style.css?timestamp=${timeStamp}`,
         // `/assets/css/style-resume.min.css?timestamp=${timeStamp}`
       ])
       .then(() => self.skipWaiting());
