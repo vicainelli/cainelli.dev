@@ -6,19 +6,7 @@
   "author": "Vinicius Cainelli <vicainelli@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.18.0",
-    "browser-sync": "^2.26.3",
-    "css-loader": "^1.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "postcss": "^7.0.2",
-    "purgecss": "^1.1.0",
-    "style-loader": "^0.23.0",
-    "tailwind": "^2.2.0",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.7"
+    "browser-sync": "^2.26.3"
   },
   "scripts": {
     "start": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Firefox Developer Edition'",
