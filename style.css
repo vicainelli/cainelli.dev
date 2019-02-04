@@ -84,7 +84,7 @@ p, li, a {
   margin: 0;
   letter-spacing: .05em;
 }
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 760px) {
   p, li, a {
     font-size: 24px;
   }
@@ -113,7 +113,7 @@ h2 {
   letter-spacing: .02em
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 760px) {
   h1 {
     font-size: 80px;
     margin-bottom: .25em;
@@ -139,9 +139,9 @@ h2 {
 .section__inner {
   padding: 24px;
 }
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 760px) {
   .section__inner {
-    width: 720px;
+    width: 760px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -152,7 +152,7 @@ nav {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 12px
 }
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 760px) {
   nav {
     grid-template-columns: repeat(3, 1fr);
   }
