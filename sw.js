@@ -2,8 +2,8 @@
  *  Vinicius Cainelli
  */
 
-// Version 0.18
-var  version = '0.18';
+// Version 0.19
+var  version = '0.19';
 
 self.addEventListener('install', function(e) {
   var  timeStamp = Date.now();
