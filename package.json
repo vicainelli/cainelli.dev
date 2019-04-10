@@ -9,6 +9,7 @@
     "browser-sync": "^2.26.3"
   },
   "scripts": {
+    "cy:run": "cypress run",
     "start": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Firefox Developer Edition'",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
