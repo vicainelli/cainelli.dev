@@ -2,8 +2,8 @@
  *  Vinicius Cainelli
  */
 
-// Version 0.19
-var  version = '0.19';
+// Version 0.20
+var  version = '0.20';
 
 self.addEventListener('install', function(e) {
   var  timeStamp = Date.now();
@@ -12,7 +12,6 @@ self.addEventListener('install', function(e) {
       return cache.addAll([
         '/',
         '/index.html?timestamp=' + timeStamp,
-        '/resume.pdf?timestamp=' + timeStamp,
         '/css/style.css?timestamp=' + timeStamp,
         // '/assets/css/style-resume.min.css?timestamp=' + timeStamp
       ])
