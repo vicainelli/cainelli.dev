@@ -3,140 +3,168 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brechó - Produtod novos e semi-novos</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Produtos novos e semi-novos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="./brecho/css/style.css" />
   </head>
   <body>
-    <header>
-      <div>
-        <h1>Brechó</h1>
-      </div>
-    </header>
-
-    <main>
-      <section
-        class="grid grid-cols-none sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-screen-xl mx-auto"
-      >
-        <!-- product -->
-        <div class="mx-3">
-          <div
-            class="overflow-hidden bg-gray-300 w-full h-64 rounded-lg shadow-md"
-          >
-            <div
-              class="w-full h-64 bg-cover"
-              style="background-image:url('https://www.stuff.tv/sites/stuff.tv/files/brands/Apple/MacBook_Pro_2017/apple_macbook_pro_2017_2.jpg')"
-            ></div>
-          </div>
-          <div class="p-4 bg-white -mt-16 shadow-lg rounded mx-3">
-            <h3 class="text-gray-900 font-semibold text-lg">Macbook Pro 13'</h3>
-            <div class="my-3">
-              <span>R$ 5499,00</span>
-            </div>
-            <div>
-              <a
-                aria-disabled="true"
-                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                href="./brecho/macbook-pro"
-                >Detalhes</a
-              >
-            </div>
-          </div>
-        </div>
-        <!-- /product -->
-        <!-- product -->
-        <div class="mx-3">
-          <div
-            class="overflow-hidden bg-gray-300 w-full h-64 rounded-lg shadow-md"
-          >
-            <div
-              class="w-full h-64 bg-cover"
-              style="background-image:url('https://store-guides.djicdn.com/guides/wp-content/uploads/2017/05/DJI-Spark-props-1024x580.png')"
-            ></div>
-          </div>
-          <div class="p-4 bg-white -mt-16 shadow-lg rounded mx-3">
-            <h3 class="text-gray-900 font-semibold text-lg">
-              Drone Spark DJI'
-            </h3>
-            <div class="my-3">
-              <span>R$ 2199,00</span>
-            </div>
-            <div>
-              <a
-                aria-disabled="true"
-                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
-                href="./brecho/drone-spark"
-                >Detalhes</a
-              >
-            </div>
-          </div>
-        </div>
-        <!-- /product -->
-
-        <hr />
-        <hr />
-        <hr />
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Drone Spark DJI</h3>
-            <span>R$ 2299,00</span>
-          </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Monitor Samsung 28' 4k</h3>
-            <span>R$ 1199,00</span>
-          </div>
-        </div>
+    <div id="app">
+      <header>
         <div>
-          <div>VENDIDA</div>
-          <div class="p-4">
-            <h3>TV Samsung 4k 50'</h3>
-            <span>R$ 1399,00</span>
-          </div>
+          <h1
+            class="text-center mt-8 text-xl uppercase font-semibold tracking-wide"
+          >
+            Produtos novos e semi-novos
+          </h1>
         </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Monitor Dell 27' Full HD</h3>
-            <span>R$ 799,00</span>
+      </header>
+
+      <main>
+        <section
+          class="grid grid-cols-none sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-screen-xl mx-auto my-8"
+        >
+          <product-card
+            v-for="(product, i) in products"
+            :key="i"
+            :product="product"
+          ></product-card>
+        </section>
+      </main>
+    </div>
+    <script>
+      Vue.component("productCard", {
+        props: {
+          product: {
+            type: Object,
+            default: () => {}
+          }
+        },
+        template: `
+          <div class="mx-3">
+            <div
+              class="overflow-hidden bg-gray-300 w-full h-64 rounded-lg shadow-md"
+            >
+              <div
+                v-if="product.image"
+                class="w-full h-64 bg-cover"
+                :style="{ 'background-image': 'url('+ product.image +')'}"
+              ></div>
+            </div>
+            <div class="p-4 bg-white -mt-12 shadow-lg rounded mx-3">
+              <h3 class="text-gray-900 font-semibold text-lg">
+                {{ product.name }}
+              </h3>
+              <div class="mt-3 flex justify-between items-center">
+                <div class="">
+                  <div v-if="product.price.current < product.price.past">
+                    <span class="text-xs text-gray-400 line-through">R$ <span class="text-sm text-gray-500">{{product.price.past }}</span>,00</span>
+                  </div>
+                  <span class="text-sm text-gray-600">R$ <span class="text-xl text-gray-800 font-semibold">{{ product.price.current }}</span>,00</span>
+                </div>
+                <div>
+                  <a :href="'https://api.whatsapp.com/send?phone=+5511982883353&text=Olá, tenho interesse no produto: *' + product.name  + '*'">
+                    <img class="h-8" src="./brecho/images/whatsapp.svg" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Monitor Dell 23' Full HD</h3>
-            <span>R$ 499,00</span>
-          </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Headphone Easy Mobile</h3>
-            <span>R$ 129,00</span>
-          </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Sony WH-CH700N Headphones</h3>
-            <span>R$ 449,00</span>
-          </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Magic Mouse</h3>
-            <span>R$ 99,00</span>
-          </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Magic Keyboard</h3>
-            <span>R$ 119,00</span>
-          </div>
-        </div>
-        <div class="shadow rounded-lg mx-2">
-          <div class="p-4">
-            <h3>Repetidor de sinal</h3>
-            <span>R$ 89,00</span>
-          </div>
-        </div>
-      </section>
-    </main>
+              `
+      });
+
+      var app = new Vue({
+        el: "#app",
+        data: function() {
+          return {
+            products: [
+              {
+                name: "Macbook Pro 2017",
+                image:
+                  "https://www.stuff.tv/sites/stuff.tv/files/brands/Apple/MacBook_Pro_2017/apple_macbook_pro_2017_2.jpg",
+                price: { current: 6499, past: 7199 },
+                avaialible: true
+              },
+              {
+                name: "Drone DJI Spark Fly More ",
+                image:
+                  "https://assets.hardwarezone.com/img/2017/07/dji-article2.jpg",
+                price: { current: 2299, past: 2599 },
+                avaialible: true
+              },
+              {
+                name: "Monitor Samsung 28' 4k",
+                image:
+                  "https://www.extremetech.com/wp-content/uploads/2014/03/samsung-ud590-4k-monitor-front-640x353.jpg",
+                price: { current: 1149, past: 1299 },
+                avaialible: true
+              },
+              // {
+              //   name: "TV Samsung 4k 50'",
+              //   image:
+              //     "https://c.mlcdn.com.br/1500x1500/smart-tv-led-50-samsung-4k-ultra-hd-50ku6000conversor-digital-wi-fi-3-hdmi-2-usb-193388000.jpg",
+              //   price: { current: 1399, past: 1599 },
+              //   avaialible: false
+              // },
+              {
+                name: "Monitor Dell 27' Full HD",
+                image:
+                  "https://assets.pcmag.com/media/images/510108-dell-27-monitor-p2719h.jpg?width=810&height=456",
+                price: { current: 749, past: 899 },
+                avaialible: true
+              },
+              {
+                name: "Monitor Dell 23' Full HD",
+                image:
+                  "https://i.dell.com/is/image/DellContent/content/dam/global-site-design/product_images/peripherals/output_devices/dell/monitors/p_series/p2317h/hero/dell-monitor-p2317h-right-hero-504x350.jpg?fmt=png-alpha",
+                price: { current: 499, past: 599 },
+                avaialible: true
+              },
+              {
+                name: "Headphone Easy Mobile Freedom 2",
+                image:
+                  "https://www.ibyte.com.br/media/catalog/product/cache/1/image/1247,774x/9df78eab33525d08d6e5fb8d27136e95/3/6/36265-2-headphone-easy-mobile-freedom-2-marrom-min.jpg",
+                price: { current: 179, past: 219 },
+                avaialible: true
+              },
+              {
+                name: "Sony WH-CH700N Headphones",
+                image:
+                  "https://images.news18.com/ibnlive/uploads/2019/01/Sony-WH-CH700N.png",
+                price: { current: 449, past: 499 },
+                avaialible: true
+              },
+              {
+                name: "Apple Magic Mouse",
+                image:
+                  "https://upload.wikimedia.org/wikipedia/commons/c/ce/Magic_Mouse_01_Pengo.jpg",
+                price: { current: 169, past: 199 },
+                avaialible: true
+              },
+              {
+                name: "Apple Magic Keyboard",
+                image:
+                  "https://d3nevzfk7ii3be.cloudfront.net/igi/L4SAYFPIIIv2Kran.medium",
+                price: { current: 179, past: 229 },
+                avaialible: true
+              },
+              {
+                name: "Repetidor TP-Link WA901ND",
+                image:
+                  "https://images10.newegg.com/productimage/33-704-049-12.jpg",
+                price: { current: 99, past: 119 },
+                avaialible: true
+              },
+              {
+                name: "GoPro Hero5 Session",
+                image:
+                  "https://icdn2.digitaltrends.com/image/gopro-hero5-session-product-1200x630-c-ar1.91.jpg?ver=1",
+                price: { current: 799, past: 999 },
+                avaialible: true
+              }
+            ]
+          };
+        }
+      });
+    </script>
   </body>
 </html>
