@@ -18,12 +18,28 @@ import Layout from "../layouts/Layout.astro";
       </ContentWrapper>
     </header>
 
-    <figure class="my-8">
+    <div class="min-h-[240px] w-full max-w-[1600px] mx-auto mb-16">
       <img
-        src="/assets/images/vc-office-desk.jpeg"
+        src="/assets/images/vc-office-desk-1600.png"
+        srcset="vc-office-desk-400 400w,
+        /assets/images/vc-office-desk-600.png 600w,
+        /assets/images/vc-office-desk-900.png 900w,
+        /assets/images/vc-office-desk-1200.png 1200w,
+        /assets/images/vc-office-desk-1600.png 1600w"
         alt="office desktop with two screens"
+        sizes="(max-width: 1200px) 100vw, 1600px"
+        loading="lazy"
       />
-    </figure>
+    </div>
+
+
+
+    <!-- <img src="picture-1200.jpg"
+  srcset="picture-600.jpg   600w,
+          picture-900.jpg   900w,
+          picture-1200.jpg 1200w"
+  sizes="(max-width: 900px) 100vw, 1200px"
+  alt="my awesome picture" height="900" width="1200" /> -->
 
     <ContentWrapper>
       <section>
@@ -86,13 +102,29 @@ import Layout from "../layouts/Layout.astro";
       </section>
 
       <section class="mt-16">
+        <h2 class="text-3xl font-semibold mb-4">Software</h2>
+
+        <ul class="list-disc list-inside text-lg">
+          <li>Slak</li>
+          <li>Discord</li>
+          <li>Git/GitHub</li>
+          <li>Chrome / Brave</li>
+          <li>Notion</li>
+          <li>Todoist</li>
+          <li>Raycast</li>
+          <li>1Password</li>
+        </ul>
+      </section>
+
+      <section class="mt-16">
         <h2 class="text-3xl font-semibold mb-4">Furniture</h2>
 
         <ul class="list-disc list-inside text-lg">
           <li>
             Desk: <a
               href="https://www.ikea.com/nl/en/p/rodulf-desk-sit-stand-grey-white-s99326170/"
-              >IKEA RODULF</a>
+              >IKEA RODULF</a
+            >
           </li>
           <li>Chair: DXRacer Formula Series F11-N</li>
         </ul>
