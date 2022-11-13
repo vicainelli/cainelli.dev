@@ -1,0 +1,76 @@
+---
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Frontend Developer And Team Player with an insatiable passion for UI, create and build amazing and beautiful applications that make an impact on people lives.">
+		<meta property="og:title" content="Vinicius Cainelli - Frontend Developer And Team Player." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://cainelli.dev/" />
+		<meta property="og:image" content="https://cainelli.dev/images/image-sharing.png" />
+		<meta property="og:site_name" content="Vinicius Cainelli - Frontend Developer And Team Player." />
+		<meta name="twitter:card" content="photo" />
+		<meta name="twitter:site" content="@vicainelli" />
+		<meta name="twitter:title" content="Vinicius Cainelli - Frontend Developer And Team Player." />
+		<meta name="twitter:image" content="https://cainelli.dev/images/twitter-sharing.png" />
+		<meta name="twitter:url" content="https://cainelli.dev/" />
+		<meta name="p:domain_verify" content="429431a878ec3b2373ef8008233704ed" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+		<title>{title}</title>
+		<script type="application/ld+json">
+			{
+				"@context": "http://schema.org",
+				"@type": "Person",
+				"email": "mailto:contact@cainelli.dev",
+				"image": "https://www.gravatar.com/avatar/ad20ea263b745ae2c34a402655e1e22d?s=400",
+				"jobTitle": "Frontend Developer",
+				"name": "Vinicius Cainelli",
+				"alumniOf": [
+					"Mackenzie Presbiterian University",
+					"Senac"
+				],
+				"birthPlace": "São Paulo, Brasil",
+				"gender": "male",
+				"nationality": "Brazilian",
+				"telephone": "+55 (11) 982883353",
+				"url": "httpss://cainelli.dev",
+				"sameAs": [
+					"http://www.facebook.com/vicainelli",
+					"http://instagram.com/vicainelli",
+					"https://linkedin.com/in/vicainelli",
+					"https://plus.google.com/u/1/+ViniciusCainelli",
+					"https://github.com/vicainelli/",
+					"https://www.pinterest.com/vicainelli/",
+					"https://dribbble.com/vicainelli",
+					"https://www.uplabs.com/vicainelli",
+					"https://stackoverflow.com/users/2092969/vinicius-cainelli",
+					"https://pt.stackoverflow.com/users/65299/vinicius-cainelli"
+				]
+			}
+		</script>
+	</head>
+	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300">
+		<div class="mx-auto max-w-screen-sm">
+			<div class="flex flex-col mx-4">
+				<div class="flex-1">
+					<slot />
+				</div>
+			<Footer />
+			</div>
+		</div>
+	</body>
+</html>
