@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html class="w-full h-full" lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -60,9 +60,11 @@ const { title } = Astro.props;
 			}
 		</script>
 	</head>
-	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300">
-		<div>
-			<slot />
+	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300 w-full h-full">
+		<div class="min-h-full flex flex-col items-stretch">
+			<div class="flex-grow">
+				<slot />
+			</div>
 			<Footer />
 		</div>
 	</body>
