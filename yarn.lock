@@ -717,10 +717,10 @@ array-iterate@^1.0.0:
   resolved "https://registry.yarnpkg.com/array-iterate/-/array-iterate-1.1.4.tgz#add1522e9dd9749bb41152d08b845bd08d6af8b7"
   integrity sha512-sNRaPGh9nnmdC8Zf+pT3UqP8rnWj5Hf9wiFGsX3wUQ2yVSIhO2ShFwCoceIPpB41QF6i2OEmrHmCo36xronCVA==
 
-astro@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.7.1.tgz#fbb9b20bd27bc1b4af232c8e58ca13ecda8b54d3"
-  integrity sha512-W7KbiHPIWM9tmjAUza8iQtalbNnpRcbtKgEZ7zc/+vOpuvcmSHxkYVar+VhLf2ZuwBIDjgaF9M8ScQ2B1oobAA==
+astro@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.7.2.tgz#c777418b70c77001a6fcb0829b63e73396569055"
+  integrity sha512-2+vjXeVGU04aecs0mm93Qx9KdeVDw4OTeBIijs2Z+QLoe4RUYZnkqx5gR70VNfnoMdXoPp7+wB+ARcb0+ee/yg==
   dependencies:
     "@astrojs/compiler" "^1.5.0"
     "@astrojs/internal-helpers" "^0.1.1"
