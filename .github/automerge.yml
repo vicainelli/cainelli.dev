@@ -1,0 +1,10 @@
+automerge:
+  enabled: true
+  pull_request_rules:
+    - name: "Automerge Dependabot PRs"
+      conditions:
+        - author: "dependabot[bot]"
+      actions:
+        merge:
+          method: "squash"
+          commit_message: "chore(deps): update dependencies"
