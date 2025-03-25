@@ -65,11 +65,10 @@ const { title } = Astro.props;
 	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300 w-full h-full">
 		<Header />
 
-		<div class="min-h-full flex flex-col items-stretch">
-			<div class="flex-grow">
+		<div class="">
+			<div class="">
 				<slot />
 			</div>
-			<Footer />
 		</div>
 	</body>
 </html>

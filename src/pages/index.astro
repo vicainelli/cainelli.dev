@@ -1,52 +1,42 @@
 ---
 import ContentWrapper from "../components/ContentWrapper.astro";
+import WorkExperience from "../components/widgets/WorkExperience.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Vinicius Cainelli - User Interface Enginner">
   <ContentWrapper>
     <main class="my-20">
-      <h1 class="text-4xl sm:text-6xl font-semibold text-gray-800 dark:text-gray-400">
-        <small class="block text-xl">Hello, 👋</small> Vinicius Cainelli, User Interface
-        Engineer
+      <h1 class="text-6xl sm:text-6xl font-bold text-gray-600 dark:text-gray-400">
+        <small class="block text-xl">Hi, I'm Vini</small> <span class="text-gray-800">Product Engineer</span> crafting impactful, elegant applications that transform lives
       </h1>
-      <section class="mt-12 sm:mt-24">
+      <section class="my-12 sm:my-24">
         <p class="text-2xl leading-10">
-          I'm a Frontend Developer (and sometimes UI designer) with an insatiable
-          passion for UI, creating and building <strong
-            >tremendous and beautiful</strong
-          > applications that impact people's lives.
+          I’m currently pushing code to help you furnish your home at <a href="https://ikea.com">IKEA</a>.
         </p>
       </section>
-      <section class="mt-12">
-        <p class="text-xl leading-10">
-          <strong>+10 years of experience</strong> in web development, focused on frontend
-          development in advertising, payments, logistic, telecom, internet industries,
-          and retail.
-        </p>
-      </section>
-      <section class="mt-12">
-        <p class="text-xl leading-10">
-          I'm currently <strong>helping people</strong> to furnish their houses at
-          <a rel="noopener" target="_blank" href="https://ikea.com">IKEA</a> by creating
-          personalised experiences and building the global rewards program.
-        </p>
-      </section>
-      <section class="mt-12">
-        <ul class="text-xl">
-          <li class="mb-4">
-            💪 Strong knowledge and work experience with HTML, CSS, and Javascript
-          </li>
-          <li class="mb-4">
-            🤘 Knowledge and work experience with VueJS, Sass, PHP, Git, Laravel,
-            and MySQL
-          </li>
-          <li class="mb-4">
-            👌 Knowledge of ReactJS, NodeJS (AdonisJS), AWS, Ubuntu, Serverless
-            and Docker
-          </li>
-        </ul>
-      </section>
+
+      <WorkExperience items={[
+        {
+          title: "Senior Software Engineer",
+          company: "IKEA",
+          period: "Jan 2022 - present",
+          type: "full time",
+        },
+        {
+          title: "Software Engineer",
+          company: "JustEat Takeaway",
+          period: "May 2020 - Dec 2021",
+          type: "full time",
+        },
+        {
+          title: "Senior Software Engineer",
+          company: "VIVO",
+          period: "June 2019 - May 2020",
+          type: "full time",
+        },
+      ]} />
+
     </main>
   </ContentWrapper>
 </Layout>
