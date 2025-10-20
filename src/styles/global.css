@@ -1,1 +1,21 @@
+/* https://ui8-bruddle.herokuapp.com/ */
+/* @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"); */
+
 @import "tailwindcss";
+
+@theme {
+  --font-anton: "Archivo Black", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --shadow-hard-25: 0.25rem 0.25rem 0 rgba(0, 0, 0, 1);
+  --shadow-hard-50: 0.35rem 0.35rem 0 rgba(0, 0, 0, 1);
+}
+
+
+h2 {
+  @apply font-anton text-neutral-600;
+}
+
+p {
+  @apply font-inter;
+}

@@ -1,15 +1,21 @@
 ---
 import ContentWrapper from "./ContentWrapper.astro";
+
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <header>
   <ContentWrapper>
     <div class="flex justify-between items-center my-4">
       <div>
-        <span class="text-3xl font-bold">Vini 👋</span>
+        {isHomePage ? (
+          <span class="text-3xl font-bold">VC</span>
+        ) : (
+            <a href="/"><span class="text-3xl font-bold">Vini 👋</span></a>
+        )}
       </div>
       <div>
-        <a class="border rounded-full py-3 px-6 block border-b-4" href="/contact">Let's talk →</a>
+        <a class="border rounded-lg text-lg py-2 px-4 block shadow-hard-25 hover:-translate-0.5 transition-all ease-in hover:bg-lime-200 hover:shadow-hard-50 active:translate-1 active:shadow-none active:bg-lime-300" href="/contact">Let's talk →</a>
       </div>
     </div>
   </ContentWrapper>

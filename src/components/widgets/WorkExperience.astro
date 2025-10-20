@@ -17,20 +17,23 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="p-8 border border-b-4 rounded-3xl">
-  <h2 class="text-3xl mb-8 font-semibold">My experience</h2>
+<div class="p-6 border shadow-hard-25 rounded-md">
+  <h2 class="text-lg mb-4 font-anton ">Work experience</h2>
   <ol class="relative border-s border-gray-200 dark:border-gray-700">
 
     {items.map((item, index) => (
-			<li class={`ms-4 ${index === items.length - 1 ? 'mb-0' : 'mb-10 '}`}>
-        <div class="absolute w-3 h-3 bg-gray-600 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-        <time class="mb-1 text-lg font-normal leading-none text-gray-400 dark:text-gray-500">{item.period} - {item.type}</time>
-        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">{item.title} at {item.company}</h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"></p>
+			<li class={`ms-4 ${index === items.length - 1 ? 'mb-0' : 'mb-4 '}`}>
+        <div class="absolute w-2 h-2 bg-gray-600 rounded-full mt-2 -start-1 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+        <time class="mb-1 font-normal leading-none text-gray-400 dark:text-gray-500">{item.period} - {item.type}</time>
+        <h3 class="font-semibold text-gray-900 dark:text-white">{item.title} at {item.company}</h3>
+        <p class="mb-2 text-base font-normal text-gray-500 dark:text-gray-400"></p>
     </li>
 
     ))}
 </ol>
 
+<div class="text-center mt-4">
+  <a href="resume" class="text-sm border-b hover:border-b-2">view more about my experience</a>
+</div>
 
 </div>

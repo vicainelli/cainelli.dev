@@ -7,35 +7,52 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Vinicius Cainelli - Product Engineer">
   <ContentWrapper>
     <main class="my-20">
-      <h1 class="text-6xl sm:text-6xl font-bold text-gray-600 dark:text-gray-400">
-        <small class="block text-xl">Hi, I'm Vini</small> <span class="text-gray-800">Product Engineer</span> crafting impactful, elegant applications that transform lives
-      </h1>
-      <section class="my-12 sm:my-24">
+
+      <div class="">
+        <h1 class="text-lg">Hello, <span class="block text-[6rem] leading-[5rem] sm:text-[13rem] sm:leading-[11rem] font-extrabold text-neutral-700">I'm Vini</span></h1>
+      </div>
+
+      <section class="my-8">
         <p class="text-2xl leading-10">
-          I’m currently pushing code to help you furnish your home at <a href="https://ikea.com">IKEA</a>.
+          <span class="text-gray-800">Product Engineer</span> crafting impactful, elegant applications that transform lives
         </p>
       </section>
 
-      <WorkExperience items={[
-        {
-          title: "Senior Software Engineer",
-          company: "IKEA",
-          period: "Jan 2022 - present",
-          type: "full time",
-        },
-        {
-          title: "Software Engineer",
-          company: "JustEat Takeaway",
-          period: "May 2020 - Dec 2021",
-          type: "full time",
-        },
-        {
-          title: "Senior Software Engineer",
-          company: "VIVO",
-          period: "June 2019 - May 2020",
-          type: "full time",
-        },
-      ]} />
+      <div class="sm:flex gap-4">
+        <div class="flex-1">
+          <div class="mb-4 rounded-sm p-4 border shadow-hard-25 hover:bg-yellow-100 transition-all ease-in">
+
+            <p class="text-xl leading-10">I’m software developer focused on UI based in the Netherlands. I’m currently pushing code to help you furnish your home at <a class="border-b-2" href="https://ikea.com">IKEA</a>.</p>
+          </div>
+          <div class="mb-4 h-48 rounded-sm border-2 border-slate-400/10 bg-neutral-100 p-4 dark:bg-neutral-900"></div>
+        </div>
+        <div class="flex-1">
+            <div class="mb-4">
+              <WorkExperience items={[
+                {
+                  title: "Senior Software Engineer",
+                  company: "IKEA",
+                  period: "Jan 2022 - present",
+                  type: "full time",
+                },
+                {
+                  title: "Software Engineer",
+                  company: "JustEat Takeaway",
+                  period: "May 2020 - Dec 2021",
+                  type: "full time",
+                },
+                {
+                  title: "Senior Software Engineer",
+                  company: "VIVO",
+                  period: "June 2019 - May 2020",
+                  type: "full time",
+                },
+              ]} />
+          </div>
+        </div>
+      </div>
+
+
 
     </main>
   </ContentWrapper>

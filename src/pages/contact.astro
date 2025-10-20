@@ -1,13 +1,27 @@
 ---
 import ContentWrapper from "../components/ContentWrapper.astro";
+import LinksList from "../components/widgets/LinksList.astro";
 import Layout from "../layouts/Layout.astro";
+
+const SOCIAL_LINKS = [
+	{ title: "LinkedIn", url: "https://linkedin.com/in/vicainelli" },
+	{ title: "GitHub", url: "https://github.com/vicainelli/" },
+	{ title: "Behance", url: "https://www.behance.net/viniciuscainelli" },
+	{ title: "CodePen", url: "https://codepen.io/vicainelli/" },
+	{ title: "Dribbble", url: "https://dribbble.com/vicainelli" },
+];
+
+const CONTACT_LINKS = [
+  { title: "Email", url: "mailto:vicainelli@gmail.com" },
+  { title: "Telegram", url: "https://t.me/vicainelli" },
+];
 ---
 
 <Layout title="Vinicius Cainelli - Product Engineer">
   <ContentWrapper>
     <main class="my-20">
-      <h1 class="text-6xl sm:text-6xl font-bold text-gray-600 dark:text-gray-400">Connect & Create</h1>
-      <section class="my-12 sm:my-24">
+      <h1 class="text-4xl sm:text-6xl text-gray-800 dark:text-gray-400 font-anton">Connect & Create</h1>
+      <section class="my-12 sm:my-18">
         <p class="text-2xl leading-10">
           Looking for a web developer who speaks the language of both code and design?
           You're in the right place.
@@ -18,70 +32,27 @@ import Layout from "../layouts/Layout.astro";
 
       <!-- email and telegram links -->
       <section>
-        <h2>Let's Start a Conversation</h2>
-      <p>Have an idea brewing? Want to discuss possibilities? These direct channels are the quickest way to reach me. I'm just a message away from helping you transform your vision into reality.</p>
+        <h2 class="text-2xl mb-4 font-anton text-gray-700">Let's Start a Conversation</h2>
+      <p class="text-xl text-balance mb-2">Have an idea brewing? Want to discuss possibilities? </p>
+      <p class="text-lg text-balance">These direct channels are the quickest way to reach me. I'm just a message away from helping you transform your vision into reality.</p>
 
-      <ul>
-        <li>
-          <a href="mailto:vicainelli@gmail.com" class="text-blue-500 dark:text-blue-400">Email</a>
-        </li>
-        <li>
-          <a href="https://t.me/vicainelli" class="text-blue-500 dark:text-blue-400">Telegram</a>
-        </li>
-      </ul>
+      <div class="mt-4">
+        <LinksList links={CONTACT_LINKS} />
+      </div>
+
       </section>
 
 
       <!-- social links -->
-      <section>
-        <h2>See My Work in Action</h2>
-        <p>Curious about my capabilities? Check out my portfolio and professional networks where I showcase my projects, share insights, and connect with the design and development community.</p>
+      <section class="mt-12">
+        <h2 class="text-2xl mb-4 font-anton text-gray-700">See My Work in Action</h2>
+        <p class="text-balance text-xl mb-2">Curious about my capabilities?</p>
+        <p class="text-balance text-lg">Check out my portfolio and professional networks where I showcase my projects, share insights, and connect with the design and development community.</p>
 
-
-        <ul>
-
-
-          <li><a
-            class=""
-            href="https://linkedin.com/in/vicainelli"
-            rel="noopener"
-            target="_blank"
-            >LinkedIn</a
-          ></li>
-        <li><a
-          class=""
-          href="https://github.com/vicainelli/"
-          rel="noopener"
-          target="_blank"
-          >GitHub</a
-        ></li>
-        <li><a
-          class=""
-          href="https://www.behance.net/viniciuscainelli"
-          rel="noopener"
-          target="_blank"
-          >Behance</a
-        ></li>
-        <li><a
-          class=""
-          href="https://codepen.io/vicainelli/"
-          rel="noopener"
-          target="_blank"
-          >CodePen</a
-        ></li>
-        <li><a
-          class=""
-          href="https://dribbble.com/vicainelli"
-          rel="noopener"
-          target="_blank"
-          >Dribbble</a
-        ></li>
-
-        </ul>
-
+        <div class="mt-4">
+          <LinksList links={SOCIAL_LINKS} />
+        </div>
       </section>
-
-
     </main>
   </ContentWrapper>
 </Layout>
