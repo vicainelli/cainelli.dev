@@ -1,7 +1,7 @@
 ---
-import ContentWrapper from "../components/ContentWrapper.astro";
-import LinksList from "../components/widgets/LinksList.astro";
-import Layout from "../layouts/Layout.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import LinksList from "@/components/widgets/LinksList.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const SOCIAL_LINKS = [
 	{ title: "LinkedIn", url: "https://linkedin.com/in/vicainelli" },
@@ -22,7 +22,7 @@ const CONTACT_LINKS = [
       <main class="mt-20">
       <h1 class="">Connect & Create</h1>
       <section class="">
-        <p class="text-balance">
+        <p class="text-balance leading-relaxed">
           Looking for a web developer who speaks the language of both code and design?
           You're in the right place.
           <br>
@@ -31,10 +31,10 @@ const CONTACT_LINKS = [
       </section>
 
       <!-- email and telegram links -->
-      <section>
-        <h2 class="">Let's Start a Conversation</h2>
-      <p class="text-balance">Have an idea brewing? Want to discuss possibilities? </p>
-      <p class="text-balance">These direct channels are the quickest way to reach me. I'm just a message away from helping you transform your vision into reality.</p>
+      <section class="mt-8">
+        <h2 class="font-semibold text-sm mb-2">Let's Start a Conversation</h2>
+      <p class="text-balance leading-relaxed">Have an idea brewing? Want to discuss possibilities? </p>
+      <p class="text-balance leading-relaxed">These direct channels are the quickest way to reach me. I'm just a message away from helping you transform your vision into reality.</p>
 
       <div class="mt-4">
         <LinksList links={CONTACT_LINKS} />
@@ -44,10 +44,10 @@ const CONTACT_LINKS = [
 
 
       <!-- social links -->
-      <section class="mt-12">
-        <h2 class="">See My Work in Action</h2>
-        <p class="text-balance mb-2">Curious about my capabilities?</p>
-        <p class="text-balance ">Check out my portfolio and professional networks where I showcase my projects, share insights, and connect with the design and development community.</p>
+      <section class="mt-8">
+        <h2 class="font-semibold text-sm mb-2">See My Work in Action</h2>
+        <p class="text-balance leading-relaxed">Curious about my capabilities?</p>
+        <p class="text-balance leading-relaxed">Check out my portfolio and professional networks where I showcase my projects, share insights, and connect with the design and development community.</p>
 
         <div class="mt-4">
           <LinksList links={SOCIAL_LINKS} />

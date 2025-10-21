@@ -9,10 +9,10 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-4">
+<ul class="flex flex-col gap-2">
   {links.map((link) => (
     <li class="">
-      <a href={link.url} class="link">{link.title}</a>
+      <a href={link.url} class="link text-sm">{link.title}</a>
     </li>
   ))}
 </ul>

@@ -1,23 +1,24 @@
 ---
-import ContentWrapper from "../../components/ContentWrapper.astro";
-import Layout from "../../layouts/Layout.astro";
-import ArtistCard from "../../components/molecules/ArtistCard.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Layout from "@/layouts/Layout.astro";
+import ArtistCard from "@/components/molecules/ArtistCard.astro";
 
-import { CONCERTS, Concert } from "../../data/concerts.js";
+import { CONCERTS, type Concert } from "@/data/concerts.js";
 ---
 <Layout title="Concerts" description="A list of concerts I've attended and those I hope to attend in the future.">
     <ContentWrapper>
 
+        <main class="my-20">
             <h1>Concerts</h1>
-        <div class="my-8 flex flex-col gap-6">
-            <p>
+        <div class="flex flex-col gap-6 mb-8">
+            <p class="text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">
                 Going to live concerts is definitely one of my top three favorite activities! <br>
                 It's such a cathartic, therapeutic, communal, and beautiful experience. <br>
                 Sometimes, you get lucky and find yourself at shows that have all the perfect elements, an amazing venue, fantastic sound quality, the right moment in the artist's career (which is subjective, of course), a wonderful crowd, and more.
 
             </p>
-            <p>I feel fortunate to have been part of some of these experiences.</p>
-            <p>
+            <p class="text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">I feel fortunate to have been part of some of these experiences.</p>
+            <p class="text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">
 
                 I've always wanted a place to keep track of them, to hold onto those memories, as well as to list all the concerts I still hope to attend.
 
@@ -44,5 +45,6 @@ import { CONCERTS, Concert } from "../../data/concerts.js";
 
 
         </div>
+        </main>
     </ContentWrapper>
 </Layout>

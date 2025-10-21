@@ -5,6 +5,11 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   vite: {
+    resolve: {
+      alias: {
+        '@': '/src',
+      },
+    },
     css: {
       transformer: "lightningcss",
     },

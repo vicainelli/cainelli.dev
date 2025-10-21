@@ -1,23 +1,22 @@
 ---
-import ContentWrapper from "../components/ContentWrapper.astro";
-import WorkExperience from "../components/widgets/WorkExperience.astro";
-import Layout from "../layouts/Layout.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const WORK_EXPERIENCE = [
   {
     company: "IKEA",
     description: "Creating and develping the best and semealess experience on the IKEA Family Rewards program for customers and co-workers ",
-    featured: true,
+    current: true,
   },
   {
     company: "JustEat Takeaway",
     description: "Shipped a Vue design system used by 10+ squads: fast UI, sleek UX, tested, and smoothly released.",
-    featured: false,
+    current: false,
   },
   {
     company: "VIVO / Telefónica",
     description: "Built a Vue self-service UI: reusable, tested, and stable, cutting support calls and boosting UX.",
-    featured: false,
+    current: false,
   },
 ];
 
@@ -29,8 +28,8 @@ const WORK_EXPERIENCE = [
       <section>
 
             <div class="">
-        <h1>Vinicius Cainelli</h1>
-        <p class=" text-gray-600 text-sm text-balance">
+        <h1 class="">Vinicius Cainelli</h1>
+        <p class=" text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">
             I'm a software engineer focused on UI, creating impactful and elegant applications that transform lives. <br>
           I am based in the Netherlands and currently writing code, to help you furnish your home, at <a class="border-b-2" href="https://ikea.com">IKEA</a>.</p>
           </div>
@@ -45,7 +44,7 @@ const WORK_EXPERIENCE = [
           </div>
       <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {WORK_EXPERIENCE.map((work) => (
-          <div class={`${work.featured ? 'sm:col-span-2' : ''} p-3 border border-gray-200 rounded-md`}>
+          <div class={`${work.current ? 'sm:col-span-2' : ''} p-3 border border-gray-200 rounded-md`}>
               <h3 class="text-sm font-semibold mb-1">{work.company}</h3>
               <p class="text-sm">{work.description}</p>
           </div>

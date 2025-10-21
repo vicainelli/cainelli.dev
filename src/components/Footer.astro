@@ -1,16 +1,22 @@
 ---
 import ContentWrapper from "../components/ContentWrapper.astro";
-import { SOCIAL_LINKS, SocialLink } from "../data/social-links";
+import { SOCIAL_LINKS, type SocialLink } from "../data/social-links";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-lime-50 py-4 mt-20">
+<footer class="bg-stone-50 dark:bg-stone-900 py-4 mt-20">
   <ContentWrapper>
     <div class="flex justify-between items-center">
-        <div><p>&copy; {currentYear} Vinicius Cainelli</p></div>
+        <div><p class="text-stone-600 dark:text-stone-300">&copy; {currentYear} Vinicius Cainelli</p></div>
         <div>
-            <nav class="">
-                <!-- {SOCIAL_LINKS.map((link: SocialLink) => <a class="link text-sm" href={link.url}>{link.name}</a>)} -->
+            <nav class="flex gap-2">
+                {SOCIAL_LINKS.map((link: SocialLink) =>
+                  <a
+                    aria-label={`Link to ${link.name}`}
+                    class="text-sm w-6 h-6 border block rounded-full "
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={link.url}></a>)}
             </nav>
         </div>
     </div>
