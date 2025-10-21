@@ -1,6 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import Footer from "../components/Footer.astro";
-import { ClientRouter } from 'astro:transitions';
 import Header from "../components/Header.astro";
 import "../styles/global.css";
 
@@ -69,11 +69,11 @@ const { title, description } = Astro.props;
 			}
 		</script>
 	</head>
-	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300">
+	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300 flex flex-col min-h-screen">
 		<Header />
 
-		<div class="">
-			<div class="">
+		<div class="flex-1">
+			<div>
 				<slot />
 			</div>
 		</div>
