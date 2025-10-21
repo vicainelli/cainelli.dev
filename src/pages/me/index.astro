@@ -1,0 +1,76 @@
+---
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Layout from "@/layouts/Layout.astro";
+import ArtistCard from "@/components/molecules/ArtistCard.astro";
+
+import { CONCERTS, type Concert } from "@/data/concerts.js";
+---
+<Layout title="Concerts" description="A list of concerts I've attended and those I hope to attend in the future.">
+    <ContentWrapper>
+
+        <main class="my-20">
+            <h1>Me</h1>
+        <div class="flex flex-col gap-6 mb-8">
+
+
+            <div>
+                <h2 class="font-semibold text-xs mb-2 uppercase opacity-70">Content</h2>
+
+                <ul class="space-y-4">
+                    <li>
+                        <a class="border border-stone-400 block p-2 rounded-md" href="/me/writing">
+                            <h3 class="text-sm font-semibold opacity-80">
+                            Writing
+                            </h3>
+                            <p>
+                                I share my thoughts and experiences on various topics related to software development, design, and productivity.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="border border-stone-400 block p-2 rounded-md" href="/me/til">
+                            <h3 class="text-sm font-semibold opacity-80">
+                                TIL (Daily Learnings)
+                            </h3>
+                            <p>
+                                A collection of small, daily learnings and insights I've gathered over time.
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div>
+                <h2 class="font-semibold text-xs mb-2 uppercase opacity-70">Music</h2>
+
+                <ul class="space-y-4">
+                    <li>
+                        <a class="border border-stone-400 block p-2 rounded-md" href="/me/concerts">
+                            <h3 class="text-sm font-semibold opacity-80">
+                                Concerts
+                            </h3>
+                            <p>
+                                A list of concerts I've attended and those I hope to attend in the future.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="border border-stone-400 block p-2 rounded-md" href="https://www.instagram.com/huzzband/" target="_blank" rel="noopener noreferrer">
+
+                            <h3 class="text-sm font-semibold opacity-80">
+                                Huzzband
+                            </h3>
+                            <p>
+                                Music project alongside with other 3 brazilian friends.
+                            </p>
+
+                        </a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+
+        </main>
+    </ContentWrapper>
+</Layout>

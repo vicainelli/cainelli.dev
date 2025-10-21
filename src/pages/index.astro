@@ -28,6 +28,12 @@ const WORK_EXPERIENCE = [
       <section>
 
             <div class="">
+                <div class="rounded-full border-3 w-9 h-9 mb-2 overflow-hidden">
+                    <a href="/me">
+                    <img src="https://avatars.githubusercontent.com/vicainelli" width="36" height="36" class="rounded-full" alt="">
+
+                    </a>
+                </div>
         <h1 class="">Vinicius Cainelli</h1>
         <p class=" text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">
             I'm a software engineer focused on UI, creating impactful and elegant applications that transform lives. <br>
@@ -36,7 +42,7 @@ const WORK_EXPERIENCE = [
       </section>
 
       <section  class="my-8">
-          <div class="flex justify-between border-b border-b-stone-300 py-2 mb-4 items-center">
+          <div class="flex justify-between border-b border-b-stone-300 dark:border-b-stone-500  py-2 mb-4 items-center">
               <div><h2>Work</h2></div>
               <div>
                   <a class="" href="/work">view all</a>
@@ -44,9 +50,9 @@ const WORK_EXPERIENCE = [
           </div>
       <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {WORK_EXPERIENCE.map((work) => (
-          <div class={`${work.current ? 'sm:col-span-2' : ''} p-3 border border-gray-200 rounded-md`}>
+          <div class={`${work.current ? 'sm:col-span-2' : ''} p-3 border border-gray-200 dark:border-stone-500 rounded-md`}>
               <h3 class="text-sm font-semibold mb-1">{work.company}</h3>
-              <p class="text-sm">{work.description}</p>
+              <p class="dark:text-stone-400 text-sm">{work.description}</p>
           </div>
           ))}
       </div>
