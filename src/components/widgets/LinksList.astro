@@ -12,7 +12,7 @@ const { links } = Astro.props;
 <ul class="flex flex-col gap-4">
   {links.map((link) => (
     <li class="">
-      <a href={link.url} class="border-b hover:border-b-2 transition-all">{link.title}</a>
+      <a href={link.url} class="link">{link.title}</a>
     </li>
   ))}
 </ul>

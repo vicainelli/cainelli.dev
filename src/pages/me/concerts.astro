@@ -1,0 +1,48 @@
+---
+import ContentWrapper from "../../components/ContentWrapper.astro";
+import Layout from "../../layouts/Layout.astro";
+import ArtistCard from "../../components/molecules/ArtistCard.astro";
+
+import { CONCERTS, Concert } from "../../data/concerts.js";
+---
+<Layout title="Concerts" description="A list of concerts I've attended and those I hope to attend in the future.">
+    <ContentWrapper>
+
+            <h1>Concerts</h1>
+        <div class="my-8 flex flex-col gap-6">
+            <p>
+                Going to live concerts is definitely one of my top three favorite activities! <br>
+                It's such a cathartic, therapeutic, communal, and beautiful experience. <br>
+                Sometimes, you get lucky and find yourself at shows that have all the perfect elements, an amazing venue, fantastic sound quality, the right moment in the artist's career (which is subjective, of course), a wonderful crowd, and more.
+
+            </p>
+            <p>I feel fortunate to have been part of some of these experiences.</p>
+            <p>
+
+                I've always wanted a place to keep track of them, to hold onto those memories, as well as to list all the concerts I still hope to attend.
+
+                So, here we are!
+
+            </p>
+
+        </div>
+
+        <div>
+            <ul data-testid="artist-list" class="columns-2 gap-4 sm:columns-3 space-y-2">
+                {CONCERTS
+                  .sort((a, b) => {
+                    const aHasAttends = a.attends.length > 0;
+                    const bHasAttends = b.attends.length > 0;
+                    if (aHasAttends && !bHasAttends) return -1;
+                    if (!aHasAttends && bHasAttends) return 1;
+                    return 0;
+                  })
+                  .map((concert: Concert) => <li>
+                    <ArtistCard concert={concert} />
+                  </li>)}
+            </ul>
+
+
+        </div>
+    </ContentWrapper>
+</Layout>
