@@ -8,11 +8,11 @@ const attendsCount = concert.attends.length;
 ---
 
 <div class={cn(
-    attendsCount >= 1 ? "text-green-600 dark:text-lime-500" : "text-gray-400" ,
+    attendsCount >= 1 ? "text-green-700 dark:text-lime-500" : "text-stone-500" ,
   "text-sm"
 )}>
 <span class="font-semibold">{concert.artist}</span>
 {attendsCount >= 2 && (<span
-  class="opacity-70"
+  class="opacity-80"
 >{attendsCount}&times;</span>)}
 </div>
