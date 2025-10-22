@@ -11,9 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.2.6",
+    "@biomejs/biome": "^2.2.7",
     "@tailwindcss/vite": "^4.1.15",
-    "astro": "^5.14.7",
+    "astro": "^5.14.8",
     "lightningcss": "^1.30.2",
     "motion": "^12.23.24",
     "tailwindcss": "^4.1.15",
