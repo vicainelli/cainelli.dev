@@ -1,12 +1,16 @@
 ---
 import type { Concert } from "@/data/concerts";
+import { cn } from "@/lib/utils";
 
 const { concert } = Astro.props as { concert: Concert };
 
 const attendsCount = concert.attends.length;
 ---
 
-<div class={`${attendsCount >= 1 ? 'text-green-600 dark:text-lime-500' : 'text-gray-400' } text-sm`}>
+<div class={cn(
+    attendsCount >= 1 ? "text-green-600 dark:text-lime-500" : "text-gray-400" ,
+  "text-sm"
+)}>
 <span class="font-semibold">{concert.artist}</span>
 {attendsCount >= 2 && (<span
   class="opacity-70"
