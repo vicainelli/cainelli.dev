@@ -1,0 +1,22 @@
+---
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import { getCollection } from 'astro:content';
+
+// Get all `src/content/blog/` entries
+const allTilPosts = await getCollection('til');
+---
+<Layout title="Me" description="My personal content and interests.">
+    <ContentWrapper>
+
+        <main class="my-20">
+            <h1>Me</h1>
+
+            <pre>
+                {JSON.stringify({allTilPosts}, null,2)}
+            </pre>
+
+        </main>
+    </ContentWrapper>
+</Layout>
