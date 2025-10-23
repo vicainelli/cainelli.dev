@@ -1,22 +1,24 @@
 {
-  "name": "@example/basics",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@biomejs/biome": "^2.2.7",
-    "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.1",
-    "lightningcss": "^1.30.2",
-    "motion": "^12.23.24",
-    "tailwindcss": "^4.1.16",
-    "zod": "^4.1.12"
-  }
+	"name": "@example/basics",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"lint": "biome check",
+		"lint:fix": "biome check --write",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@biomejs/biome": "^2.2.7",
+		"@tailwindcss/vite": "^4.1.16",
+		"astro": "^5.15.1",
+		"lightningcss": "^1.30.2",
+		"motion": "^12.23.24",
+		"tailwindcss": "^4.1.16",
+		"zod": "^4.1.12"
+	}
 }
