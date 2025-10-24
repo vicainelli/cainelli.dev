@@ -11,11 +11,20 @@ const allTilPosts = await getCollection('til');
     <ContentWrapper>
 
         <main class="my-20">
-            <h1>Me</h1>
+            <h1>TIL</h1>
 
-            <pre>
-                {JSON.stringify({allTilPosts}, null,2)}
-            </pre>
+            <ul>
+                {allTilPosts.map((post) => <li><a class="shadow block p-4 -mx-4 my-2 rounded-md" href={`/me/til/${post.id}`}>
+                    <div class="flex justify-between items-center">
+                        <div>{post.data.title}</div>
+                        <div><small>{new Date(post.data.pubDate).toLocaleDateString('en-GB')}</small></div>
+                    </div>
+                    </a></li>)}
+            </ul>
+
+            <!-- <pre>
+                {JSON.stringify({allTilPosts}, null, 2)}
+            </pre> -->
 
         </main>
     </ContentWrapper>

@@ -17,5 +17,8 @@ export default defineConfig({
       plugins: [tailwindcss()],
 	},
 
-  integrations: [mdx()],
+  integrations: [mdx({
+    syntaxHighlight: 'shiki',
+    shikiConfig: { theme: 'dracula' },
+  })],
 });

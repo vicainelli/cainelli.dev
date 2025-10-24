@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'zod';
 import { glob } from 'astro/loaders';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -43,23 +44,29 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 //     coverAlt: z.string().optional(),
 //   }),
 // });
+//
+
+const CollectionTilSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  pubDate: z.coerce.date(),
+  draft: z.boolean().default(false),
+  author: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  category: z
+    .enum(['javascript', 'typescript', 'css', 'react', 'astro', 'git', 'other'])
+    .optional(),
+  snippet: z.boolean().default(false),
+});
+
+export type CollectionTilType = z.infer<typeof CollectionTilSchema>;
 
 const til = defineCollection({
   loader: glob({
     pattern: '**/*.{md,mdx}',
     base: path.join(__dirname, 'content', 'til')
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    pubDate: z.coerce.date(),
-    draft: z.boolean().default(false),
-    tags: z.array(z.string()).optional(),
-    category: z
-      .enum(['javascript', 'typescript', 'css', 'react', 'astro', 'git', 'other'])
-      .optional(),
-    snippet: z.boolean().default(false),
-  }),
+  schema: CollectionTilSchema,
 });
 
 export const collections = {
