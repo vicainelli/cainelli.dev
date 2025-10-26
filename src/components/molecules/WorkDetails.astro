@@ -1,0 +1,90 @@
+---
+import { cn } from "@/lib/utils"
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const { post } = Astro.props;
+
+// Import all logos statically
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/**/*.svg',
+  { eager: true }
+);
+
+// Build the full path and get the logo
+const logoPath = `/src/assets/images/${post.data.companyLogo.split('assets/images/')[1]}`;
+const logoImage = logos[logoPath]?.default;
+
+const formatedStartDate = new Date(post.data.periodStart).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+});
+
+---
+<article class={cn(
+  // Position
+  //
+  // Layout
+  "p-4",
+  "flex flex-col gap-4",
+  "rounded-md",
+  // Styling
+  "border border-stone-700",
+  "bg-stone-900 ",
+  // Other
+
+)}}>
+
+
+
+    <div class="min-h-36 flex items-center justify-center p-4"
+    style={{ backgroundColor: `var(--color-${post.data.logoBackground})` }}
+    >
+      {logoImage && <Image  src={logoImage} alt={post.data.company} />}
+  </div>
+
+  <div class="experience-details col-span-2">
+    <dl class="text-sm flex flex-col gap-4">
+      <div class="info-item">
+        <dt class="font-semibold">Role</dt>
+        <dd class="opacity-70">{post.data.role}</dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Period</dt>
+        <dd class="opacity-70">
+            <time datetime={post.data.periodStart}>{formatedStartDate}</time>
+            {post.data.periodEnd ? (<time datetime={post.data.periodEnd}>{post.data.periodEnd}</time>) : ' - Present'}
+        </dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Tech</dt>
+        <dd class="opacity-70">
+            {post.data.techStack.join(', ')}
+        </dd>
+      </div>
+
+      <!-- <div class="info-item">
+        <dt class="font-semibold">Cool links</dt>
+        <dd class="opacity-70">
+          <a href="https://github.com/zed-industries/zed/pulls?q=is%3Apr+author%3Ausername">
+            All PRs I've authored so far
+          </a>
+        </dd>
+      </div> -->
+
+      <div class="info-item">
+        <dt class="font-semibold">Location</dt>
+        <dd class="opacity-70">{post.data.location}</dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Website</dt>
+        <dd class="opacity-70">
+            <a href={`https://${post.data.companyUrl}`} rel="external">{post.data.companyUrl}</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</article>

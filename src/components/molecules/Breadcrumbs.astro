@@ -17,7 +17,7 @@ const { items } = Astro.props;
                 <li class={
                 cn(
                     "inline text-gray-500 dark:text-stone-400 text-sm",
-                    item !== items[items.length - 1] ? "after:content-['/'] after:mx-1 after:text-gray-400" : "font-semibold text-gray-600 dark:text-stone-200"
+                    item !== items[items.length - 1] ? "after:content-['/'] after:mx-4 after:text-gray-400" : "font-semibold text-gray-600 dark:text-stone-200"
                 )
                 }>
                     {item.url ? <a href={item.url}>{item.title}</a> : <span>{item.title}</span>}

@@ -3,6 +3,10 @@
 
 @import "tailwindcss";
 
+@theme {
+    --color-ikea-yellow: #fcd915;
+}
+
 h1 {
     @apply font-semibold text-gray-700 dark:text-stone-200 mb-2;
 }

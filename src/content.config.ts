@@ -1,4 +1,4 @@
-import { defineCollection. z } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 import { z as zod } from 'zod';
 import { glob } from 'astro/loaders';
 import path from 'path';
@@ -7,24 +7,31 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 
-// const work = defineCollection({
-//   loader: glob({
-//     pattern: '*.{md,mdx}',
-//     base: path.join(__dirname, 'content', 'work')
-//   }),
-//   schema: z.object({
-//     title: z.string(),
-//     pubDate: z.date(),
-//     description: z.string().optional(),
-//     draft: z.boolean().default(false),
-//     tags: z.array(z.string()).optional(),
-//     client: z.string().optional(),
-//     role: z.string().optional(),
-//     status: z.enum(['completed', 'ongoing', 'archived']).optional(),
-//     technologies: z.array(z.string()).optional(),
-//     updatedDate: z.date().optional(),
-//   }),
-// });
+const CollectionWorkSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  pubDate: z.coerce.date(),
+  draft: z.boolean().default(true),
+  tags: z.array(z.string()).optional(),
+  role: z.string().optional(),
+  location: z.string().optional(),
+  periodStart: z.date().optional(),
+  periodEnd: z.date().optional(),
+  company: z.string().optional(),
+  companyUrl: z.string().optional(),
+  techStack: z.array(z.string()).optional(),
+  updatedDate: z.date().optional(),
+  companyLogo: z.string().optional(),
+  logoBackground: z.string().optional(),
+});
+
+const work = defineCollection({
+  loader: glob({
+    pattern: '*.{md,mdx}',
+    base: path.join(__dirname, 'content', 'work')
+  }),
+  schema: CollectionWorkSchema,
+});
 
 // const writing = defineCollection({
 //   loader: glob({
@@ -70,7 +77,7 @@ const til = defineCollection({
 });
 
 export const collections = {
-  // work,
+  work,
   // writing,
   til,
 };

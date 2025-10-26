@@ -5,7 +5,9 @@ module.exports = {
 		fontFamily: {
 			// sans: ["Poppins", "sans-serif"],
 		},
-		extend: {},
 	},
+	safelist: [
+		// 'bg-ikea-yellow',
+	],
 	plugins: [],
 };
