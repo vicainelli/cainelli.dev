@@ -1,4 +1,5 @@
 ---
+import { cn } from "@/lib/utils";
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Layout from "@/layouts/Layout.astro";
 
@@ -8,18 +9,21 @@ const WORK_EXPERIENCE = [
 		description:
 			"Creating and develping the best and semealess experience on the IKEA Family Rewards program for customers and co-workers ",
 		current: true,
+		url: "/work/ikea"
 	},
 	{
 		company: "JustEat Takeaway",
 		description:
 			"Shipped a Vue design system used by 10+ squads: fast UI, sleek UX, tested, and smoothly released.",
 		current: false,
+		url: "/work/justeat-takeaway"
 	},
 	{
 		company: "VIVO / Telefónica",
 		description:
 			"Built a Vue self-service UI: reusable, tested, and stable, cutting support calls and boosting UX.",
 		current: false,
+		url: "/work/vivo-telefonica"
 	},
 ];
 ---
@@ -52,10 +56,23 @@ const WORK_EXPERIENCE = [
           </div>
       <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {WORK_EXPERIENCE.map((work) => (
-          <div class={`${work.current ? 'sm:col-span-2' : ''} p-3 border border-gray-200 dark:border-stone-500 rounded-md`}>
+          <a href={work.url} class={cn(
+            // Position
+            // Layout
+            "p-3 rounded-md",
+
+            // Styling
+            "border border-gray-200 hover:bg-gray-100",
+            // Dark mode
+            " dark:border-stone-500 dark:hover:bg-stone-700",
+
+            // Other
+            "transition-all duration-400 ease-in-out",
+            `${work.current ? 'sm:col-span-2' : ''}`,
+          )}>
               <h3 class="text-sm font-semibold mb-1">{work.company}</h3>
               <p class="dark:text-stone-400 text-sm">{work.description}</p>
-          </div>
+          </a>
           ))}
       </div>
       </section>
