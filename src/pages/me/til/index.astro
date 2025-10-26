@@ -1,30 +1,43 @@
 ---
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 
 import { getCollection } from 'astro:content';
 
 // Get all `src/content/blog/` entries
 const allTilPosts = await getCollection('til');
+
+const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
+
+const BREADCRUMBS = [
+  { title: "Home", url: "/" },
+  { title: "Me", url: "/me" },
+  { title: "TIL" },
+];
 ---
 <Layout title="Me" description="My personal content and interests.">
     <ContentWrapper>
 
         <main class="my-20">
+
+            <Breadcrumbs items={BREADCRUMBS} />
+
             <h1>TIL</h1>
 
+            {nonDraftPosts.length === 0 ? (
+                <p>No TIL posts found yet.</p>
+            ) : (
             <ul>
-                {allTilPosts.map((post) => <li><a class="shadow block p-4 -mx-4 my-2 rounded-md" href={`/me/til/${post.id}`}>
+                {nonDraftPosts.map((post) => <li><a class="hover:shadow transition-all block p-4 -mx-4 my-2 rounded-md" href={`/me/til/${post.id}`}>
                     <div class="flex justify-between items-center">
                         <div>{post.data.title}</div>
                         <div><small>{new Date(post.data.pubDate).toLocaleDateString('en-GB')}</small></div>
                     </div>
                     </a></li>)}
             </ul>
+            )}
 
-            <!-- <pre>
-                {JSON.stringify({allTilPosts}, null, 2)}
-            </pre> -->
 
         </main>
     </ContentWrapper>

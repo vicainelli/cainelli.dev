@@ -1,11 +1,18 @@
 ---
-import ContentWrapper from "../../components/ContentWrapper.astro";
-import Layout from "../../layouts/Layout.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+
+const BREADCRUMBS = [
+  { title: "Home", url: "/" },
+  { title: "Work" },
+];
 ---
 
 <Layout title="Vinicius Cainelli - My Work">
   <ContentWrapper>
     <main class="mt-20">
+    <Breadcrumbs items={BREADCRUMBS} />
       <h1 class="">My Work</h1>
       <section class="">
         <p class="text-balance">

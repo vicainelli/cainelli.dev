@@ -1,5 +1,5 @@
-import { defineCollection } from 'astro:content';
-import { z } from 'zod';
+import { defineCollection. z } from 'astro:content';
+import { z as zod } from 'zod';
 import { glob } from 'astro/loaders';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -50,7 +50,7 @@ const CollectionTilSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
   pubDate: z.coerce.date(),
-  draft: z.boolean().default(false),
+  draft: z.boolean().default(true),
   author: z.string().optional(),
   tags: z.array(z.string()).optional(),
   category: z
@@ -59,7 +59,7 @@ const CollectionTilSchema = z.object({
   snippet: z.boolean().default(false),
 });
 
-export type CollectionTilType = z.infer<typeof CollectionTilSchema>;
+export type CollectionTilType = zod.infer<typeof CollectionTilSchema>;
 
 const til = defineCollection({
   loader: glob({

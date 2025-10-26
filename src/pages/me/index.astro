@@ -1,11 +1,20 @@
 ---
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+
+const BREADCRUMBS = [
+  { title: "Home", url: "/" },
+  { title: "Me" },
+];
+
 ---
 <Layout title="Me" description="My personal content and interests.">
     <ContentWrapper>
 
         <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+
             <h1>Me</h1>
         <div class="flex flex-col gap-6 mb-8">
 

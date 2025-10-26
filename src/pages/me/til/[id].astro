@@ -1,6 +1,7 @@
 ---
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -16,22 +17,18 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const BREADCRUMBS = [
+  { title: "Home", url: "/" },
+  { title: "Me", url: "/me" },
+  { title: "TIL", url: "/me/til" },
+  { title: post.data.title },
+];
 ---
 <Layout title="Me" description="My personal content and interests.">
     <ContentWrapper>
         <main class="my-20">
-
-            <div>
-                <nav>
-                    <ol class="">
-                    <li class="inline"><a href="/">home</a></li>
-                    <li class="inline"><a href="/me">me</a></li>
-                    <li class="inline"><a href="/me/til">til</a></li>
-                    <li class="inline">{post.data.title}</li>
-                </ol>
-                </nav>
-            </div>
-
+            <Breadcrumbs items={BREADCRUMBS} />
             <Content />
         </main>
     </ContentWrapper>
