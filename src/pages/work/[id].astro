@@ -1,9 +1,12 @@
 ---
+
+
+
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ContentWrapper from "@/components/ContentWrapper.astro";
-import Layout from "@/layouts/Layout.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import WorkDetails from "@/components/molecules/WorkDetails.astro";
-import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from "@/layouts/Layout.astro";
 
 interface Props {
   post: CollectionEntry<'til'>;

@@ -1,9 +1,13 @@
 ---
-import ContentWrapper from "@/components/ContentWrapper.astro";
-import Layout from "@/layouts/Layout.astro";
-import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+
+
+
+
 
 import { getCollection } from 'astro:content';
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import Layout from "@/layouts/Layout.astro";
 
 // Get all `src/content/blog/` entries
 const allTilPosts = await getCollection('til');

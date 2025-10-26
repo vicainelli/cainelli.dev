@@ -6,8 +6,5 @@ module.exports = {
 			// sans: ["Poppins", "sans-serif"],
 		},
 	},
-	safelist: [
-		// 'bg-ikea-yellow',
-	],
 	plugins: [],
 };
