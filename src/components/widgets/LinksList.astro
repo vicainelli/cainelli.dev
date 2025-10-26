@@ -1,9 +1,8 @@
 ---
+import type { SocialLink } from "@/data/social-links";
+
 interface Props {
-	links: {
-		title: string;
-		url: string;
-	}[];
+	links: SocialLink[];
 }
 
 const { links } = Astro.props;
@@ -12,7 +11,7 @@ const { links } = Astro.props;
 <ul class="flex flex-col gap-2">
   {links.map((link) => (
     <li class="">
-      <a href={link.url} class="link text-sm">{link.title}</a>
+      <a href={link.url} class="link text-sm">{link.name}</a>
     </li>
   ))}
 </ul>

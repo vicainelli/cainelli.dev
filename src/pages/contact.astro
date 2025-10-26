@@ -2,18 +2,12 @@
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import LinksList from "@/components/widgets/LinksList.astro";
 import Layout from "@/layouts/Layout.astro";
+import { SOCIAL_LINKS, type SocialLink } from "@/data/social-links";
 
-const SOCIAL_LINKS = [
-	{ title: "LinkedIn", url: "https://linkedin.com/in/vicainelli" },
-	{ title: "GitHub", url: "https://github.com/vicainelli/" },
-	{ title: "Behance", url: "https://www.behance.net/viniciuscainelli" },
-	{ title: "CodePen", url: "https://codepen.io/vicainelli/" },
-	{ title: "Dribbble", url: "https://dribbble.com/vicainelli" },
-];
 
 const CONTACT_LINKS = [
-	{ title: "Email", url: "mailto:vicainelli@gmail.com" },
-	{ title: "Telegram", url: "https://t.me/vicainelli" },
+	{ name: "Email", url: "mailto:vicainelli@gmail.com", slug: "email" },
+	{ name: "Telegram", url: "https://t.me/vicainelli", slug: "telegram" },
 ];
 ---
 
@@ -32,8 +26,8 @@ const CONTACT_LINKS = [
 
       <!-- email and telegram links -->
       <section class="mt-8">
-        <h2 class="font-semibold text-xs mb-2 uppercase opacity-70">Let's Start a Conversation</h2>
-      <p class="text-balance leading-relaxed">Have an idea brewing? Want to discuss possibilities? </p>
+        <h2 class="font-semibold text-xs mb-4 uppercase opacity-70">Let's Start a Conversation</h2>
+      <p class="text-balance leading-relaxed mb-2 font-semibold">Have an idea brewing? Want to discuss possibilities? </p>
       <p class="text-balance leading-relaxed">These direct channels are the quickest way to reach me. I'm just a message away from helping you transform your vision into reality.</p>
 
       <div class="mt-4">

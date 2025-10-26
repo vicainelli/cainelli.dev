@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const socialLinksSchema = z.object({
-	slug: z.string(),
+	slug: z.string().optional(),
 	name: z.string(),
 	url: z.url(),
 });
