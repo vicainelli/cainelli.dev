@@ -359,4 +359,8 @@ export const CONCERTS: Concert[] = [
 		artist: "Foo Fighters",
 		attends: [],
 	},
+	{
+		artist: "Machete Bomb",
+		attends: [],
+	},
 ];
