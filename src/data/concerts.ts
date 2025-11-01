@@ -363,4 +363,8 @@ export const CONCERTS: Concert[] = [
 		artist: "Machete Bomb",
 		attends: [],
 	},
+	{
+		artist: "Turnstile",
+		attends: [],
+	},
 ];
