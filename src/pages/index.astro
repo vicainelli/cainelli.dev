@@ -3,6 +3,7 @@
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/lib/utils";
+import { Image } from "astro:assets";
 
 const WORK_EXPERIENCE = [
 	{
@@ -36,9 +37,8 @@ const WORK_EXPERIENCE = [
 
             <div class="">
                 <div class="rounded-full border-3 w-9 h-9 mb-2 overflow-hidden">
-                    <a href="/me">
-                    <img src="https://avatars.githubusercontent.com/vicainelli" width="36" height="36" class="rounded-full" alt="">
-
+                    <a title="" href="/me">
+                        <Image src="https://avatars.githubusercontent.com/vicainelli" width="36" height="36" class="rounded-full" alt="Vinicius Cainelli avatar">
                     </a>
                 </div>
         <h1 class="">Vinicius Cainelli</h1>
@@ -65,7 +65,8 @@ const WORK_EXPERIENCE = [
             // Styling
             "border border-gray-200 hover:bg-gray-100",
             // Dark mode
-            " dark:border-stone-500 dark:hover:bg-stone-700",
+            "dark:bg-[#1E2938] border hovder:dark:border-[#99a1af]",
+            // " dark:border-stone-500 dark:hover:bg-stone-700",
 
             // Other
             "transition-all duration-400 ease-in-out",

@@ -16,7 +16,7 @@
 		"@astrojs/mdx": "^4.3.9",
 		"@biomejs/biome": "^2.3.2",
 		"@tailwindcss/vite": "^4.1.16",
-		"astro": "^5.15.2",
+		"astro": "^5.15.3",
 		"lightningcss": "^1.30.2",
 		"motion": "^12.23.24",
 		"tailwindcss": "^4.1.16",

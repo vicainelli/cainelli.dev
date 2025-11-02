@@ -1,9 +1,8 @@
 ---
-
-
-
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ContentWrapper from "@/components/ContentWrapper.astro";
+import ExternalLink from "@/components/atoms/ExternalLink.astro";
+import AuthorCard from "@/components/molecules/AuthorCard.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
 
@@ -32,7 +31,15 @@ const BREADCRUMBS = [
     <ContentWrapper>
         <main class="my-20">
             <Breadcrumbs items={BREADCRUMBS} />
-            <Content />
+            <article class="til">
+                <h1>{post.data.title}</h1>
+
+                <AuthorCard postData={post.data} />
+
+                <hr class="my-4 border-stone-300">
+
+                <Content components={{ a: ExternalLink}} />
+            </article>
         </main>
     </ContentWrapper>
 </Layout>

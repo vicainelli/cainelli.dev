@@ -5,6 +5,8 @@
 
 @theme {
     --color-ikea-yellow: #fcd915;
+    --color-jet-orange: #ff8001;
+    --color-vivo-purple: #609;
 }
 
 h1 {
@@ -20,5 +22,20 @@ a.link {
 }
 
 pre {
-    @apply p-2 my-2;
+    @apply p-2;
+}
+
+pre,
+code,
+kbd {
+    @apply text-xs;
+}
+
+/* Post and Til dedicaded styles */
+article.til {
+    @apply flex flex-col gap-4;
+}
+
+article.til p {
+    /*@apply mb-4;*/
 }

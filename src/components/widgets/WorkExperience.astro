@@ -1,12 +1,4 @@
 ---
-
-
-
-
-
-
-
-// Define the props for the component
 interface TimelineItem {
 	title: string;
 	company: string;
@@ -15,11 +7,9 @@ interface TimelineItem {
 }
 
 interface Props {
-	title?: string;
 	items: TimelineItem[];
 }
 
-// Default props
 const { items } = Astro.props;
 ---
 

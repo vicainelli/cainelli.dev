@@ -1,15 +1,38 @@
 ---
-
-
-
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
+import { cn } from "@/lib/utils";
 
 const BREADCRUMBS = [
   { title: "Home", url: "/" },
   { title: "Me" },
 ];
+
+const blockClasses = cn(
+  // Position
+  // Layout
+  'block p-2 rounded-md group',
+  // Styling
+  'border-stone-200 bg-stone-100',
+  'dark:bg-[#1E2938] border dark:border-[#99a1af]',
+  // Other
+);
+
+const blockTitleClasses = cn(
+  // Position
+
+  // Layout
+
+  // Styling
+  'text-sm font-semibold text-indigo-700',
+  "group-hover:text-indigo-400",
+  'dark:text-indigo-400',
+  "dark:group-hover:text-indigo-300",
+
+  // Other
+  'transition-colors ease-out',
+);
 
 ---
 <Layout title="Me" description="My personal content and interests.">
@@ -27,8 +50,8 @@ const BREADCRUMBS = [
 
                 <ul class="space-y-4">
                     <li>
-                        <a class="border border-stone-400 block p-2 rounded-md" href="/me/writing">
-                            <h3 class="text-sm font-semibold opacity-80">
+                        <a class={`${blockClasses}`} href="/me/writing">
+                            <h3 class={`${blockTitleClasses}`}>
                             Writing
                             </h3>
                             <p>
@@ -37,8 +60,8 @@ const BREADCRUMBS = [
                         </a>
                     </li>
                     <li>
-                        <a class="border border-stone-400 block p-2 rounded-md" href="/me/til">
-                            <h3 class="text-sm font-semibold opacity-80">
+                      <a class={`${blockClasses}`} href="/me/til">
+                          <h3 class={`${blockTitleClasses}`}>
                                 TIL (Daily Learnings)
                             </h3>
                             <p>
@@ -55,8 +78,8 @@ const BREADCRUMBS = [
 
                 <ul class="space-y-4">
                     <li>
-                        <a class="border border-stone-400 block p-2 rounded-md" href="/me/concerts">
-                            <h3 class="text-sm font-semibold opacity-80">
+                      <a class={`${blockClasses}`} href="/me/concerts">
+                          <h3 class={`${blockTitleClasses}`}>
                                 Concerts
                             </h3>
                             <p>
@@ -65,9 +88,9 @@ const BREADCRUMBS = [
                         </a>
                     </li>
                     <li>
-                        <a class="border border-stone-400 block p-2 rounded-md" href="https://www.instagram.com/huzzband/" target="_blank" rel="noopener noreferrer">
+                        <a class={`${blockClasses}`} href="https://www.instagram.com/huzzband/" target="_blank" rel="noopener noreferrer">
 
-                            <h3 class="text-sm font-semibold opacity-80">
+                            <h3 class={`${blockTitleClasses}`}>
                                 Huzzband
                             </h3>
                             <p>
