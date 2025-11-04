@@ -7,6 +7,32 @@
     --color-ikea-yellow: #fcd915;
     --color-jet-orange: #ff8001;
     --color-vivo-purple: #609;
+
+    --color-ebony-clay: oklch(27.871% 0.02474 271.4);
+    --color-ebony-clay-50: oklch(80.882% 0.02313 272);
+    --color-ebony-clay-100: oklch(77.155% 0.02924 272.41);
+    --color-ebony-clay-200: oklch(70.159% 0.03912 271.86);
+    --color-ebony-clay-300: oklch(62.973% 0.0482 270.97);
+    --color-ebony-clay-400: oklch(55.393% 0.05926 271.55);
+    --color-ebony-clay-500: oklch(49.019% 0.05111 271.87);
+    --color-ebony-clay-600: oklch(42.348% 0.04299 270.72);
+    --color-ebony-clay-700: oklch(35.191% 0.03385 273.1);
+    --color-ebony-clay-800: oklch(27.871% 0.02474 271.4);
+    --color-ebony-clay-900: oklch(16.86% 0.01097 268.03);
+    --color-ebony-clay-950: oklch(8.5973% 0.00555 285.17);
+
+    --color-electric-violet: oklch(56.646% 0.24411 298.78);
+    --color-electric-violet-50: oklch(94.423% 0.02955 305.12);
+    --color-electric-violet-100: oklch(89.854% 0.05436 305.54);
+    --color-electric-violet-200: oklch(80.82% 0.10651 304.81);
+    --color-electric-violet-300: oklch(72.195% 0.15722 303.39);
+    --color-electric-violet-400: oklch(63.907% 0.20632 301.59);
+    --color-electric-violet-500: oklch(56.646% 0.24411 298.78);
+    --color-electric-violet-600: oklch(48.881% 0.26071 293.34);
+    --color-electric-violet-700: oklch(40.556% 0.21417 293.65);
+    --color-electric-violet-800: oklch(31.882% 0.16313 295.03);
+    --color-electric-violet-900: oklch(22.399% 0.10795 297.14);
+    --color-electric-violet-950: oklch(17.441% 0.07849 298.62);
 }
 
 h1 {
