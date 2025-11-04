@@ -1,5 +1,6 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+	"extends": ["./biome.formatter.json"],
 	"vcs": {
 		"enabled": false,
 		"clientKind": "git",
@@ -7,16 +8,6 @@
 	},
 	"files": {
 		"ignoreUnknown": false
-	},
-	"formatter": {
-		"enabled": true,
-		"indentStyle": "tab"
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
 	},
 	"javascript": {
 		"formatter": {
