@@ -1,16 +1,21 @@
 ---
-
-
-
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import ArtistCard from "@/components/molecules/ArtistCard.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import { CONCERTS, type Concert } from "@/data/concerts.js";
 import Layout from "@/layouts/Layout.astro";
+const BREADCRUMBS = [
+  { title: "Home", url: "/" },
+  { title: "Me", url: "/me" },
+  { title: "Concerts" },
+];
+
 ---
 <Layout title="Concerts" description="A list of concerts I've attended and those I hope to attend in the future.">
     <ContentWrapper>
 
         <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
             <h1>Concerts</h1>
         <div class="flex flex-col gap-6 mb-8">
             <p class="text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">
