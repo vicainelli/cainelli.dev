@@ -1,0 +1,25 @@
+---
+// import { cn } from '@/lib/utils';
+
+interface Props {
+    data: {
+        id: string;
+        title: string;
+        url?: string;
+      }[];
+}
+
+const { data } = Astro.props;
+---
+
+<a class="hover:shadow-xl block transition-shadow duration-500" href={`/work/${data.id}`}>
+<div class="p border border-stone-200 rounded-sm">
+    <div class="min-h-40 border-b border-stone-200">
+        <!-- image -->
+    </div>
+    <div class="p-2">
+        <h3>{data.title}</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, veniam.</p>
+    </div>
+</div>
+</a>

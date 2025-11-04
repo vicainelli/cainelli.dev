@@ -22,6 +22,7 @@ const CollectionWorkSchema = z.object({
 	updatedDate: z.date().optional(),
 	companyLogo: z.string().optional(),
 	logoBackground: z.string().optional(),
+	current: z.boolean().default(false),
 });
 
 const work = defineCollection({

@@ -1,10 +1,16 @@
 ---
-
-
-
+import { getCollection } from 'astro:content';
+import WorkCard from '@/components/molecules/WorkCard.astro';
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
+
+const allTilPosts = await getCollection('work');
+
+const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
+
+const currentJob = nonDraftPosts.find((post) => post.data.current === true);
+const previousExperiences = nonDraftPosts.filter((post) => post.data.current === false);
 
 const BREADCRUMBS = [
   { title: "Home", url: "/" },
@@ -22,6 +28,33 @@ const BREADCRUMBS = [
           Welcome to my work portfolio! Here, you'll find a curated selection of projects that showcase my skills and passion for frontend development and design.
         </p>
       </section>
+
+        {nonDraftPosts.length === 0 ? (
+          <p>No work posts found yet.</p>
+        ) : (
+        <>
+            <section class="mt-8">
+                <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Current</h2>
+
+                <WorkCard data={{
+                  id: currentJob?.id,
+                  title: currentJob?.data.title,
+                }} />
+
+            </section>
+            <section class="mt-8">
+                <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Previous experiences</h2>
+                <ul class="flex flex-col gap-8">
+                  {previousExperiences.map((post) => <li>
+                      <WorkCard data={{
+                        id: post?.id,
+                        title: post?.data.title,
+                      }} />
+                  </li>)}
+                </ul>
+            </section>
+        </>
+        )}
     </main>
   </ContentWrapper>
 </Layout>
