@@ -1,11 +1,11 @@
 ---
 import { SOCIAL_LINKS, type SocialLink } from "@/data/social-links";
 import ContentWrapper from "../components/ContentWrapper.astro";
-
+import { cn } from "@/lib/utils";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-stone-50 dark:bg-stone-900 py-4">
+<footer class="bg-stone-50 dark:bg-ebony-clay-950 py-4">
   <ContentWrapper>
     <div class="flex flex-col items-center justify-center gap-3">
         <div>
@@ -13,7 +13,17 @@ const currentYear = new Date().getFullYear();
                 {SOCIAL_LINKS.map((link: SocialLink) =>
                   <a
                     rel="noopener noreferrer"
-                    class="lowercase text-sm font-semibold text-stone-500 hover:text-stone-700 transition-all"
+                    class={cn(
+                      // Position
+                      // Layout
+                      // Styling
+                      "lowercase text-sm font-semibold",
+                      "text-stone-500 hover:text-stone-700",
+                      "dark:text-ebony-clay-100 dark:hover:text-ebony-clay-300",
+
+                      // Other
+                      "transition-all"
+                    )}
                     target="_blank"
                     href={link.url}>{link.name}</a>)}
             </nav>

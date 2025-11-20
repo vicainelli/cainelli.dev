@@ -21,6 +21,7 @@ const CollectionWorkSchema = z.object({
 	techStack: z.array(z.string()).optional(),
 	updatedDate: z.date().optional(),
 	companyLogo: z.string().optional(),
+	coverImage: z.string().optional(),
 	logoBackground: z.string().optional(),
 	current: z.boolean().default(false),
 });

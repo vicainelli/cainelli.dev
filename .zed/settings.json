@@ -12,6 +12,7 @@
 		}
 	},
 	"languages": {
+  	"Markdown": { "show_completions_on_input": false },
 		"Astro": { "formatter": { "language_server": { "name": "biome" } } },
 		"HTML": { "formatter": { "language_server": { "name": "biome" } } },
 		"JavaScript": { "formatter": { "language_server": { "name": "biome" } } },

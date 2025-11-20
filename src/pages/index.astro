@@ -42,8 +42,8 @@ const WORK_EXPERIENCE = [
                     </a>
                 </div>
         <h1 class="">Vinicius Cainelli</h1>
-        <p class=" text-gray-600 dark:text-stone-300 text-sm text-balance leading-relaxed">
-            I'm a software engineer focused on UI, creating impactful and elegant applications that transform lives. <br>
+        <p class=" text-gray-600 dark:text-stone-300 text-balance leading-relaxed">
+            I am a software engineer specializing in UI, dedicated to creating impactful and elegant applications that transform lives. <br>
           I am based in the Netherlands and currently writing code, to help you furnish your home, at <a class="border-b-2" href="./work/ikea">IKEA</a>.</p>
           </div>
       </section>
@@ -65,15 +65,17 @@ const WORK_EXPERIENCE = [
             // Styling
             "border border-gray-200 hover:bg-gray-100",
             // Dark mode
-            "dark:bg-[#1E2938] border hovder:dark:border-[#99a1af]",
+            "dark:bg-ebony-clay-700 border-ebony-clay-300",
+            "dark:hover:bg-ebony-clay-600",
             // " dark:border-stone-500 dark:hover:bg-stone-700",
 
             // Other
             "transition-all duration-400 ease-in-out",
+            "group",
             `${work.current ? 'sm:col-span-2' : ''}`,
           )}>
               <h3 class="text-sm font-semibold mb-1">{work.company}</h3>
-              <p class="dark:text-stone-400 text-sm">{work.description}</p>
+              <p class="dark:text-ebony-clay-100 dark:group-hover:text-ebony-clay-50 text-sm">{work.description}</p>
           </a>
           ))}
       </div>

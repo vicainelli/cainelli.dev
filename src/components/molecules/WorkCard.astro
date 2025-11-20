@@ -6,15 +6,28 @@ interface Props {
     data: {
         id: string;
         title: string;
+        description?: string;
         url?: string;
       }[];
 }
 
 const { data } = Astro.props;
+
+
+// Dynamically import all images from the work folder
+const images = import.meta.glob('/src/assets/images/work/*', { eager: true });
+
+// Get the image for this work item
+let coverImageSrc = null;
+if (data.coverImage) {
+  const imagePath = `/src/assets/images/work/${data.coverImage}`;
+  coverImageSrc = images[imagePath]?.default;
+}
+
 ---
 
-<a class="hover:shadow-xl block transition-shadow duration-500 " href={`/work/${data.id}`}>
-<div class="p border border-stone-200 dark:border-stone-700 rounded-sm">
+<a class="hover:shadow-xl block transition-shadow duration-500 h-full" href={`/work/${data.id}`}>
+<div class="p border border-stone-200 dark:border-stone-700 rounded-sm h-full flex flex-col">
     <div class={cn(
       // Position
       "relative",
@@ -27,6 +40,7 @@ const { data } = Astro.props;
       // Other
       "",
     )}>
+        {coverImageSrc &&
         <Image class={cn(
           // Position
           "relative z-10",
@@ -38,11 +52,12 @@ const { data } = Astro.props;
           "dark:shadow-[0_4px_8px_rgba(0,0,0,0.5)]",
           // Other
         )}
-        src="/src/assets/images/work/ikea-rewards.png" alt="rewards page" width="2715" height="1761" />
+        src={coverImageSrc} alt="rewards page" width="2715" height="1761" />
+        }
     </div>
-    <div class="px-2 py-4">
+    <div class="px-2 py-4 flex-1">
         <h3>{data.title}</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, veniam.</p>
+        {data.description && <p>{data.description}</p>}
     </div>
 </div>
 </a>

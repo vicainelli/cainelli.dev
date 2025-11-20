@@ -39,16 +39,20 @@ const BREADCRUMBS = [
                 <WorkCard data={{
                   id: currentJob?.id,
                   title: currentJob?.data.title,
+                  description: currentJob?.data.description,
+                  coverImage: currentJob?.data.coverImage
                 }} />
 
             </section>
-            <section class="mt-8">
+            <section class="my-8">
                 <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Previous experiences</h2>
-                <ul class="flex flex-col md:flex-row gap-8">
-                  {previousExperiences.map((post) => <li>
+                <ul class="flex flex-col md:flex-row gap-8  md:items-stretch">
+                  {previousExperiences.map((post) => <li class="md:flex-1">
                       <WorkCard data={{
                         id: post?.id,
                         title: post?.data.title,
+                        description: post?.data.description,
+                        coverImage: post?.data.coverImage
                       }} />
                   </li>)}
                 </ul>
