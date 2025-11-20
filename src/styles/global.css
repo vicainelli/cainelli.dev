@@ -44,7 +44,7 @@ p {
 }
 
 a.link {
-    @apply border-b hover:border-b transition-all hover:text-stone-700 font-semibold;
+    @apply border-b hover:border-b transition-all hover:text-stone-700 dark:hover:text-ebony-clay-100 font-semibold;
 }
 
 pre {
