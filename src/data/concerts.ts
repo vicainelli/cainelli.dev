@@ -16,33 +16,33 @@ const ConcertsSchema = z.object({
 export type Concert = z.infer<typeof ConcertsSchema>;
 
 export const CONCERTS: Concert[] = [
-  {
-    artist: "Forfun",
-    attends: [
-      {
-        date: "2015-11-14",
-        venue: "Carioca Club",
-        city: "São Paulo, SP",
-        country: "Brasil",
-        notes: "",
-      }
-    ],
-  },
-  {
-    artist: "Dead Fish",
-    attends: [
-  		{
-  			date: "2008-04-25",
-  			venue: "",
-  			city: "Santos, SP",
-  			country: "Brazil",
-  		},
-  		{
-  			date: "2008-04-25",
-  			venue: "Kazebre Rock Bar",
-  			city: "São Paulo",
-  			country: "Brazil",
-  		},
+	{
+		artist: "Forfun",
+		attends: [
+			{
+				date: "2015-11-14",
+				venue: "Carioca Club",
+				city: "São Paulo, SP",
+				country: "Brasil",
+				notes: "",
+			},
+		],
+	},
+	{
+		artist: "Dead Fish",
+		attends: [
+			{
+				date: "2008-04-25",
+				venue: "",
+				city: "Santos, SP",
+				country: "Brazil",
+			},
+			{
+				date: "2008-04-25",
+				venue: "Kazebre Rock Bar",
+				city: "São Paulo",
+				country: "Brazil",
+			},
 			{
 				date: "2024-12-08",
 				venue: "Audio",
@@ -64,7 +64,6 @@ export const CONCERTS: Concert[] = [
 	{
 		artist: "Sepultura",
 		attends: [
-			// Sepulfest 2024 Sunday 3 November 2024 Den Bosh, The Netherlands
 			{
 				date: "2024-11-03",
 				venue: "Sepulfest",

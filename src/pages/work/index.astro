@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import WorkCard from '@/components/molecules/WorkCard.astro';
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import WorkCard from '@/components/molecules/WorkCard.astro';
 import Layout from "@/layouts/Layout.astro";
 
 const allTilPosts = await getCollection('work');
@@ -10,7 +10,7 @@ const allTilPosts = await getCollection('work');
 const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
 
 const currentJob = nonDraftPosts.find((post) => post.data.current === true);
-const previousExperiences = nonDraftPosts.filter((post) => post.data.current === false);
+const previousExperiences = nonDraftPosts.filter((post) => post.data.current === false && post.data.category === 'fulltime');
 
 const BREADCRUMBS = [
   { title: "Home", url: "/" },
@@ -33,29 +33,39 @@ const BREADCRUMBS = [
           <p>No work posts found yet.</p>
         ) : (
         <>
+            {currentJob && (
             <section class="mt-8">
                 <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Current</h2>
 
                 <WorkCard data={{
-                  id: currentJob?.id,
-                  title: currentJob?.data.title,
-                  description: currentJob?.data.description,
-                  coverImage: currentJob?.data.coverImage
+                  id: currentJob.id,
+                  title: currentJob.data.title,
+                  description: currentJob.data.description,
+                  coverImage: currentJob.data.coverImage
                 }} />
 
             </section>
+            )}
             <section class="my-8">
                 <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Previous experiences</h2>
                 <ul class="flex flex-col md:flex-row gap-8  md:items-stretch">
                   {previousExperiences.map((post) => <li class="md:flex-1">
                       <WorkCard data={{
-                        id: post?.id,
-                        title: post?.data.title,
-                        description: post?.data.description,
-                        coverImage: post?.data.coverImage
+                        id: post.id,
+                        title: post.data.title,
+                        description: post.data.description,
+                        coverImage: post.data.coverImage
                       }} />
                   </li>)}
                 </ul>
+            </section>
+
+            <section class="my-8">
+                <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Side projects</h2>
+                <ul class="flex flex-col md:flex-row gap-8  md:items-stretch">
+                    <li class="md:flex-1">Kassaklap</li>
+                    <li class="md:flex-1">Menyoo <i>(formely MenuQR)</i></li>
+            </ul>
             </section>
         </>
         )}

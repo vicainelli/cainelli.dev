@@ -1,4 +1,5 @@
 ---
+
 import type { CollectionTilType } from '@/content.config'
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
 
 const { postData } = Astro.props
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const formatedDate = new Date(postData.pubDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',

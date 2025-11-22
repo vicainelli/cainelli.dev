@@ -24,6 +24,9 @@ const CollectionWorkSchema = z.object({
 	coverImage: z.string().optional(),
 	logoBackground: z.string().optional(),
 	current: z.boolean().default(false),
+	category: z
+		.enum(["fulltime", "side_projec", "freelance"])
+		.default("fulltime"),
 });
 
 const work = defineCollection({
