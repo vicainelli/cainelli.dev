@@ -12,11 +12,16 @@ const BREADCRUMBS = [
 const blockClasses = cn(
   // Position
   // Layout
-  'block p-2 rounded-md group',
+  'block p-2 rounded-md',
   // Styling
-  'border-stone-200 bg-stone-100',
-  'dark:bg-[#1E2938] border dark:border-[#99a1af]',
+  "border border-gray-200 hover:bg-gray-100",
+  // 'border-stone-200 bg-stone-100',
+  "dark:bg-ebony-clay-700 border-ebony-clay-300",
+  "dark:hover:bg-ebony-clay-600",
+
   // Other
+  "transition-all duration-400 ease-in-out",
+  "group",
 );
 
 const blockTitleClasses = cn(
