@@ -14,11 +14,11 @@ This is a personal website built with [Astro](https://astro.build/), using TypeS
 
 ## Developer Workflows
 
-- **Install dependencies**: `npm install`
-- **Start dev server**: `npm run dev`
-- **Build for production**: `npm run build`
-- **Preview production build**: `npm run preview`
-- **Linting**: Uses [Biome](https://biomejs.dev/) (`biome.json`). Run: `npx biome check .`
+- **Install dependencies**: `bun install`
+- **Start dev server**: `bun run dev`
+- **Build for production**: `bun run build`
+- **Preview production build**: `bun run preview`
+- **Linting**: Uses [Biome](https://biomejs.dev/) (`biome.json`). Run: `bun run lin`
 - **Type checking**: TypeScript config in `tsconfig.json`. Run: `npx tsc --noEmit`
 
 ## Project-Specific Patterns

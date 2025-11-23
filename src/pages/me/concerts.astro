@@ -5,12 +5,12 @@ import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import { CONCERTS, type Concert } from "@/data/concerts.js";
 import Layout from "@/layouts/Layout.astro";
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Me", url: "/me" },
-  { title: "Concerts" },
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Concerts" },
 ];
-
 ---
 <Layout title="Concerts" description="A list of concerts I've attended and those I hope to attend in the future.">
     <ContentWrapper>

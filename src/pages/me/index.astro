@@ -131,41 +131,40 @@ import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/lib/utils";
 
-const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Me" },
-];
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Me" }];
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const blockClasses = cn(
-  // Position
-  // Layout
-  'block p-2 rounded-md',
-  // Styling
-  "border border-gray-200 hover:bg-gray-100",
-  // 'border-stone-200 bg-stone-100',
-  "dark:bg-ebony-clay-700 border-ebony-clay-300",
-  "dark:hover:bg-ebony-clay-600",
+	// Position
+	// Layout
+	"block p-2 rounded-md",
+	// Styling
+	"border border-gray-200 hover:bg-gray-100",
+	// 'border-stone-200 bg-stone-100',
+	"dark:bg-ebony-clay-700 border-ebony-clay-300",
+	"dark:hover:bg-ebony-clay-600",
 
-  // Other
-  "transition-all duration-400 ease-in-out",
-  "group",
+	// Other
+	"transition-all duration-400 ease-in-out",
+	"group",
 );
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const blockTitleClasses = cn(
-  // Position
+	// Position
 
-  // Layout
+	// Layout
 
-  // Styling
-  'text-sm font-semibold text-electric-violet-700',
-  "group-hover:text-electric-violet-400",
-  'dark:text-electric-violet-400',
-  "dark:group-hover:text-electric-violet-300",
+	// Styling
+	"text-sm font-semibold text-electric-violet-700",
+	"group-hover:text-electric-violet-400",
+	"dark:text-electric-violet-400",
+	"dark:group-hover:text-electric-violet-300",
 
-  // Other
-  'transition-colors ease-out',
+	// Other
+	"transition-colors ease-out",
 );
-
 ---
 <Layout title="Me" description="My personal content and interests.">
     <ContentWrapper>

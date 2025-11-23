@@ -5,15 +5,14 @@ import LinksList from "@/components/widgets/LinksList.astro";
 import { SOCIAL_LINKS } from "@/data/social-links";
 import Layout from "@/layouts/Layout.astro";
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const CONTACT_LINKS = [
 	{ name: "Email", url: "mailto:vicainelli@gmail.com", slug: "email" },
 	{ name: "Telegram", url: "https://t.me/vicainelli", slug: "telegram" },
 ];
 
-const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Contact" },
-];
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Contact" }];
 ---
 
 <Layout title="Vinicius Cainelli - Product Engineer">

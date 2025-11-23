@@ -1,18 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
 
 // Get all `src/content/blog/` entries
-const allTilPosts = await getCollection('til');
+const allTilPosts = await getCollection("til");
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Me", url: "/me" },
-  { title: "TIL" },
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "TIL" },
 ];
 ---
 <Layout title="Me" description="My personal content and interests.">

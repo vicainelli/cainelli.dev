@@ -134,9 +134,9 @@ const attr: { target?: string; rel?: string } = {};
 
 // check if the link is external
 if (!href.includes(domain) && !href.startsWith("/") && !href.startsWith("#")) {
-  // if it is, add target="_blank" and rel="noopener noreferrer"
-  attr["target"] = "_blank";
-  attr["rel"] = "noopener noreferrer";
+	// if it is, add target="_blank" and rel="noopener noreferrer"
+	attr["target"] = "_blank";
+	attr["rel"] = "noopener noreferrer";
 }
 ---
 

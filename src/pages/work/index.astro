@@ -1,21 +1,27 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
+// biome-ignore lint: import used in template
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
-import WorkCard from '@/components/molecules/WorkCard.astro';
+// biome-ignore lint: import used in template
+import WorkCard from "@/components/molecules/WorkCard.astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
 import Layout from "@/layouts/Layout.astro";
 
-const allTilPosts = await getCollection('work');
+const allTilPosts = await getCollection("work");
 
 const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const currentJob = nonDraftPosts.find((post) => post.data.current === true);
-const previousExperiences = nonDraftPosts.filter((post) => post.data.current === false && post.data.category === 'fulltime');
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const previousExperiences = nonDraftPosts.filter(
+	(post) => post.data.current === false && post.data.category === "fulltime",
+);
 
-const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Work" },
-];
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Work" }];
 ---
 
 <Layout title="Vinicius Cainelli - My Work">

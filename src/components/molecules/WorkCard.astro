@@ -1,32 +1,32 @@
 ---
-import { Image } from 'astro:assets';
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-import { cn } from '@/lib/utils';
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { Image } from "astro:assets";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { cn } from "@/lib/utils";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 interface Props {
-    data: {
-        id: string | undefined;
-        title: string;
-        description?: string;
-        url?: string;
-        coverImage?: string;
-      };
+	data: {
+		id: string | undefined;
+		title: string;
+		description?: string;
+		url?: string;
+		coverImage?: string;
+	};
 }
 
 const { data } = Astro.props;
 
-
 // Dynamically import all images from the work folder
-const images = import.meta.glob('/src/assets/images/work/*', { eager: true });
+const images = import.meta.glob("/src/assets/images/work/*", { eager: true });
 
 // Get the image for this work item
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 let coverImageSrc = null;
 if (data.coverImage) {
-  const imagePath = `/src/assets/images/work/${data.coverImage}`;
-  coverImageSrc = images[imagePath]?.default;
+	const imagePath = `/src/assets/images/work/${data.coverImage}`;
+	coverImageSrc = images[imagePath]?.default;
 }
-
 ---
 
 <a class="hover:shadow-xl block transition-shadow duration-500 h-full" href={`/work/${data.id}`}>

@@ -4,27 +4,28 @@ import ContentWrapper from "@/components/ContentWrapper.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/lib/utils";
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const WORK_EXPERIENCE = [
 	{
 		company: "IKEA",
 		description:
 			"Creating and develping the best and semealess experience on the IKEA Family Rewards program for customers and co-workers ",
 		current: true,
-		url: "/work/ikea"
+		url: "/work/ikea",
 	},
 	{
 		company: "JustEat Takeaway",
 		description:
 			"Shipped a Vue design system used by 10+ squads: fast UI, sleek UX, tested, and smoothly released.",
 		current: false,
-		url: "/work/justeat-takeaway"
+		url: "/work/justeat-takeaway",
 	},
 	{
 		company: "VIVO / Telefónica",
 		description:
 			"Built a Vue self-service UI: reusable, tested, and stable, cutting support calls and boosting UX.",
 		current: false,
-		url: "/work/vivo-telefonica"
+		url: "/work/vivo-telefonica",
 	},
 ];
 ---

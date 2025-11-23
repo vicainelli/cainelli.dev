@@ -510,8 +510,10 @@
 
 
 
+// biome-ignore lint/correctness/noUnusedImports: import used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const isHomePage: boolean = Astro.url.pathname === "/";
 ---
 

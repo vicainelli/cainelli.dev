@@ -126,7 +126,7 @@
 
 
 
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import ExternalLink from "@/components/atoms/ExternalLink.astro";
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import AuthorCard from "@/components/molecules/AuthorCard.astro";
@@ -134,24 +134,24 @@ import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
 
 interface Props {
-  post: CollectionEntry<'til'>;
+	post: CollectionEntry<"til">;
 }
 
 export async function getStaticPaths() {
-  const posts = await getCollection('til');
-  return posts.map(post => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+	const posts = await getCollection("til");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
 }
 const { post } = Astro.props;
 const { Content } = await render(post);
 
 const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Me", url: "/me" },
-  { title: "TIL", url: "/me/til" },
-  { title: post.data.title },
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "TIL", url: "/me/til" },
+	{ title: post.data.title },
 ];
 ---
 <Layout title="Me" description="My personal content and interests.">

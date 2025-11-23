@@ -1,28 +1,36 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+// biome-ignore lint: import used in template
+import { type CollectionEntry, getCollection, render } from "astro:content";
+// biome-ignore lint: import used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
+// biome-ignore lint: import used in template
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+// biome-ignore lint: import used in template
 import WorkDetails from "@/components/molecules/WorkDetails.astro";
+// biome-ignore lint: import used in template
 import Layout from "@/layouts/Layout.astro";
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 interface Props {
-  post: CollectionEntry<'work'>;
+	post: CollectionEntry<"work">;
 }
 
 export async function getStaticPaths() {
-  const posts = await getCollection('work');
-  return posts.map(post => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+	const posts = await getCollection("work");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
 }
 const { post } = Astro.props;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const { Content } = await render(post);
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [
-  { title: "Home", url: "/" },
-  { title: "Work", url: "/work" },
-  { title: post.data.title },
+	{ title: "Home", url: "/" },
+	{ title: "Work", url: "/work" },
+	{ title: post.data.title },
 ];
 ---
 <Layout title="Me" description="My personal content and interests.">
