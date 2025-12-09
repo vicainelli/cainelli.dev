@@ -2,16 +2,15 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import ExternalLink from "@/components/atoms/ExternalLink.astro";
 import ContentWrapper from "@/components/ContentWrapper.astro";
-import AuthorCard from "@/components/molecules/AuthorCard.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
 
 interface Props {
-	post: CollectionEntry<"til">;
+	post: CollectionEntry<"uses">;
 }
 
 export async function getStaticPaths() {
-	const posts = await getCollection("til");
+	const posts = await getCollection("uses");
 	return posts.map((post) => ({
 		params: { id: post.id },
 		props: { post },
@@ -20,25 +19,23 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [
 	{ title: "Home", url: "/" },
 	{ title: "Me", url: "/me" },
-	{ title: "TIL", url: "/me/til" },
-	{ title: post.data.title },
+	{ title: "Uses", url: "/uses" },
+	{ title: post.id },
 ];
 ---
-<Layout title="Me" description="My personal content and interests.">
+<Layout title="Uses" description="">
     <ContentWrapper>
+
         <main class="my-20">
             <Breadcrumbs items={BREADCRUMBS} />
-            <article class="til">
-                <h1>{post.data.title}</h1>
+            <h1>Uses </h1>
 
-                <AuthorCard postData={post.data} />
-
-                <hr class="my-4 border-stone-300">
-
-                <Content components={{ a: ExternalLink}} />
+            <article class="uses">
+           <Content components={{ a: ExternalLink}} />
             </article>
         </main>
     </ContentWrapper>

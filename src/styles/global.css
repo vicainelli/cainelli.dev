@@ -58,10 +58,27 @@ kbd {
 }
 
 /* Post and Til dedicaded styles */
-article.til {
+article.til,
+article.uses {
     @apply flex flex-col gap-4;
+}
+
+article.uses h2 {
+    @apply uppercase;
+}
+
+article.uses p {
+    @apply text-sm;
 }
 
 article.til p {
     /*@apply mb-4;*/
+}
+
+article li {
+    @apply list-disc list-inside;
+}
+
+article li::marker {
+    @apply text-electric-violet;
 }

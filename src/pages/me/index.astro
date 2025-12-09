@@ -1,131 +1,4 @@
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import Layout from "@/layouts/Layout.astro";
@@ -173,8 +46,7 @@ const blockTitleClasses = cn(
             <Breadcrumbs items={BREADCRUMBS} />
 
             <h1>Me</h1>
-        <div class="flex flex-col gap-6 mb-8">
-
+            <div class="flex flex-col gap-6 mb-8">
 
             <div>
                 <h2 class="font-semibold text-xs mb-2 uppercase opacity-70">Content</h2>
@@ -230,6 +102,22 @@ const blockTitleClasses = cn(
 
                         </a>
                         </li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="font-semibold text-xs mb-2 uppercase opacity-70">Misc</h2>
+
+                <ul class="space-y-4">
+                    <li>
+                        <a class={`${blockClasses}`} href="/uses">
+                            <h3 class={`${blockTitleClasses}`}>
+                                Uses
+                            </h3>
+                            <p>
+                                A detailed list of the hardware and software I use daily for work and personal projects.
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

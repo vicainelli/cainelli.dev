@@ -80,8 +80,28 @@ const til = defineCollection({
 	schema: CollectionTilSchema,
 });
 
+// uses collection - similar to writing/til
+const CollectionUsesSchema = z.object({
+	title: z.string(),
+	description: z.string().optional(),
+	pubDate: z.coerce.date(),
+	draft: z.boolean().default(true),
+	author: z.string().optional(),
+});
+
+export type CollectionUsesType = zod.infer<typeof CollectionUsesSchema>;
+
+const uses = defineCollection({
+	loader: glob({
+		pattern: "**/*.{md,mdx}",
+		base: path.join(__dirname, "content", "uses"),
+	}),
+	schema: CollectionUsesSchema,
+});
+
 export const collections = {
+	til,
+	uses,
 	work,
 	// writing,
-	til,
 };
