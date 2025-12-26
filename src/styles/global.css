@@ -36,11 +36,11 @@
 }
 
 h1 {
-    @apply font-semibold text-gray-700 dark:text-stone-200 mb-2;
+    @apply font-semibold text-gray-700 dark:text-stone-200 mb-2 text-4xl;
 }
 
 p {
-    @apply text-sm;
+    @apply text-base leading-7;
 }
 
 a.link {
@@ -54,7 +54,7 @@ pre {
 pre,
 code,
 kbd {
-    @apply text-xs;
+    @apply text-sm;
 }
 
 /* Post and Til dedicaded styles */
