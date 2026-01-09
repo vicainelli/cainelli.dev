@@ -15,7 +15,7 @@ const BREADCRUMBS = [
 <Layout title="Concerts" description="A list of concerts I've attended and those I hope to attend in the future.">
     <ContentWrapper>
 
-        <main class="my-20">
+        <main class="my-20" id="main-content">
             <Breadcrumbs items={BREADCRUMBS} />
             <h1>Concerts</h1>
         <div class="flex flex-col gap-6 mb-8">
@@ -29,29 +29,45 @@ const BREADCRUMBS = [
             <p class="text-gray-600 dark:text-stone-300 text-balance leading-relaxed">
 
                 I've always wanted a place to keep track of them, to hold onto those memories, as well as to list all the concerts I still hope to attend.
-
                 So, here we are!
 
             </p>
-
         </div>
 
-        <div>
-            <ul data-testid="artist-list" class="columns-2 gap-4 sm:columns-3 space-y-2">
+        <section aria-labelledby="artist-list-heading">
+            <h2 id="artist-list-heading" class="sr-only">List of all artists</h2>
+            <ul data-testid="artist-list" class="columns-2 gap-4 sm:columns-3 space-y-2" aria-label="List of artists. Concerts I've attended appear first, followed by concerts I hope to attend.">
                 {CONCERTS
                   .sort((a, b) => {
                     const aHasAttends = a.attends.length > 0;
                     const bHasAttends = b.attends.length > 0;
                     if (aHasAttends && !bHasAttends) return -1;
                     if (!aHasAttends && bHasAttends) return 1;
-                    return 0;
+                    return a.artist.localeCompare(b.artist);
                   })
                   .map((concert: Concert) => <li>
                     <ArtistCard concert={concert} />
                   </li>)}
             </ul>
+        </section>
 
-
+        <!-- Legend section for accessibility -->
+        <div class="bg-stone-100 dark:bg-stone-800 rounded-lg p-4 mt-8" role="region" aria-labelledby="legend-heading">
+            <h2 id="legend-heading" class="sr-only">Legend</h2>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-stone-400" aria-label="Concert list legend">
+                <li class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded bg-green-700 dark:bg-lime-500" aria-hidden="true"></span>
+                    <span>Concerts I've attended</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded bg-stone-400 dark:bg-stone-500" aria-hidden="true"></span>
+                    <span>Concerts I hope to attend (wishlist)</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="text-green-700 dark:text-lime-500 font-semibold" aria-hidden="true">×3</span>
+                    <span>Number of times attended (when more than once)</span>
+                </li>
+            </ul>
         </div>
         </main>
     </ContentWrapper>
