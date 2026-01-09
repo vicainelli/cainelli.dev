@@ -30,7 +30,8 @@ const generateAriaLabel = () => {
 	<span class="font-semibold">{concert.artist}</span>
 	{attendsCount >= 2 && (
 		<span
-			class="opacity-80"
+            class="font-mono border-b"
+			data-testid="attends-count"
 			aria-label={`attended ${attendsCount} times`}
 		>{attendsCount}&times;</span>
 	)}
