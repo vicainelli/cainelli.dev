@@ -37,25 +37,28 @@ const work = defineCollection({
 	schema: CollectionWorkSchema,
 });
 
-// const writing = defineCollection({
-//   loader: glob({
-//     pattern: '*.mdx',
-//     base: path.join(__dirname, 'content', 'writing')
-//   }),
-//   schema: z.object({
-//     title: z.string(),
-//     description: z.string().optional(),
-//     pubDate: z.date(),
-//     draft: z.boolean().default(false),
-//     tags: z.array(z.string()).optional(),
-//     author: z.string().optional(),
-//     updatedDate: z.date().optional(),
-//     readingTime: z.number().optional(),
-//     cover: z.string().optional(),
-//     coverAlt: z.string().optional(),
-//   }),
-// });
-//
+const CollectionWritingSchema = z.object({
+	title: z.string(),
+	description: z.string().optional(),
+	pubDate: z.coerce.date(),
+	draft: z.boolean().default(false),
+	tags: z.array(z.string()).optional(),
+	author: z.string().optional(),
+	updatedDate: z.date().optional(),
+	readingTime: z.number().optional(),
+	cover: z.string().optional(),
+	coverAlt: z.string().optional(),
+});
+
+export type CollectionWritingType = zod.infer<typeof CollectionWritingSchema>;
+
+const writing = defineCollection({
+	loader: glob({
+		pattern: "**/*.mdx",
+		base: path.join(__dirname, "content", "writing"),
+	}),
+	schema: CollectionWritingSchema,
+});
 
 const CollectionTilSchema = z.object({
 	title: z.string(),
@@ -103,5 +106,5 @@ export const collections = {
 	til,
 	uses,
 	work,
-	// writing,
+	writing,
 };

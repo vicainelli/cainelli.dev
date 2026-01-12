@@ -49,36 +49,38 @@ const WORK_EXPERIENCE = [
       </section>
 
       <section  class="my-8">
-          <div class="flex justify-between border-b border-b-stone-300 dark:border-b-stone-500  py-2 mb-4 items-center">
-              <div><h2 class="text-2xl">Work</h2></div>
-              <div>
-                  <a class="" href="/work">view all</a>
+          <div>
+              <div class="flex justify-between border-b border-b-stone-300 dark:border-b-stone-500  py-2 mb-4 items-center">
+                  <div><h2 class="text-2xl">Work</h2></div>
+                  <div>
+                      <a class="" href="/work">view all</a>
+                  </div>
               </div>
+          <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {WORK_EXPERIENCE.map((work) => (
+              <a href={work.url} class={cn(
+                // Position
+                // Layout
+                "p-4 rounded-md",
+
+                // Styling
+                "border border-gray-200 hover:bg-gray-100",
+                // Dark mode
+                "dark:bg-ebony-clay-800 border-ebony-clay-300",
+                "dark:hover:bg-ebony-clay-900",
+                // " dark:border-stone-500 dark:hover:bg-stone-700",
+
+                // Other
+                "transition-all duration-400 ease-in-out",
+                "group",
+                `${work.current ? 'sm:col-span-2' : ''}`,
+              )}>
+                  <h3 class=" font-semibold mb-1">{work.company}</h3>
+                  <p class="dark:text-ebony-clay-100 dark:group-hover:text-ebony-clay-50 text-sm">{work.description}</p>
+              </a>
+              ))}
           </div>
-      <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {WORK_EXPERIENCE.map((work) => (
-          <a href={work.url} class={cn(
-            // Position
-            // Layout
-            "p-3 rounded-md",
-
-            // Styling
-            "border border-gray-200 hover:bg-gray-100",
-            // Dark mode
-            "dark:bg-ebony-clay-700 border-ebony-clay-300",
-            "dark:hover:bg-ebony-clay-600",
-            // " dark:border-stone-500 dark:hover:bg-stone-700",
-
-            // Other
-            "transition-all duration-400 ease-in-out",
-            "group",
-            `${work.current ? 'sm:col-span-2' : ''}`,
-          )}>
-              <h3 class="text-sm font-semibold mb-1">{work.company}</h3>
-              <p class="dark:text-ebony-clay-100 dark:group-hover:text-ebony-clay-50 text-sm">{work.description}</p>
-          </a>
-          ))}
-      </div>
+          </div>
       </section>
 
     </main>

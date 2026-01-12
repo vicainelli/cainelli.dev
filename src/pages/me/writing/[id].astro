@@ -1,0 +1,42 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import ExternalLink from "@/components/atoms/ExternalLink.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import AuthorCard from "@/components/molecules/AuthorCard.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import Layout from "@/layouts/Layout.astro";
+
+interface Props {
+	post: CollectionEntry<"writing">;
+}
+
+export async function getStaticPaths() {
+	const posts = await getCollection("writing");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Writing", url: "/writing" },
+	{ title: post.data.title },
+];
+---
+<Layout title={`${post.data.title} / Writing / Vinicius Cainelli - Staff Product Engineer`} description={post.data.description}>
+    <ContentWrapper>
+        <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+            <article class="writing">
+                <AuthorCard postData={post.data} />
+
+                <hr class="my-4 border-stone-300">
+
+                <Content components={{ a: ExternalLink}} />
+            </article>
+        </main>
+    </ContentWrapper>
+</Layout>

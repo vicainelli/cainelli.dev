@@ -1,0 +1,53 @@
+---
+title: Building a cutting optimizer with AI
+description: How I built a DIY wood cutting planner using AI when I couldn't find the right tool.
+pubDate: 2025-01-12
+author: Vinicius Cainelli
+tags: [diy, woodworking, ai, programming]
+readingTime: 5
+draft: false
+---
+
+# {frontmatter.title}
+
+I've always enjoyed DIY projects. Something about working with your hands, solving tangible problems, and creating something physical just hits different. Recently, I decided to get back into woodworking — my second no-code hobby — and started planning a new storage assembly for my HVAC room.
+
+The plan was simple: build wooden shelves to organize the space. I'd measure, cut, assemble, and enjoy the satisfaction of building something myself. But when I got to the planning phase, I hit a wall.
+
+## The problem
+
+I needed to figure out how to cut my shelves from standard wood plates efficiently. You know the challenge: you have a fixed plate size (like 2400mm x 1200mm), a list of pieces you need to cut, and you want to minimize waste.
+
+I looked for tools to help with this. There are cutting optimizers out there, but I either couldn't find what I needed or the tools were overcomplicated for my simple use case. I just wanted something straightforward: tell it what pieces I need, give it the plate dimensions, and get a cutting plan.
+
+## The AI solution
+
+Then it hit me: I'm a developer. Why not build it myself?
+
+But here's the thing — I didn't want to spend hours implementing cutting stock algorithms from scratch. I wanted to build the tool, get back to my actual woodworking, and enjoy the process. So I turned to AI.
+
+I used Claude Code with z.ai's GLM-4.7 model. The key was giving clear, concise instructions about what I needed:
+
+- Input: plate dimensions and a list of required pieces with their sizes
+- Output: a visual cutting plan showing how to arrange pieces on each plate
+- Goal: minimize waste and make it easy to follow in the workshop
+
+The result? A clean, functional tool that did exactly what I needed.
+
+## What I learned
+
+This experience reinforced something important: you don't always need to be the one writing every line of code. What matters is:
+
+1. **Knowing what you need** — I could clearly articulate the problem and desired outcome
+2. **Giving good instructions** — The AI model needed context about the goal, constraints, and expected output format
+3. **Iterating quickly** — I could test, refine, and adjust the tool in minutes, not hours
+
+The tool I ended up with calculates optimal cutting layouts, shows me exactly where to make each cut, and even accounts for blade width. It saved me time, reduced material waste, and made the whole woodworking process more enjoyable.
+
+## Maybe this helps you too
+
+I'm sharing this because maybe you're in a similar situation — tackling a DIY project, needing a simple tool, and realizing that building it yourself (with a little AI assistance) is faster than finding the perfect existing solution.
+
+The joy of DIY isn't just in the final product. It's in the entire process: planning, problem-solving, creating tools when you need them, and eventually standing back to look at what you've built — whether it's a set of wooden shelves or a cutting optimizer that helped you make them.
+
+Sometimes the best tool is the one you build yourself. And sometimes, building it is half the fun.
