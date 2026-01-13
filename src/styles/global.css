@@ -56,20 +56,14 @@ kbd {
     @apply text-sm;
 }
 
-/* Post and Til dedicaded styles */
-article.til,
-article.writing,
-article.uses {
+/* Article dedicaded styles */
+article {
     @apply flex flex-col gap-4;
 }
 
-article.writing h2,
-article.uses h2 {
+article h2 {
     @apply font-semibold text-xl tracking-widest mt-8 uppercase dark:text-electric-violet-300;
 }
-
-/*article.writing h2,
-article.uses h2 {}*/
 
 article li {
     @apply list-disc list-inside;
