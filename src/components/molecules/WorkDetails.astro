@@ -28,6 +28,14 @@ const formatedStartDate = new Date(post.data.periodStart).toLocaleDateString(
 		month: "short",
 	},
 );
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const formattedEndDate = post.data.periodEnd
+	? new Date(post.data.periodEnd).toLocaleDateString("en-US", {
+			year: "numeric",
+			month: "short",
+	  })
+	: null;
 ---
 <article class={cn(
   // Position
@@ -60,7 +68,7 @@ const formatedStartDate = new Date(post.data.periodStart).toLocaleDateString(
         <dt class="font-semibold">Period</dt>
         <dd class="opacity-70">
             <time datetime={post.data.periodStart}>{formatedStartDate}</time>
-            {post.data.periodEnd ? (<time datetime={post.data.periodEnd}>{post.data.periodEnd}</time>) : ' - Present'}
+            {formattedEndDate ? <time datetime={post.data.periodEnd}> - {formattedEndDate}</time> : ' - Present'}
         </dd>
       </div>
 
