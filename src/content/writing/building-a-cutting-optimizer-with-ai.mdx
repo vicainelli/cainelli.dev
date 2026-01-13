@@ -4,150 +4,74 @@ description: How I built a DIY wood cutting planner using AI when I couldn't fin
 pubDate: 2025-01-12
 author: Vinicius Cainelli
 tags: [diy, woodworking, ai, programming]
-readingTime: 5
+readingTime: 3
 draft: false
 ---
 
 # {frontmatter.title}
 
-I love building stuff.
+I love building stuff. Not the "launch a SaaS" kind. The other kind. Hands dirty, sawdust everywhere. A project where the bugs are literally splinters.
 
-Not the “launch a new SaaS and nurture the funnel” kind of building (though yeah, I’ve done my share of that too). I mean the other kind. Hands dirty... radio on... sawdust everywhere.
-A project where the bugs are… splinters.
+So I'm back in woodworking mode, building shelves for the HVAC room. You know, the kind of thing nobody praises you for, but you feel weirdly proud of.
 
-So I’m back in woodworking mode. My second no-code hobby. And I’m doing a very glamorous upgrade: the HVAC room. Shelves. Storage. The kind of thing nobody praises you for, but you feel weirdly proud every time you walk past it.
+And then came "The Moment." You're staring at a sheet of plywood and suddenly doing finance math in your head. Because that sheet isn't cheap. And the cut plan in your notebook looks like a toddler's Tetris game. One wrong measurement and you're not "iterating", you're just burning money.
 
-And then came "_The Moment_", you’re staring at a sheet of plywood and suddenly you’re doing finance math in your head.
+## The problem
 
-Because that sheet isn’t cheap. And the cut plan in your notebook looks like a toddler’s Tetris game.
+I had standard plates (2400mm by 1200mm), a list of shelf pieces, and zero desire to waste wood. I needed a tool to tell me how to cut efficiently.
 
-One wrong measurement and you’re not “iterating.” You’re just burning €€€.
+What I found online? Enterprise software with "talk to sales" pricing, ad infested mobile apps, and something that looked like Windows 95.
 
-## The problem (aka: why am I doing this by hand)
+I'm not paying €200 per month to cut shelves for a room that stores the vacuum cleaner.
 
-Here’s what I had:
+## The dev brain kicks in
 
-- Standard plates: 2400mm x 1200mm
-- A list of shelf pieces with different sizes (and quantities)
-- A deadline that was basically “before motivation disappears”
+I could already picture it: a Piece type, a Sheet, a packing algorithm, a little renderer. Suddenly I'm halfway into a weekend project that has nothing to do with shelves.
 
-What I needed was simple. Almost boring:
+I've been down this road before. Node.js dependency hell, canvas libraries breaking, you know the vibe. But this time I didn't want to build it "properly." I just wanted the shelves.
 
-Give the tool the plate size. Give it the pieces. And then tell me how to cut it so I’m not wasting half the sheet like some kind of amateur.
+## So I used AI. Actually used it.
 
-But wow. The internet.
+AI works best when you treat it like a fast junior dev, not a magical oracle. Give clear requirements, review the work, iterate.
 
-I went looking for a cutting optimizer and got three flavors:
+I used Claude Code with z.ai's GLM 4.7 model and went super concrete:
 
-1. Enterprise software with a pricing page that screams “talk to sales”
-2. A mobile app with ads that feel like they were designed by a villain
-3. Something that looks like Windows 95 survived and made a comeback… as a GUI
+1. Here are the plate dimensions
+2. Here are the pieces with width, height, and quantity
+3. Output needs to match real world constraints
+4. Give me a visual plan
+5. Optimize for practical cuts, long straight ones
 
-And look, I’m Dutch-adjacent enough at this point to get annoyed by inefficiency on principle. I’m not paying €200/month to cut shelves for a room that literally stores the vacuum cleaner.
+Because an "optimal" layout requiring a hundred weird cuts isn't optimal. It's punishment.
 
-## “Fine. I’ll build it.” (famous last words)
+## Minutes later, I had a tool
 
-The dev brain kicks in fast, doesn’t it?
+Not production ready. No auth, no database, nothing that would survive the public internet. And that's the point.
 
-I could already picture it:
+It was disposable software. A micro tool that lives just long enough to save your Saturday. It took my pieces, did the math, and drew a plan I could actually follow. Waste areas highlighted. Pieces visible. Layout matched reality.
 
-- Some `Piece` type
-- A `Sheet`
-- A packing algorithm
-- A little renderer so I can _see_ the plan
+I didn't "learn" bin packing or implement some algorithm from scratch. But the result was better than what I would've shipped in a rushed afternoon.
 
-And suddenly I’m halfway into a weekend project that has nothing to do with shelves. It’s just me, stuck in yet another “tiny tool” rabbit hole.
+The iteration loop was tight: generate, stare, complain, regenerate.
 
-I’ve burned hours on this kind of thing before. Node.js hell. A dependency upgrade. A canvas lib that breaks because the moon phase changed. You know the vibe.
+"Too many weird cuts."
+"Optimize for long straight cuts."
+"Account for blade width."
 
-But this time I didn’t want the satisfaction of building it “properly.”
+Same as product engineering, just without the sprint planning meeting.
 
-I just wanted the shelves.
+## This is just internal tooling for your life
 
-## So I used AI. Like, actually used it.
+You already hack scripts to clean up datasets or write dashboards to keep systems honest. Now you can do the same for physical world problems. And the threshold is lower than ever.
 
-Truth is, AI is best when you treat it like a ridiculously fast junior dev. Not a magical oracle. Not a vibes machine. A colleague you can give a ticket to, with clear acceptance criteria, and then you review the PR.
-
-In my setup I used Claude Code with z.ai’s GLM-4.7 model.
-
-And instead of asking it something vague like “how do I solve cutting stock,” I went super concrete:
-
-- Here are the plate dimensions
-- Here are the pieces (width/height/qty)
-- I want the output to mirror the real world (no “perfect on screen, wrong in the workshop” surprises)
-- I want a visual plan, not a 30-line explanation
-- Optimize for layouts that are practical to cut (long straight cuts, guillotine style)
-
-Because yes, an “optimal” layout that requires a hundred tiny weird cuts is not optimal. It’s punishment.
-
-Also: real-world constraints matter. You don’t want to discover your “perfect” plan is off when you’re already holding a piece that’s somehow… not the size you expected. Ask me how I know. (Don’t. It hurts.)
-
-## What came out the other side
-
-In… honestly, minutes… I had a working tool.
-
-Not production-ready. No auth. No database. No error states that would survive contact with the public internet.
-
-And that’s the point.
-
-It was disposable software. A micro-tool. A tiny app that lives just long enough to save your Saturday.
-
-It took my list of pieces, did the layout math, and drew a plan I could actually follow in the workshop.
-
-Waste areas highlighted. Pieces visible. The layout actually matched what I could do in the workshop.
-
-And yeah, it felt a little ridiculous. Like cheating. Like printing the answer sheet.
-
-But also: why wouldn’t I?
-
-I’m not trying to win a coding competition here. I’m trying to avoid a second trip to the hardware store, standing there in my muddy shoes, re-buying wood because I got cocky with the measurements.
-
-## The part that surprised me (and why I’m writing this)
-
-But here’s what stuck with me:
-
-I didn’t “learn” a new algorithm. I didn’t implement bin packing from scratch. I didn’t earn it the old-school way.
-
-And yet… the result was better than what I would’ve shipped in a rushed afternoon.
-
-Because the loop was tight:
-
-Generate → run → stare at the layout → complain → regenerate.
-
-“Too many weird cuts.”  
-“Can you optimize for long straight cuts?”  
-“Show me the waste more clearly.”  
-“Account for blade width.”  
-“Make the visual scale match reality.”
-
-It’s the same kind of iteration you do in product engineering. Just without a sprint planning meeting and ten people arguing about naming.
-
-And honestly? This is the sustainable tech angle nobody talks about: not “AI will save the planet” (please). But: less waste, fewer re-cuts, fewer extra trips, fewer materials tossed because you misplanned. Small efficiency wins. The Dutch way. Practical.
-
-## If you’re reading this as an engineer
-
-You already know what this is, right?
-
-This is just building internal tooling… for your own life.
-
-The same way you’ll hack a script to clean up a dataset, or write a quick dashboard to keep a system honest, you can do the same for physical-world problems.
-
-And the threshold is lower now. Way lower.
-
-Look, I’m not saying you should never write the algorithm yourself. If you _want_ to, go for it. Nerd out. Respect.
-
-But if the goal is the shelf, not the solver…
+I'm not saying you should never write algorithms yourself. But if the goal is the shelf, not the solver...
 
 Use the solver. Delete it later. Move on.
 
-## So what’s your version of this?
+This is the sustainable tech angle nobody talks about. Not "AI will save the planet", but less waste, fewer re cuts, fewer extra trips. Small efficiency wins. The Dutch way. Practical.
 
-What annoying, oddly-specific problem are you still doing manually?
+## What's your version?
 
-A visa bureaucracy spreadsheet because you’re juggling an HSM thing and the forms are somehow always slightly wrong?  
-A tiny accessibility checker because you’re tired of explaining contrast ratios to designers (again)?  
-A one-off optimizer for your solar/battery schedule because you’re trying to keep your home energy setup a bit less dumb?
+What annoying problem are you still doing manually? A visa spreadsheet? An accessibility checker? A solar schedule optimizer?
 
-Tell me. Seriously. I’m curious what other “micro-tools” people are building now that we can just… spin them up after coffee and a quick garden walk.
-
-And if you’ve got a better cutting optimizer idea, I’ll take it. I’ve still got more shelves to build.
+I'm curious what "micro tools" people are building now that we can spin them up after coffee. And if you've got a better cutting optimizer idea, I'll take it. I've still got more shelves to build.
