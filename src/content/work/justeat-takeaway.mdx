@@ -16,22 +16,10 @@ logoBackground: jet-orange
 current: false
 ---
 
-## Building bridges between design and code
+When I joined Just Eat Takeaway in 2020, different squads were building the same UI components in slightly different ways. Not great for consistency or efficiency.
 
-Joining Just Eat Takeaway during a pivotal time of digital transformation, I saw an opportunity to make a lasting impact on how the company built user interfaces. The challenge was clear: multiple product squads were building similar UI components in isolation, leading to inconsistency and wasted effort.
+I built a design system in Vue that eventually served about 10 product squads. The real value wasn't the components themselves, but creating a shared language between designers and developers. I defined component API standards, a versioning strategy, and migration playbooks so teams could adopt it without pain.
 
-## Crafting a design system
+The tricky part was governance. How do you let squads move fast while keeping things consistent? I wrote contribution guidelines that balanced structure with autonomy. Testing was critical. I integrated Jest into the CI pipeline so we wouldn't break APIs when making changes. This became the foundation of the PIE design system that powers JET's products globally.
 
-I built a comprehensive design system in Vue that would eventually be adopted by approximately 10 product squads. This wasn't just about creating components—it was about establishing a shared language between designers and developers. I defined component API standards, created a versioning strategy, and developed migration playbooks that accelerated UI development velocity across the organization.
-
-## Governance with autonomy
-
-One of the most interesting challenges was establishing a governance model that enabled squad autonomy while maintaining consistency. I crafted contribution guidelines that gave teams the freedom to move fast while ensuring that customer-facing applications remained cohesive. It was about finding the right balance between centralization and decentralization.
-
-## Testing as a first-class citizen
-
-Understanding that a design system is only as good as its reliability, I integrated automated testing with Jest directly into our component library CI. This ensured API stability and reduced integration issues for teams consuming our components. When you have dozens of teams depending on your work, stability isn't optional—it's essential.
-
-## Growing together
-
-Mentoring frontend engineers on component architecture and testing practices became one of the most rewarding aspects of my role. Seeing teams improve their code quality and reduce onboarding time validated the investment in good documentation and knowledge sharing.
+I also mentored teams on component architecture and testing practices. Better code quality and faster onboarding for new engineers is hard to measure but easy to feel.

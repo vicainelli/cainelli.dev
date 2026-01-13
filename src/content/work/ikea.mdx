@@ -16,30 +16,16 @@ logoBackground: ikea-yellow
 current: true
 ---
 
-## An ever‑assembling voyage
+I joined IKEA to work on something that affects millions of people across the world: the IKEA Family rewards program. It's one of those things that seems simple on the surface (you join, you get discounts, everyone's happy), but the reality of building it for 10+ countries with different languages, regulations, and expectations is... complicated.
 
-Working at IKEA has been an incredible journey filled with challenges, growth, and a relentless pursuit of excellence. As a Senior Software Engineer, I've had the privilege to contribute to projects that impact millions of customers worldwide.
+Most of what I've been doing here revolves around building the frontend platform that powers this program. Think of it as the foundation that all the different markets build on top of. I've been the one figuring out how we standardize things across teams. How do we make sure a feature works just as well in Poland as it does in the Netherlands? How do we handle security compliance when you're dealing with customer data across different regulatory environments?
 
-## Innovating for a better everyday life
+One thing I'm particularly proud of is completely rethinking our CI/CD pipeline. We were running into all sorts of issues with our old setup, like conflicting pipelines and slow builds. I migrated us to GitHub Actions on Google Cloud Platform, using Terraform to manage everything as code. The result: build and test cycles dropped by 60%. That's not just a number. It represents hours of developer time saved every week. What started as an experiment for my team ended up becoming the standard that the whole engineering organization adopted.
 
-At IKEA, I architected the frontend platform for the global IKEA Family rewards program. This wasn't just about writing code—it was about creating a foundation that would serve customers across 10+ countries. I drove the standardized rollout, establishing security compliance, localization patterns, and a multi-team coordination framework that brought diverse teams together.
+I also care a lot about testing. Not in a "write tests because you're supposed to" way, but in a "testing actually makes you move faster" way. I set up a testing strategy using Jest, React Testing Library, and Playwright, then made coverage gates part of our CI pipeline. Production incidents went down, code reviews got faster, and people stopped being afraid to ship changes. Turns out investing in quality is actually an acceleration strategy.
 
-## Building the foundation
+On the security side, I became the focal point for my team, remediating vulnerabilities, setting up dependency management policies, and making sure we're aligned with enterprise security standards. When you're building something that handles customer data across multiple markets, you can't treat security as an afterthought.
 
-One of my most impactful contributions was re-engineering our CI/CD infrastructure. We migrated from a patchwork of tools to GitHub Actions on Google Cloud Platform with Terraform, eliminating pipeline conflicts and reducing build/test cycles by 60%. The deployment standards I established became the blueprint adopted across the entire engineering organization.
+Lately I've been spending a lot of time on team effectiveness, like mentorship, documentation standards, and coordinating cross-team dependencies. We reduced PR cycle time significantly, and I set up reproducible infrastructure with Terraform so teams can self-service their deployments. Environment parity is one of those things that sounds boring until you don't have it, and then suddenly everything is breaking.
 
-## Quality as a mindset
-
-I believe that great software starts with great testing. I established a comprehensive testing strategy using Jest, React Testing Library, and Playwright, then integrated coverage gates directly into our CI pipeline. This shift reduced production incidents and accelerated code review cycles—proving that investing in quality pays dividends in velocity.
-
-## Security and scale
-
-Serving as the security focal point for my team, I remediated vulnerabilities and established dependency management policies that aligned with enterprise security standards. When you're dealing with customer data across multiple markets, security isn't an afterthought—it's the foundation of everything we build.
-
-## Empowering teams
-
-The most rewarding part of my role has been scaling team effectiveness through mentorship and process improvements. By advocating for testing, establishing documentation standards, and coordinating cross-team dependencies, we reduced PR cycle time significantly. I also provisioned reproducible infrastructure with Terraform, improving environment parity and enabling self-service deployments for product teams.
-
-## Looking forward
-
-Every day at IKEA brings new challenges and opportunities to create a better everyday life for our customers and coworkers. The journey continues, and I'm excited for what's next.
+Every day here brings something new. The scale is massive, the stakes are real, and there's always something interesting to work on.
