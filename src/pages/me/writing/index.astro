@@ -1,14 +1,11 @@
 ---
-import { getCollection } from "astro:content";
 import ContentWrapper from "@/components/ContentWrapper.astro";
 import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import PostList from "@/components/PostList.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getNonDraftPosts } from "@/lib/posts";
 
-// Get all `src/content/writing/` entries
-const allWritingPosts = await getCollection("writing");
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
-const nonDraftPosts = allWritingPosts.filter((post) => !post.data.draft);
+const nonDraftPosts = await getNonDraftPosts();
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [
@@ -25,19 +22,7 @@ const BREADCRUMBS = [
             <Breadcrumbs items={BREADCRUMBS} />
 
             <h1>Writing</h1>
-
-            {nonDraftPosts.length === 0 ? (
-                <p>No writing posts found yet.</p>
-            ) : (
-            <ul>
-                {nonDraftPosts.map((post) => <li><a class="hover:shadow group transition-all block p-4 -mx-4 my-2 rounded-md" href={`/me/writing/${post.id}`}>
-                    <div class="flex justify-between items-center">
-                        <div class=" transition-colors ease-out">{post.data.title}</div>
-                        <div><small>{new Date(post.data.pubDate).toLocaleDateString('en-GB')}</small></div>
-                    </div>
-                    </a></li>)}
-            </ul>
-            )}
+            <PostList posts={nonDraftPosts} />
 
 
         </main>

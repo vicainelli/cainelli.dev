@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+// biome-ignore lint/correctness/noUnusedVariables: used by Astro's type system
+interface Props {
+	posts: CollectionEntry<"writing">[];
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { posts } = Astro.props;
+---
+
+{posts.length === 0 ? (
+	<p>No writing posts found yet.</p>
+) : (
+	<ul>
+		{posts.map((post) => (
+			<li>
+				<a
+					class="hover:shadow group transition-all block p-4 -mx-4 my-2 rounded-md"
+					href={`/me/writing/${post.id}`}
+				>
+					<div class="flex justify-between items-center">
+						<div class=" transition-colors ease-out">{post.data.title}</div>
+						<div>
+							<small>{new Date(post.data.pubDate).toLocaleDateString("en-GB")}</small>
+						</div>
+					</div>
+				</a>
+			</li>
+		))}
+	</ul>
+)}
