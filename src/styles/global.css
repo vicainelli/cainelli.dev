@@ -31,7 +31,7 @@
 }
 
 h1 {
-    @apply font-semibold mb-2 text-3xl sm:text-5xl tracking-wide transition-all;
+    @apply font-semibold mb-8 text-3xl sm:text-5xl tracking-wide transition-all;
 }
 
 /*h1 {*/
