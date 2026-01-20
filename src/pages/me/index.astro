@@ -13,10 +13,12 @@ const blockClasses = cn(
 	// Layout
 	"block p-4 rounded-md",
 	// Styling
-	"border border-gray-200 hover:bg-gray-100",
-	// 'border-stone-200 bg-stone-100',
-	"dark:bg-ebony-clay-800 border-ebony-clay-300",
-	"dark:hover:bg-ebony-clay-900",
+	"border border-amber-400 hover:bg-amber-100",
+
+	// Dark mode
+    "dark:bg-crt-black",
+    "dark:hover:bg-ebony-clay-800/50",
+    "dark:border-amber-terminal/60",
 
 	// Other
 	"transition-all duration-400 ease-in-out",
@@ -30,10 +32,10 @@ const blockTitleClasses = cn(
 	// Layout
 
 	// Styling
-	"text-sm font-semibold text-electric-violet-700",
-	"group-hover:text-electric-violet-400",
-	"dark:text-electric-violet-200",
-	"dark:group-hover:text-electric-violet-300",
+	"font-semibold ",
+	// "group-hover",
+	// "dark:text-amber-terminal",
+	"dark:group-hover:text-amber-terminal",
 
 	// Other
 	"transition-colors ease-out",
@@ -49,7 +51,7 @@ const blockTitleClasses = cn(
             <div class="flex flex-col gap-6 mb-8">
 
             <div>
-                <h2 class="font-semibold text-base mb-2 uppercase opacity-70">Content</h2>
+                <h2 class="mb-2">Content</h2>
 
                 <ul class="space-y-4">
                     <li>
@@ -77,7 +79,7 @@ const blockTitleClasses = cn(
 
 
             <div>
-                <h2 class="font-semibold text-base mb-2 uppercase opacity-70">Music</h2>
+                <h2 class="mb-2">Music</h2>
 
                 <ul class="space-y-4">
                     <li>
@@ -105,7 +107,7 @@ const blockTitleClasses = cn(
                 </ul>
             </div>
             <div>
-                <h2 class="font-semibold text-base mb-2 uppercase opacity-70">Misc</h2>
+                <h2 class="mb-2">Misc</h2>
 
                 <ul class="space-y-4">
                     <li>
