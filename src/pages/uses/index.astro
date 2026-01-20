@@ -11,7 +11,9 @@ const allUses = await getCollection("uses");
 const latestUsesPost = allUses.at(-1)
 
 // old posts
-const oldUsesPosts = allUses.slice(0, -1);
+const oldUsesPosts = allUses.slice(0, -1).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
 
 const { Content } = await render(latestUsesPost);
 
