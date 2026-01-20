@@ -27,6 +27,7 @@ This is a personal website built with [Astro](https://astro.build/), using TypeS
 - **Data Import**: Data files in `src/data/` are imported directly into pages/components for rendering lists, cards, etc.
 - **Component Usage**: Prefer using components from `src/components/` for UI consistency. Example: `ArtistCard.astro` for concert listings.
 - **No client-side JS by default**: Astro renders static HTML unless explicitly using client directives.
+- **TIL Length Constraint**: TIL (Today I Learned) posts in `src/content/til/` must not exceed 800 characters. Keep them concise and focused.
 
 ## Integration Points
 
