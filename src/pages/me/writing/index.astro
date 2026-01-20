@@ -32,7 +32,7 @@ const BREADCRUMBS = [
             <ul>
                 {nonDraftPosts.map((post) => <li><a class="hover:shadow group transition-all block p-4 -mx-4 my-2 rounded-md" href={`/me/writing/${post.id}`}>
                     <div class="flex justify-between items-center">
-                        <div class="group-hover:text-amber-terminal transition-colors ease-out">{post.data.title}</div>
+                        <div class=" transition-colors ease-out">{post.data.title}</div>
                         <div><small>{new Date(post.data.pubDate).toLocaleDateString('en-GB')}</small></div>
                     </div>
                     </a></li>)}

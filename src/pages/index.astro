@@ -36,7 +36,7 @@ const WORK_EXPERIENCE = [
       <section>
             <div class="">
                 <div class="flex items-center gap-4 mb-4">
-                <div class="rounded-full border-3 border-crt-black dark:border-amber-terminal w-16 h-16 mb-2 overflow-hidden hover">
+                <div class="rounded-full border-3 w-16 h-16 mb-2 overflow-hidden hover">
                     <a title="" href="/me">
                         <Image src="https://avatars.githubusercontent.com/vicainelli" width="64" height="64" class="rounded-full" alt="Vinicius Cainelli avatar">
                     </a>
@@ -52,7 +52,7 @@ const WORK_EXPERIENCE = [
 
       <section  class="my-8">
           <div>
-              <div class="flex justify-between border-b border-b-stone-300 dark:border-b-stone-500  py-2 mb-4 items-center">
+              <div class="flex justify-between border-b  py-2 mb-4 items-center">
                   <div><h2 class="text-2xl">Work</h2></div>
                   <div>
                       <a class="" href="/work">view all</a>
@@ -66,11 +66,8 @@ const WORK_EXPERIENCE = [
                 "p-4 rounded-md",
 
                 // Styling
-                "border border-amber-400 hover:bg-amber-100",
+                "border  hover:bg-",
                 // Dark mode
-                "dark:bg-crt-black",
-                "dark:hover:bg-ebony-clay-800/50",
-                "dark:border-amber-terminal/60",
                 // " dark:border-stone-500 dark:hover:bg-stone-700",
 
                 // Other
@@ -78,12 +75,16 @@ const WORK_EXPERIENCE = [
                 "group",
                 `${work.current ? 'sm:col-span-2' : ''}`,
               )}>
-                  <h3 class="font-semibold mb-1 group-hover:text-amber-terminal transition-colors ease-out">{work.company}</h3>
-                  <p class="dark:text-ebony-clay-50 dark:group-hover:text-ebony-clay-50 text-sm">{work.description}</p>
+                  <h3 class="font-semibold mb-1 transition-colors ease-out">{work.company}</h3>
+                  <p class=" text-sm">{work.description}</p>
               </a>
               ))}
           </div>
           </div>
+      </section>
+
+      <section>
+          <!-- list recent posts -->
       </section>
 
     </main>

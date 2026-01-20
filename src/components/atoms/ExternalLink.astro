@@ -14,4 +14,4 @@ if (!href.includes(domain) && !href.startsWith("/") && !href.startsWith("#")) {
 ---
 
 <!-- add attributes and maintain a <slot /> for the link text -->
-<a class="border-b hover:text-amber-600 dark:hover:text-amber-terminal transition-colors ease-in" href={`${href}?ref=cainelli.dev`} {...attr}><slot /></a>
+<a class="border-b transition-colors ease-in" href={`${href}?ref=cainelli.dev`} {...attr}><slot /></a>

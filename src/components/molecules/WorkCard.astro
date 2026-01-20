@@ -30,7 +30,7 @@ if (data.coverImage) {
 ---
 
 <a class="hover:shadow-xl block transition-shadow duration-500 h-full" href={`/work/${data.id}`}>
-<div class="p border border-stone-200 dark:border-stone-700 rounded-sm h-full flex flex-col">
+<div class="p border rounded-sm h-full flex flex-col">
     <div class={cn(
       // Position
       "relative",
@@ -38,8 +38,9 @@ if (data.coverImage) {
       "w-full p-2 pb-0",
       "overflow-clip grow flex h-72.5 max-h-72.5",
       // Styling
-      "border-b border-gray-200 bg-linear-to-b from-electric-violet-50/20 to-electric-violet-50/40",
-      "dark:border-gray-500/20 dark:from-transparent dark:to-electric-violet-900/20",
+      "border-b",
+      // "border-b border-gray-200 bg-linear-to-b from-electric-violet-50/20 to-electric-violet-50/40",
+      // "dark:border-gray-500/20 dark:from-transparent dark:to-electric-violet-900/20",
       // Other
       "",
     )}>
@@ -51,7 +52,7 @@ if (data.coverImage) {
           "sm:w-auto",
           "max-w-full object-top-left object-cover grow shrink-0 rounded-t-md",
           // Styling
-          "shadow-lg border border-gray-500/15 border-b-0",
+          "shadow-lg border border-b-0",
           "dark:shadow-[0_4px_8px_rgba(0,0,0,0.5)]",
           // Other
         )}
