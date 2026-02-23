@@ -1,0 +1,27 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import ContentWrapper from "@/components/ContentWrapper.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const isHomePage: boolean = Astro.url.pathname === "/";
+---
+
+<header>
+  <ContentWrapper>
+    <div class="flex justify-between items-center my-2">
+      <div>
+        {!isHomePage && (
+          <a href="/">
+            <span class="text-xl font-bold">Vini 👋</span>
+          </a>
+        )}
+        {isHomePage && (
+          <span class="text-xl font-bold">Vini 👋</span>
+        )}
+      </div>
+      <div>
+        <a class="" href="/contact">Let's talk →</a>
+      </div>
+    </div>
+  </ContentWrapper>
+</header>

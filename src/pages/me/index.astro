@@ -1,0 +1,124 @@
+---
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import Layout from "@/layouts/Layout.astro";
+import { cn } from "@/lib/utils";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Me" }];
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const blockClasses = cn(
+	// Position
+	// Layout
+	"block p-4 rounded-md",
+	// Styling
+	"border",
+
+	// Dark mode
+
+	// Other
+	"transition-all duration-400 ease-in-out",
+	"group",
+);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const blockTitleClasses = cn(
+	// Position
+
+	// Layout
+
+	// Styling
+	"font-semibold ",
+	// "group-hover",
+
+	// Other
+	"transition-colors ease-out",
+);
+---
+<Layout title="Vinicius Cainelli - Staff Product Engineer" description="My personal content and interests.">
+    <ContentWrapper>
+
+        <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+
+            <h1>Me</h1>
+            <div class="flex flex-col gap-6 mb-8">
+
+            <div>
+                <h2 class="mb-2">Content</h2>
+
+                <ul class="space-y-4">
+                    <!-- <li>
+                        <a class={`${blockClasses}`} href="/me/writing">
+                            <h3 class={`${blockTitleClasses}`}>
+                            Writing
+                            </h3>
+                            <p>
+                                I share my thoughts and experiences on various topics related to software development, design, and productivity.
+                            </p>
+                        </a>
+                    </li> -->
+                    <li>
+                      <a class={`${blockClasses}`} href="/me/til">
+                          <h3 class={`${blockTitleClasses}`}>
+                                TIL (Daily Learnings)
+                            </h3>
+                            <p>
+                                A collection of small, daily learnings and insights I've gathered over time.
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div>
+                <h2 class="mb-2">Music</h2>
+
+                <ul class="space-y-4">
+                    <li>
+                      <a class={`${blockClasses}`} href="/me/concerts">
+                          <h3 class={`${blockTitleClasses}`}>
+                                Concerts
+                            </h3>
+                            <p>
+                                A list of concerts I've attended and those I hope to attend in the future.
+                            </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class={`${blockClasses}`} href="https://www.instagram.com/huzzband/" target="_blank" rel="noopener noreferrer">
+
+                            <h3 class={`${blockTitleClasses}`}>
+                                Huzzband
+                            </h3>
+                            <p>
+                                Music project alongside with other 3 brazilian friends.
+                            </p>
+
+                        </a>
+                        </li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="mb-2">Misc</h2>
+
+                <ul class="space-y-4">
+                    <li>
+                        <a class={`${blockClasses}`} href="/uses">
+                            <h3 class={`${blockTitleClasses}`}>
+                                Uses
+                            </h3>
+                            <p>
+                                A detailed list of the hardware and software I use daily for work and personal projects.
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        </main>
+    </ContentWrapper>
+</Layout>

@@ -1,0 +1,31 @@
+---
+draft: false
+title: IKEA
+description: Creating and developing the best and seamless experience for customers and co-workers in the IKEA Family Rewards program.
+pubDate: 2022-01-01
+periodStart: 2022-01-03
+tags: []
+role: Senior Software Engineer
+location: Amsterdam, the Netherlands
+company: IKEA
+companyUrl: ikea.com
+techStack: [React, Node.js, TypeScript]
+companyLogo: assets/images/logos/ikea.svg
+coverImage: ikea-rewards.png
+logoBackground: ikea-yellow
+current: true
+---
+
+I joined IKEA to work on something that affects millions of people across the world: the IKEA Family rewards program. It's one of those things that seems simple on the surface (you join, you get discounts, everyone's happy), but the reality of building it for 10+ countries with different languages, regulations, and expectations is... complicated.
+
+Most of what I've been doing here revolves around building the frontend platform that powers this program. Think of it as the foundation that all the different markets build on top of. I've been the one figuring out how we standardize things across teams. How do we make sure a feature works just as well in Poland as it does in the Netherlands? How do we handle security compliance when you're dealing with customer data across different regulatory environments?
+
+One thing I'm particularly proud of is completely rethinking our CI/CD pipeline. We were running into all sorts of issues with our old setup, like conflicting pipelines and slow builds. I migrated us to GitHub Actions on Google Cloud Platform, using Terraform to manage everything as code. The result: build and test cycles dropped by 60%. That's not just a number. It represents hours of developer time saved every week. What started as an experiment for my team ended up becoming the standard that the whole engineering organization adopted.
+
+I also care a lot about testing. Not in a "write tests because you're supposed to" way, but in a "testing actually makes you move faster" way. I set up a testing strategy using Jest, React Testing Library, and Playwright, then made coverage gates part of our CI pipeline. Production incidents went down, code reviews got faster, and people stopped being afraid to ship changes. Turns out investing in quality is actually an acceleration strategy.
+
+On the security side, I became the focal point for my team, remediating vulnerabilities, setting up dependency management policies, and making sure we're aligned with enterprise security standards. When you're building something that handles customer data across multiple markets, you can't treat security as an afterthought.
+
+Lately I've been spending a lot of time on team effectiveness, like mentorship, documentation standards, and coordinating cross-team dependencies. We reduced PR cycle time significantly, and I set up reproducible infrastructure with Terraform so teams can self-service their deployments. Environment parity is one of those things that sounds boring until you don't have it, and then suddenly everything is breaking.
+
+Every day here brings something new. The scale is massive, the stakes are real, and there's always something interesting to work on.

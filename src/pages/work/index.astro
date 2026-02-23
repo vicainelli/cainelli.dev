@@ -1,0 +1,79 @@
+---
+import { getCollection } from "astro:content";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import ContentWrapper from "@/components/ContentWrapper.astro";
+// biome-ignore lint: import used in template
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+// biome-ignore lint: import used in template
+import WorkCard from "@/components/molecules/WorkCard.astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import Layout from "@/layouts/Layout.astro";
+
+const allTilPosts = await getCollection("work");
+
+const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const currentJob = nonDraftPosts.find((post) => post.data.current === true);
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const previousExperiences = nonDraftPosts
+	.filter((post) => post.data.current === false && post.data.category === "fulltime")
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Work" }];
+---
+
+<Layout title="Work Vinicius Cainelli - Staff Product Engineer" description="Work and projects I've been involved with.">
+  <ContentWrapper>
+    <main class="mt-20">
+    <Breadcrumbs items={BREADCRUMBS} />
+      <h1 class="">My Work</h1>
+      <section class="">
+        <p class="text-balance">
+          This page highlights the work I led and shipped in previous companies. Each entry covers the product context, my role, and the impact delivered across frontend architecture, design systems, and user experience.
+        </p>
+      </section>
+
+        {nonDraftPosts.length === 0 ? (
+          <p>No work posts found yet.</p>
+        ) : (
+        <>
+            {currentJob && (
+            <section class="mt-8">
+                <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Current</h2>
+
+                <WorkCard data={{
+                  id: currentJob.id,
+                  title: currentJob.data.title,
+                  description: currentJob.data.description,
+                  coverImage: currentJob.data.coverImage
+                }} />
+
+            </section>
+            )}
+            <section class="my-8">
+                <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Previous experiences</h2>
+                <ul class="grid grid-cols-1 md:grid-cols-2  gap-8">
+                  {previousExperiences.map((post) => <li>
+                      <WorkCard data={{
+                        id: post.id,
+                        title: post.data.title,
+                        description: post.data.description,
+                        coverImage: post.data.coverImage
+                      }} />
+                  </li>)}
+                </ul>
+            </section>
+            <!-- <section class="my-8">
+                <h2 class="uppercase mb-4 font-semibold text-sm tracking-wider">Side projects</h2>
+                <ul class="flex flex-col md:flex-row gap-8  md:items-stretch">
+                    <li class="md:flex-1">Kassaklap</li>
+                    <li class="md:flex-1">Menyoo <i>(formely MenuQR)</i></li>
+            </ul>
+            </section> -->
+        </>
+        )}
+    </main>
+  </ContentWrapper>
+</Layout>

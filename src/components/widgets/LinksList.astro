@@ -1,0 +1,19 @@
+---
+import type { SocialLink } from "@/data/social-links";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+interface Props {
+	links: SocialLink[];
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { links } = Astro.props;
+---
+
+<ul class="flex flex-col gap-2">
+  {links.map((link) => (
+    <li class="">
+      <a href={link.url} class="link text-sm">{link.name}</a>
+    </li>
+  ))}
+</ul>

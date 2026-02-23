@@ -1,0 +1,38 @@
+---
+import type { Concert } from "@/data/concerts";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { cn } from "@/lib/utils";
+
+const { concert } = Astro.props as { concert: Concert };
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const attendsCount = concert.attends.length;
+
+const generateAriaLabel = () => {
+	if (attendsCount === 0) {
+		return `${concert.artist}, not yet attended`;
+	}
+	if (attendsCount === 1) {
+		return `${concert.artist}, attended once`;
+	}
+	return `${concert.artist}, attended ${attendsCount} times`;
+};
+---
+
+<div
+	class={cn(
+		attendsCount >= 1 ? "text-stone-700" : "text-stone-500",
+		"text-sm"
+	)}
+	aria-label={generateAriaLabel()}
+	role="listitem"
+>
+	<span class="font-semibold">{concert.artist}</span>
+	{attendsCount >= 2 && (
+		<span
+            class="font-mono border-b"
+			data-testid="attends-count"
+			aria-label={`attended ${attendsCount} times`}
+		>{attendsCount}&times;</span>
+	)}
+</div>

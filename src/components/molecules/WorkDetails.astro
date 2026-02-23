@@ -1,0 +1,96 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { cn } from "@/lib/utils";
+// biome-ignore lint: import used in template
+import ExternalLink from "../atoms/ExternalLink.astro";
+
+const { post } = Astro.props;
+
+// Import all logos statically
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/images/**/*.{svg,png}",
+	{ eager: true },
+);
+
+// Build the full path and get the logo
+const logoPath = `/src/assets/images/${post.data.companyLogo.split("assets/images/")[1]}`;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const logoImage = logos[logoPath]?.default;
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const formatedStartDate = new Date(post.data.periodStart).toLocaleDateString(
+	"en-US",
+	{
+		year: "numeric",
+		month: "short",
+	},
+);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const formattedEndDate = post.data.periodEnd
+	? new Date(post.data.periodEnd).toLocaleDateString("en-US", {
+			year: "numeric",
+			month: "short",
+	  })
+	: null;
+---
+<article class={cn(
+  // Position
+  //
+  // Layout
+  "p-4",
+  "flex flex-col gap-4",
+  "rounded-md",
+  // Styling
+  "border",
+  // Other
+
+)}}>
+
+    <div class="flex items-center justify-center"
+    style={{ backgroundColor: `var(--color-${post.data.logoBackground})` }}
+    >
+        {logoImage && <Image class="" src={logoImage} alt={post.data.company} />}
+  </div>
+
+  <div class="experience-details col-span-2">
+    <dl class="text-sm flex flex-col gap-4">
+      <div class="info-item">
+        <dt class="font-semibold">Role</dt>
+        <dd class="opacity-70">{post.data.role}</dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Period</dt>
+        <dd class="opacity-70">
+            <time datetime={post.data.periodStart}>{formatedStartDate}</time>
+            {formattedEndDate ? <time datetime={post.data.periodEnd}> - {formattedEndDate}</time> : ' - Present'}
+        </dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Tech</dt>
+        <dd class="opacity-70">
+            {post.data.techStack.join(', ')}
+        </dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Location</dt>
+        <dd class="opacity-70">{post.data.location}</dd>
+      </div>
+
+      <div class="info-item">
+        <dt class="font-semibold">Website</dt>
+        <dd class="opacity-70">
+            <ExternalLink href={`https://${post.data.companyUrl}`}>
+                {post.data.companyUrl}
+            </ExternalLink>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</article>

@@ -1,58 +1,37 @@
 ---
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { SOCIAL_LINKS, type SocialLink } from "@/data/social-links";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { cn } from "@/lib/utils";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
 import ContentWrapper from "../components/ContentWrapper.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t pt-8 mt-20 dark:border-gray-700 flex-shrink-0">
+<footer class="py-4 mt-8">
   <ContentWrapper>
-    <nav>
-      <nav class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-        <a
-          class="text-center text-lg px-4 py-3 border border-gray-400 dark:bg-gray-700 inline-block rounded"
-          href="https://linkedin.com/in/vicainelli"
-          rel="noopener"
-          target="_blank"
-          >LinkedIn</a
-        >
-        <a
-          class="text-center text-lg px-4 py-3 border border-gray-400 dark:bg-gray-700 inline-block rounded"
-          href="https://github.com/vicainelli/"
-          rel="noopener"
-          target="_blank"
-          >GitHub</a
-        >
-        <a
-          class="text-center text-lg px-4 py-3 border border-gray-400 dark:bg-gray-700 inline-block rounded"
-          href="https://www.behance.net/viniciuscainelli"
-          rel="noopener"
-          target="_blank"
-          >Behance</a
-        >
-        <a
-          class="text-center text-lg px-4 py-3 border border-gray-400 dark:bg-gray-700 inline-block rounded"
-          href="https://codepen.io/vicainelli/"
-          rel="noopener"
-          target="_blank"
-          >CodePen</a
-        >
-        <a
-          class="text-center text-lg px-4 py-3 border border-gray-400 dark:bg-gray-700 inline-block rounded"
-          href="https://dribbble.com/vicainelli"
-          rel="noopener"
-          target="_blank"
-          >Dribbble</a
-        >
-        <a
-          class="text-center text-lg px-4 py-3 border border-gray-400 dark:bg-gray-700 inline-block rounded"
-          href="/assets/files/vinicius-cainelli-Resume-2022-Q1-full.pdf"
-          download
-          target="_blank"
-          >Resume</a
-        >
-      </nav>
-    </nav>
-    <div class="mb-4 mt-8">
-      <p>&copy; {currentYear} Vinicius Cainelli</p>
+    <div class="flex flex-col items-center justify-center gap-4">
+        <div>
+            <nav class="flex gap-2 sm:gap-4">
+                {SOCIAL_LINKS.map((link: SocialLink) =>
+                  <a
+                    rel="noopener noreferrer"
+                    class={cn(
+                      // Position
+                      // Layout
+                      // Styling
+                      "lowercase text-sm font-semibold",
+
+                      // Other
+                      "transition-all"
+                    )}
+                    target="_blank"
+                    href={link.url}>{link.name}</a>)}
+            </nav>
+        </div>
+        <div><p class="">&copy; {currentYear} Vinicius Cainelli</p></div>
     </div>
   </ContentWrapper>
 </footer>

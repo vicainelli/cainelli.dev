@@ -1,0 +1,73 @@
+---
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import ArtistCard from "@/components/molecules/ArtistCard.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import { CONCERTS, type Concert } from "@/data/concerts.js";
+import Layout from "@/layouts/Layout.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Concerts" },
+];
+---
+<Layout title="Concerts" description="Concerts I have been to and ones I want to see.">
+    <ContentWrapper>
+
+        <main class="my-20" id="main-content">
+            <Breadcrumbs items={BREADCRUMBS} />
+            <h1>Concerts</h1>
+        <div class="flex flex-col gap-6 mb-8">
+            <p class=" text-balance leading-relaxed">
+                Going to live concerts is definitely one of my top three favorite activities! <br>
+                It's such a cathartic, therapeutic, communal, and beautiful experience. <br>
+                Sometimes, you get lucky and find yourself at shows that have all the perfect elements, an amazing venue, fantastic sound quality, the right moment in the artist's career (which is subjective, of course), a wonderful crowd, and more.
+
+            </p>
+            <p class=" text-balance leading-relaxed">
+
+                I've always wanted a place to keep track of them, to hold onto those memories, as well as to list all the concerts I still hope to attend.
+                So, here we are!
+
+            </p>
+        </div>
+
+        <section aria-labelledby="artist-list-heading">
+            <h2 id="artist-list-heading" class="sr-only">List of all artists</h2>
+            <ul data-testid="artist-list" class="columns-2 gap-4 sm:columns-3 space-y-2" aria-label="List of artists. Concerts I've attended appear first, followed by concerts I hope to attend.">
+                {CONCERTS
+                  .sort((a, b) => {
+                    const aHasAttends = a.attends.length > 0;
+                    const bHasAttends = b.attends.length > 0;
+                    if (aHasAttends && !bHasAttends) return -1;
+                    if (!aHasAttends && bHasAttends) return 1;
+                    return a.artist.localeCompare(b.artist);
+                  })
+                  .map((concert: Concert) => <li>
+                    <ArtistCard concert={concert} />
+                  </li>)}
+            </ul>
+        </section>
+
+        <!-- Legend section for accessibility -->
+        <div class="rounded-lg p-4 mt-8" role="region" aria-labelledby="legend-heading">
+            <h2 id="legend-heading" class="sr-only">Legend</h2>
+            <ul class="space-y-2 text-sm " aria-label="Concert list legend">
+                <li class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded bg-stone-700 " aria-hidden="true"></span>
+                    <span>Concerts I've attended</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded bg-stone-500" aria-hidden="true"></span>
+                    <span>Concerts I want to see</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="font-semibold font-mono border-b" aria-hidden="true">×3</span>
+                    <span>Times I have seen them (when more than once)</span>
+                </li>
+            </ul>
+        </div>
+        </main>
+    </ContentWrapper>
+</Layout>

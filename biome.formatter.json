@@ -1,0 +1,10 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+	"files": {
+		"ignoreUnknown": false
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	}
+}

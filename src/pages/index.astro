@@ -1,52 +1,109 @@
 ---
-import ContentWrapper from "../components/ContentWrapper.astro";
-import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import PostList from "@/components/PostList.astro";
+import Layout from "@/layouts/Layout.astro";
+import { cn } from "@/lib/utils";
+import { getNonDraftPosts } from "@/lib/posts";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const recentPosts = await getNonDraftPosts({ limit: 5 });
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const WORK_EXPERIENCE = [
+	{
+		company: "IKEA",
+		description:
+			"Creating and develping the best and semealess experience on the IKEA Family Rewards program for customers and co-workers ",
+		current: true,
+		url: "/work/ikea",
+	},
+	{
+		company: "JustEat Takeaway",
+		description:
+			"Shipped a Vue design system used by 10+ squads: fast UI, sleek UX, tested, and smoothly released.",
+		current: false,
+		url: "/work/justeat-takeaway",
+	},
+	{
+		company: "VIVO / Telefónica",
+		description:
+			"Built a Vue self-service UI: reusable, tested, and stable, cutting support calls and boosting UX.",
+		current: false,
+		url: "/work/vivo-telefonica",
+	},
+];
 ---
 
-<Layout title="Vinicius Cainelli - User Interface Enginner">
+<Layout title="Vinicius Cainelli - Staff Product Engineer">
   <ContentWrapper>
     <main class="my-20">
-      <h1 class="text-4xl sm:text-6xl font-semibold text-gray-800 dark:text-gray-400">
-        <small class="block text-xl">Hello, 👋</small> Vinicius Cainelli, User Interface
-        Engineer
-      </h1>
-      <section class="mt-12 sm:mt-24">
-        <p class="text-2xl leading-10">
-          I'm a Frontend Developer (and sometimes UI designer) with an insatiable
-          passion for UI, creating and building <strong
-            >tremendous and beautiful</strong
-          > applications that impact people's lives.
-        </p>
+      <section>
+        <div class="">
+            <div data-testid="vinicius-cainelli" class="flex items-center mb-8 gap-4">
+                <div class="rounded-full border-3 w-16 h-16 overflow-hidden">
+                    <a title="" href="/me">
+                        <Image
+                            src="https://avatars.githubusercontent.com/vicainelli"
+                            width="64" height="64"
+                            class="rounded-full" alt="Vinicius Cainelli avatar">
+                    </a>
+                </div>
+                <h1 class="m-0! p-0 leading-none">Vinicius Cainelli</h1>
+            </div>
+
+            <p class="leading-relaxed">
+                I am a software engineer specializing in UI, dedicated to creating impactful and elegant applications that transform lives. <br>
+                I am based in the Netherlands and currently writing code, to help you furnish your home, at <a class="" href="./work/ikea">IKEA</a>.
+            </p>
+        </div>
       </section>
-      <section class="mt-12">
-        <p class="text-xl leading-10">
-          <strong>+10 years of experience</strong> in web development, focused on frontend
-          development in advertising, payments, logistic, telecom, internet industries,
-          and retail.
-        </p>
+
+      <section  class="my-8">
+          <div>
+              <div class="flex justify-between border-b  py-2 mb-4 items-center">
+                  <div><h2 class="text-2xl">Work</h2></div>
+                  <div>
+                      <a class="" href="/work">view all</a>
+                  </div>
+              </div>
+          <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {WORK_EXPERIENCE.map((work) => (
+              <a href={work.url} class={cn(
+                // Position
+                // Layout
+                "p-4 rounded-md",
+
+                // Styling
+                "border  hover:bg-",
+                // Dark mode
+                // " dark:border-stone-500 dark:hover:bg-stone-700",
+
+                // Other
+                "transition-all duration-400 ease-in-out",
+                "group",
+                `${work.current ? 'sm:col-span-2' : ''}`,
+              )}>
+                  <h3 class="font-semibold mb-1 transition-colors ease-out">{work.company}</h3>
+                  <p class=" text-sm">{work.description}</p>
+              </a>
+              ))}
+          </div>
+          </div>
       </section>
-      <section class="mt-12">
-        <p class="text-xl leading-10">
-          I'm currently <strong>helping people</strong> to furnish their houses at
-          <a rel="noopener" target="_blank" href="https://ikea.com">IKEA</a> by creating
-          personalised experiences and building the global rewards program.
-        </p>
-      </section>
-      <section class="mt-12">
-        <ul class="text-xl">
-          <li class="mb-4">
-            💪 Strong knowledge and work experience with HTML, CSS, and Javascript
-          </li>
-          <li class="mb-4">
-            🤘 Knowledge and work experience with VueJS, Sass, PHP, Git, Laravel,
-            and MySQL
-          </li>
-          <li class="mb-4">
-            👌 Knowledge of ReactJS, NodeJS (AdonisJS), AWS, Ubuntu, Serverless
-            and Docker
-          </li>
-        </ul>
-      </section>
+
+      {recentPosts ?? (<section class="my-8">
+          <div>
+              <div class="flex justify-between border-b  py-2 mb-4 items-center">
+                  <div><h2 class="text-2xl">Recent Writing</h2></div>
+                  <div>
+                      <a class="" href="/me/writing">view all</a>
+                  </div>
+              </div>
+              <PostList posts={recentPosts} />
+          </div>
+      </section>)}
+
     </main>
   </ContentWrapper>
 </Layout>

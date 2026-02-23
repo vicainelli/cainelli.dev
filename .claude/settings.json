@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(bun install)",
+      "Bash(bun run test *)",
+      "Bash(bun run db:generate)",
+      "Bash(bun run --filter api db:generate)",
+      "Bash(bunx biome check *)",
+      "Bash(bunx biome format *)",
+      "Bash(git checkout *)",
+      "Bash(git push *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git add *)",
+      "Bash(git log *)",
+      "Bash(git rebase *)",
+      "Bash(gh pr create *)",
+      "Bash(ls *)"
+    ],
+    "deny": [
+      "Bash(curl *)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  },
+  "companyAnnouncements": [
+    "Reminder: Code reviews required for all PRs",
+    "New security policy in effect"
+  ],
+  "includeCoAuthoredBy": false
+}

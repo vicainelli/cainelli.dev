@@ -1,0 +1,57 @@
+---
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import LinksList from "@/components/widgets/LinksList.astro";
+import { SOCIAL_LINKS } from "@/data/social-links";
+import Layout from "@/layouts/Layout.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const CONTACT_LINKS = [
+	{ name: "Email", url: "mailto:vicainelli@gmail.com", slug: "email" },
+	{ name: "Telegram", url: "https://t.me/vicainelli", slug: "telegram" },
+];
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Contact" }];
+---
+
+<Layout title="Vinicius Cainelli - Staff Product Engineer">
+  <ContentWrapper>
+      <main class="mt-20">
+      <Breadcrumbs items={BREADCRUMBS} />
+
+      <h1 class="">Get in Touch</h1>
+      <section class="mt-8">
+        <p class="text-balance">
+          I build websites and care about how they look and work.
+          <br>
+          If you have a project in mind or just want to chat, reach out through any of these channels.
+        </p>
+      </section>
+
+      <!-- email and telegram links -->
+      <section class="mt-8">
+        <h2 class="font-semibold mb-4 uppercase mt-8 text-xl tracking-widest">Direct Contact</h2>
+      <p class="text-balance mb-2 font-semibold">Have something in mind?</p>
+      <p class="text-balance">Email or Telegram are the fastest ways to reach me. I usually respond within a day or so.</p>
+
+      <div class="mt-4">
+        <LinksList links={CONTACT_LINKS} />
+      </div>
+
+      </section>
+
+
+      <!-- social links -->
+      <section class="mt-8">
+        <h2 class="font-semibold mb-4 uppercase mt-8 text-xl tracking-widest">Elsewhere Online</h2>
+        <p class="text-balance mb-2 font-semibold">Want to see what I am working on?</p>
+        <p class="text-balance">I share my projects and thoughts on these platforms.</p>
+
+        <div class="mt-4">
+          <LinksList links={SOCIAL_LINKS} />
+        </div>
+      </section>
+    </main>
+  </ContentWrapper>
+</Layout>

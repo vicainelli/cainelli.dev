@@ -1,0 +1,51 @@
+---
+// biome-ignore lint: import used in template
+import { type CollectionEntry, getCollection, render } from "astro:content";
+// biome-ignore lint: import used in template
+import ContentWrapper from "@/components/ContentWrapper.astro";
+// biome-ignore lint: import used in template
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+// biome-ignore lint: import used in template
+import WorkDetails from "@/components/molecules/WorkDetails.astro";
+// biome-ignore lint: import used in template
+import Layout from "@/layouts/Layout.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+interface Props {
+	post: CollectionEntry<"work">;
+}
+
+export async function getStaticPaths() {
+	const posts = await getCollection("work");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+const { post } = Astro.props;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { Content } = await render(post);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Work", url: "/work" },
+	{ title: post.data.title },
+];
+---
+<Layout title={`Work - ${post.data.title} - Vinicius Cainelli - Staff Product Engineer`} description="Work and projects I've been involved with.">
+    <ContentWrapper>
+        <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <aside class="md:order-2">
+                    <WorkDetails post={post} />
+                </aside>
+                <article class="md:order-1 md:col-span-2 work">
+                    <h1>{post.data.title}</h1>
+                    <Content />
+                </article>
+            </div>
+        </main>
+    </ContentWrapper>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import PostList from "@/components/PostList.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getNonDraftPosts } from "@/lib/posts";
+
+const nonDraftPosts = await getNonDraftPosts();
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Writing" },
+];
+---
+<Layout title="Writing - Vinicius Cainelli - Staff Product Engineer" description="My thoughts, experiences, and stories.">
+    <ContentWrapper>
+
+        <main class="my-20">
+
+            <Breadcrumbs items={BREADCRUMBS} />
+
+            <h1>Writing</h1>
+            <PostList posts={nonDraftPosts} />
+
+
+        </main>
+    </ContentWrapper>
+</Layout>

@@ -1,0 +1,54 @@
+---
+import { getCollection, render} from "astro:content";
+
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const allUses = await getCollection("uses");
+
+// latest post is the last in the list
+const latestUsesPost = allUses.at(-1)
+
+// old posts
+const oldUsesPosts = allUses.slice(0, -1).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const { Content } = await render(latestUsesPost);
+
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Uses" },
+];
+---
+<Layout title="Uses - Vinicius Cainelli - Staff Product Engineer" description="">
+    <ContentWrapper>
+
+        <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+            <h1>Uses</h1>
+
+
+
+            <!-- render the current (most recent) uses -->
+            <article class="uses">
+                <Content />
+            <div class="mt-16">
+                <h2 class="mb-4">Previous edition</h2>
+                <ul>
+                    {oldUsesPosts.map((post) => (<li>
+                        <a href={`/uses/${post.id}`}>{post.id}</a>
+                    </li>))}
+                </ul>
+            </div>
+            </article>
+
+
+
+        </main>
+    </ContentWrapper>
+</Layout>

@@ -1,12 +1,19 @@
 ---
-import Footer from "../components/Footer.astro";
-import '../styles/global.css'
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { ClientRouter } from "astro:transitions";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import Footer from "@/components/Footer.astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import Header from "@/components/Header.astro";
+import "@/styles/global.css";
 
 export interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -14,7 +21,11 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		{description ? (
+  		<meta name="description" content={description} />
+		) : (
 		<meta name="description" content="Frontend Developer And Team Player with an insatiable passion for UI, create and build amazing and beautiful applications that make an impact on people lives.">
+		)}
 		<meta property="og:title" content="Vinicius Cainelli - Frontend Developer And Team Player." />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://cainelli.dev/" />
@@ -26,16 +37,22 @@ const { title } = Astro.props;
 		<meta name="twitter:image" content="https://cainelli.dev/images/twitter-sharing.png" />
 		<meta name="twitter:url" content="https://cainelli.dev/" />
 		<meta name="p:domain_verify" content="429431a878ec3b2373ef8008233704ed" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=VT323&display=swap" rel="stylesheet">
+		<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJXPRd1ic_9pWkVc3Pjw.woff2" crossorigin>
+		<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/ibmplexmono/v15/-F6qfjptAgt5VM-kVkqdyU8n1ioS1V2p_qGjwmK8Y3KfVpGzN0WpXlMw.woff2" crossorigin>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ClientRouter />
 		<script type="application/ld+json">
 			{
 				"@context": "http://schema.org",
 				"@type": "Person",
 				"email": "mailto:contact@cainelli.dev",
 				"image": "https://www.gravatar.com/avatar/ad20ea263b745ae2c34a402655e1e22d?s=400",
-				"jobTitle": "Frontend Developer",
+				"jobTitle": "Software Engineer",
 				"name": "Vinicius Cainelli",
 				"alumniOf": [
 					"Mackenzie Presbiterian University",
@@ -44,9 +61,9 @@ const { title } = Astro.props;
 				"birthPlace": "São Paulo, Brasil",
 				"gender": "male",
 				"nationality": "Brazilian",
-				"telephone": "+55 (11) 982883353",
 				"url": "httpss://cainelli.dev",
 				"sameAs": [
+					"https://bsky.app/profile/vcainelli.bsky.social",
 					"http://www.facebook.com/vicainelli",
 					"http://instagram.com/vicainelli",
 					"https://linkedin.com/in/vicainelli",
@@ -61,12 +78,15 @@ const { title } = Astro.props;
 			}
 		</script>
 	</head>
-	<body class="font-sans bg-white dark:bg-slate-800 dark:text-gray-300 w-full h-full">
-		<div class="min-h-full flex flex-col items-stretch">
-			<div class="flex-grow">
+	<body class="font-mono flex flex-col min-h-screen">
+		<Header />
+
+		<div class="flex-1">
+			<div>
 				<slot />
 			</div>
-			<Footer />
 		</div>
+
+		<Footer />
 	</body>
 </html>

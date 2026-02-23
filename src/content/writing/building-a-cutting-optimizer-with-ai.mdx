@@ -1,0 +1,77 @@
+---
+title: Building a cutting optimizer with AI
+description: How I built a DIY wood cutting planner using AI when I couldn't find the right tool.
+pubDate: 2026-01-12
+author: Vinicius Cainelli
+tags: [diy, woodworking, ai, programming]
+readingTime: 3
+draft: true
+---
+
+# {frontmatter.title}
+
+I love building stuff. Not the "launch a SaaS" kind. The other kind. Hands dirty, sawdust everywhere. A project where the bugs are literally splinters.
+
+So I'm back in woodworking mode, building shelves for the HVAC room. You know, the kind of thing nobody praises you for, but you feel weirdly proud of.
+
+And then came "The Moment." You're staring at a sheet of plywood and suddenly doing finance math in your head. Because that sheet isn't cheap. And the cut plan in your notebook looks like a toddler's Tetris game. One wrong measurement and you're not "iterating", you're just burning money.
+
+## The problem
+
+I had standard plates (2400mm by 1200mm), a list of shelf pieces, and zero desire to waste wood. I needed a tool to tell me how to cut efficiently.
+
+What I found online? Enterprise software with "talk to sales" pricing, ad infested mobile apps, and something that looked like Windows 95.
+
+I'm not paying €200 per month to cut shelves for a room that stores the vacuum cleaner.
+
+## The dev brain kicks in
+
+I could already picture it: a Piece type, a Sheet, a packing algorithm, a little renderer. Suddenly I'm halfway into a weekend project that has nothing to do with shelves.
+
+I've been down this road before. Node.js dependency hell, canvas libraries breaking, you know the vibe. But this time I didn't want to build it "properly." I just wanted the shelves.
+
+## So I used AI. Actually used it.
+
+AI works best when you treat it like a fast junior dev, not a magical oracle. Give clear requirements, review the work, iterate.
+
+I used Claude Code with z.ai's GLM 4.7 model and went super concrete:
+
+1. Here are the plate dimensions
+2. Here are the pieces with width, height, and quantity
+3. Output needs to match real world constraints
+4. Give me a visual plan
+5. Optimize for practical cuts, long straight ones
+
+Because an "optimal" layout requiring a hundred weird cuts isn't optimal. It's punishment.
+
+## Minutes later, I had a tool
+
+Not production ready. No auth, no database, nothing that would survive the public internet. And that's the point.
+
+It was disposable software. A micro tool that lives just long enough to save your Saturday. It took my pieces, did the math, and drew a plan I could actually follow. Waste areas highlighted. Pieces visible. Layout matched reality.
+
+I didn't "learn" bin packing or implement some algorithm from scratch. But the result was better than what I would've shipped in a rushed afternoon.
+
+The iteration loop was tight: generate, stare, complain, regenerate.
+
+"Too many weird cuts."
+"Optimize for long straight cuts."
+"Account for blade width."
+
+Same as product engineering, just without the sprint planning meeting.
+
+## This is just internal tooling for your life
+
+You already hack scripts to clean up datasets or write dashboards to keep systems honest. Now you can do the same for physical world problems. And the threshold is lower than ever.
+
+I'm not saying you should never write algorithms yourself. But if the goal is the shelf, not the solver...
+
+Use the solver. Delete it later. Move on.
+
+This is the sustainable tech angle nobody talks about. Not "AI will save the planet", but less waste, fewer re cuts, fewer extra trips. Small efficiency wins. The Dutch way. Practical.
+
+## What's your version?
+
+What annoying problem are you still doing manually? A visa spreadsheet? An accessibility checker? A solar schedule optimizer?
+
+I'm curious what "micro tools" people are building now that we can spin them up after coffee. And if you've got a better cutting optimizer idea, I'll take it. I've still got more shelves to build.

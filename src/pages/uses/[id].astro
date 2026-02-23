@@ -1,0 +1,42 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import ExternalLink from "@/components/atoms/ExternalLink.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import Layout from "@/layouts/Layout.astro";
+
+interface Props {
+	post: CollectionEntry<"uses">;
+}
+
+export async function getStaticPaths() {
+	const posts = await getCollection("uses");
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Uses", url: "/uses" },
+	{ title: post.id },
+];
+---
+<Layout title="Uses - Vinicius Cainelli - Staff Product Engineer" description="">
+    <ContentWrapper>
+
+        <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+            <h1>Uses </h1>
+
+            <article class="uses">
+           <Content components={{ a: ExternalLink}} />
+            </article>
+        </main>
+    </ContentWrapper>
+</Layout>

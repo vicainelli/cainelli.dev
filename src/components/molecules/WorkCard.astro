@@ -1,0 +1,67 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { Image } from "astro:assets";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { cn } from "@/lib/utils";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+interface Props {
+	data: {
+		id: string | undefined;
+		title: string;
+		description?: string;
+		url?: string;
+		coverImage?: string;
+	};
+}
+
+const { data } = Astro.props;
+
+// Dynamically import all images from the work folder
+const images = import.meta.glob("/src/assets/images/work/*", { eager: true });
+
+// Get the image for this work item
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+let coverImageSrc = null;
+if (data.coverImage) {
+	const imagePath = `/src/assets/images/work/${data.coverImage}`;
+	coverImageSrc = images[imagePath]?.default;
+}
+---
+
+<a class="hover:shadow-xl block transition-shadow duration-500 h-full" href={`/work/${data.id}`}>
+<div class="p border rounded-sm h-full flex flex-col">
+    <div class={cn(
+      // Position
+      "relative",
+      // Layout
+      "w-full p-2 pb-0",
+      "overflow-clip grow flex h-72.5 max-h-72.5",
+      // Styling
+      "border-b",
+      // "border-b border-gray-200 bg-linear-to-b from-electric-violet-50/20 to-electric-violet-50/40",
+      // "dark:border-gray-500/20 dark:from-transparent dark:to-electric-violet-900/20",
+      // Other
+      "",
+    )}>
+        {coverImageSrc &&
+        <Image class={cn(
+          // Position
+          "relative z-10",
+          // Layout
+          "sm:w-auto",
+          "max-w-full object-top-left object-cover grow shrink-0 rounded-t-md",
+          // Styling
+          "shadow-lg border border-b-0",
+          "dark:shadow-[0_4px_8px_rgba(0,0,0,0.5)]",
+          // Other
+        )}
+        src={coverImageSrc} alt="rewards page" width="2715" height="1761" />
+        }
+    </div>
+    <div class="px-2 py-4 flex-1">
+        <h3>{data.title}</h3>
+        {data.description && <p>{data.description}</p>}
+    </div>
+</div>
+</a>
