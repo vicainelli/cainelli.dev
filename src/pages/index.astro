@@ -92,7 +92,7 @@ const WORK_EXPERIENCE = [
           </div>
       </section>
 
-      <section class="my-8">
+      {recentPosts ?? (<section class="my-8">
           <div>
               <div class="flex justify-between border-b  py-2 mb-4 items-center">
                   <div><h2 class="text-2xl">Recent Writing</h2></div>
@@ -102,7 +102,7 @@ const WORK_EXPERIENCE = [
               </div>
               <PostList posts={recentPosts} />
           </div>
-      </section>
+      </section>)}
 
     </main>
   </ContentWrapper>
