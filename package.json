@@ -14,14 +14,14 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.13",
-		"@biomejs/biome": "^2.4.4",
-		"@tailwindcss/vite": "^4.2.0",
-		"astro": "^5.17.3",
+		"@biomejs/biome": "^2.4.6",
+		"@tailwindcss/vite": "^4.2.1",
+		"astro": "^5.18.0",
 		"clsx": "^2.1.1",
-		"lightningcss": "^1.31.1",
-		"motion": "^12.34.3",
+		"lightningcss": "^1.32.0",
+		"motion": "^12.35.2",
 		"tailwind-merge": "^3.5.0",
-		"tailwindcss": "^4.2.0",
+		"tailwindcss": "^4.2.1",
 		"zod": "^4.3.6"
 	}
 }
