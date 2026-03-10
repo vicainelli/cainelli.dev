@@ -31,118 +31,116 @@
 }
 
 :root {
-	color-scheme: light;
-	--app-bg: #f5f5f4;
-	--app-surface: #ffffff;
-	--app-text: #1c1917;
-	--app-muted: #57534e;
-	--app-border: #d6d3d1;
-	--app-link-hover: #0f172a;
-	--concert-attended: #44403c;
-	--concert-wishlist: #78716c;
+    color-scheme: light;
+    --app-bg: #f5f5f4;
+    --app-surface: #ffffff;
+    --app-text: #1c1917;
+    --app-muted: #57534e;
+    --app-border: #d6d3d1;
+    --app-link-hover: #0f172a;
+    --concert-attended: #44403c;
+    --concert-wishlist: #78716c;
 }
 
 :root[data-theme="dark"] {
-	color-scheme: dark;
-	--app-bg: #282c34;
-	--app-surface: #2f3440;
-	--app-text: #e6e9ef;
-	--app-muted: #b3bac7;
-	--app-border: #3a3f4b;
-	--app-link-hover: #e6e9ef;
-	--concert-attended: #e6e9ef;
-	--concert-wishlist: #b3bac7;
+    color-scheme: dark;
+    --app-bg: #282c34;
+    --app-surface: #2f3440;
+    --app-text: #e6e9ef;
+    --app-muted: #b3bac7;
+    --app-border: #3a3f4b;
+    --app-link-hover: #e6e9ef;
+    --concert-attended: #e6e9ef;
+    --concert-wishlist: #b3bac7;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) {
-		color-scheme: dark;
-		--app-bg: #282c34;
-		--app-surface: #2f3440;
-		--app-text: #e6e9ef;
-		--app-muted: #b3bac7;
-		--app-border: #3a3f4b;
-		--app-link-hover: #e6e9ef;
-		--concert-attended: #e6e9ef;
-		--concert-wishlist: #b3bac7;
-	}
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --app-bg: #282c34;
+        --app-surface: #2f3440;
+        --app-text: #e6e9ef;
+        --app-muted: #b3bac7;
+        --app-border: #3a3f4b;
+        --app-link-hover: #e6e9ef;
+        --concert-attended: #e6e9ef;
+        --concert-wishlist: #b3bac7;
+    }
 }
 
 html,
 body {
-	background-color: var(--app-bg);
-	color: var(--app-text);
+    background-color: var(--app-bg);
+    color: var(--app-text);
 }
 
 *,
 *::before,
 *::after {
-	border-color: var(--app-border);
+    border-color: var(--app-border);
 }
 
 a {
-	color: inherit;
-	transition: color 180ms ease;
+    color: inherit;
+    transition: color 180ms ease;
 }
 
 a:hover {
-	color: inherit;
+    color: inherit;
 }
 
 small {
-	color: var(--app-muted);
+    color: var(--app-muted);
 }
 
 .theme-switcher {
-	border: 1px solid var(--app-border);
-	background-color: var(--app-surface);
-	color: var(--app-text);
-	border-radius: 9999px;
-	padding: 0.4rem;
-	width: 2rem;
-	height: 2rem;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	line-height: 0;
-	transition: background-color 180ms ease;
+    border: 0;
+    background-color: transparent;
+    color: var(--app-text);
+    padding: 0.15rem 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 180ms ease;
 }
 
 .theme-switcher:hover {
-	background-color: var(--app-bg);
+    opacity: 1;
 }
 
 .theme-switcher [data-theme-icon] {
-	display: none;
+    display: none;
 }
 
 .theme-switcher[data-theme-current="light"] [data-theme-icon="light"] {
-	display: block;
+    display: block;
 }
 
 .theme-switcher[data-theme-current="dark"] [data-theme-icon="dark"] {
-	display: block;
+    display: block;
 }
 
 .theme-switcher:focus-visible {
-	outline: 2px solid var(--app-text);
-	outline-offset: 2px;
+    outline: 2px solid var(--app-text);
+    outline-offset: 2px;
 }
 
 .concert-attended {
-	color: var(--concert-attended);
+    color: var(--concert-attended);
 }
 
 .concert-wishlist {
-	color: var(--concert-wishlist);
+    color: var(--concert-wishlist);
 }
 
 .concert-attended-dot {
-	background-color: var(--concert-attended);
+    background-color: var(--concert-attended);
 }
 
 .concert-wishlist-dot {
-	background-color: var(--concert-wishlist);
+    background-color: var(--concert-wishlist);
 }
 
 h1 {
