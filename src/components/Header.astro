@@ -1,4 +1,5 @@
 ---
+import { Mailbox } from '@lucide/astro';
 // biome-ignore lint/correctness/noUnusedImports: import used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
 
@@ -20,7 +21,7 @@ const isHomePage: boolean = Astro.url.pathname === "/";
         )}
       </div>
       <div>
-        <a class="" href="/contact">Let's talk →</a>
+          <a class="flex gap-3" href="/contact"><span>Let's talk</span> <Mailbox /></a>
       </div>
     </div>
   </ContentWrapper>
