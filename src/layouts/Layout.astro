@@ -21,6 +21,16 @@ const { title, description } = Astro.props;
 <html class="w-full h-full" lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<script is:inline>
+			(() => {
+				try {
+					const savedTheme = localStorage.getItem("theme-preference");
+					if (savedTheme === "light" || savedTheme === "dark") {
+						document.documentElement.dataset.theme = savedTheme;
+					}
+				} catch (_error) {}
+			})();
+		</script>
 		<meta name="viewport" content="width=device-width" />
 		{description ? (
   		<meta name="description" content={description} />

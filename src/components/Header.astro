@@ -1,5 +1,5 @@
 ---
-import { Mailbox } from '@lucide/astro';
+import { Mailbox, Moon, Sun } from "@lucide/astro";
 // biome-ignore lint/correctness/noUnusedImports: import used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
 
@@ -20,9 +20,107 @@ const isHomePage: boolean = Astro.url.pathname === "/";
           <span class="text-xl font-bold">Vini 👋</span>
         )}
       </div>
-      <div>
-          <a class="flex gap-3" href="/contact"><span>Let's talk</span> <Mailbox /></a>
+      <div class="flex items-center gap-3">
+          <button class="theme-switcher" data-theme-switcher type="button">
+            <span class="sr-only">Toggle color mode</span>
+            <Sun data-theme-icon="light" size={16} aria-hidden="true" />
+            <Moon data-theme-icon="dark" size={16} aria-hidden="true" />
+          </button>
+          <a class="flex gap-3 items-center" href="/contact"><span>Let's talk</span> <Mailbox /></a>
       </div>
     </div>
   </ContentWrapper>
 </header>
+
+<script is:inline>
+	const THEME_STORAGE_KEY = "theme-preference";
+	const THEME_QUERY = window.matchMedia("(prefers-color-scheme: dark)");
+
+	const getSavedTheme = () => {
+		try {
+			const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+			return savedTheme === "light" || savedTheme === "dark" ? savedTheme : null;
+		} catch (_error) {
+			return null;
+		}
+	};
+
+	const applySavedTheme = () => {
+		const savedTheme = getSavedTheme();
+		if (savedTheme) {
+			document.documentElement.dataset.theme = savedTheme;
+			return;
+		}
+		document.documentElement.removeAttribute("data-theme");
+	};
+
+	const getResolvedTheme = () => {
+		const explicitTheme = document.documentElement.dataset.theme;
+		if (explicitTheme === "light" || explicitTheme === "dark") {
+			return explicitTheme;
+		}
+		return THEME_QUERY.matches ? "dark" : "light";
+	};
+
+	const setThemeSwitcherState = () => {
+		const switcher = document.querySelector("[data-theme-switcher]");
+		if (!(switcher instanceof HTMLButtonElement)) {
+			return;
+		}
+
+		const resolvedTheme = getResolvedTheme();
+		switcher.setAttribute("data-theme-current", resolvedTheme);
+		switcher.setAttribute("aria-pressed", String(resolvedTheme === "dark"));
+		switcher.setAttribute(
+			"aria-label",
+			resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+		);
+		switcher.setAttribute("title", "Toggle color mode");
+	};
+
+	const setupThemeSwitcher = () => {
+		const switcher = document.querySelector("[data-theme-switcher]");
+		if (!(switcher instanceof HTMLButtonElement)) {
+			return;
+		}
+
+		if (switcher.dataset.ready === "true") {
+			setThemeSwitcherState();
+			return;
+		}
+
+		switcher.dataset.ready = "true";
+		switcher.addEventListener("click", () => {
+			const nextTheme = getResolvedTheme() === "dark" ? "light" : "dark";
+			document.documentElement.dataset.theme = nextTheme;
+			try {
+				localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+			} catch (_error) {}
+
+			setThemeSwitcherState();
+		});
+
+		setThemeSwitcherState();
+	};
+
+	applySavedTheme();
+	setupThemeSwitcher();
+
+	if (document.documentElement.dataset.themeListenersReady !== "true") {
+		document.documentElement.dataset.themeListenersReady = "true";
+
+		document.addEventListener("astro:page-load", () => {
+			applySavedTheme();
+			setupThemeSwitcher();
+		});
+
+		THEME_QUERY.addEventListener("change", () => {
+			if (getSavedTheme() !== null) {
+				return;
+			}
+
+			applySavedTheme();
+			setThemeSwitcherState();
+		});
+	}
+</script>
