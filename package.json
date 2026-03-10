@@ -13,10 +13,10 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/mdx": "^5.0.0",
 		"@biomejs/biome": "^2.4.6",
 		"@tailwindcss/vite": "^4.2.1",
-		"astro": "^5.18.0",
+		"astro": "^6.0.2",
 		"clsx": "^2.1.1",
 		"lightningcss": "^1.32.0",
 		"motion": "^12.35.2",
