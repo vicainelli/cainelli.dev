@@ -37,6 +37,7 @@
     --app-text: #1c1917;
     --app-muted: #57534e;
     --app-border: #d6d3d1;
+    --app-link-border: #000000;
     --app-link-hover: #0f172a;
     --concert-attended: #44403c;
     --concert-wishlist: #78716c;
@@ -49,6 +50,7 @@
     --app-text: #e6e9ef;
     --app-muted: #b3bac7;
     --app-border: #3a3f4b;
+    --app-link-border: #ffffff;
     --app-link-hover: #e6e9ef;
     --concert-attended: #e6e9ef;
     --concert-wishlist: #b3bac7;
@@ -62,6 +64,7 @@
         --app-text: #e6e9ef;
         --app-muted: #b3bac7;
         --app-border: #3a3f4b;
+        --app-link-border: #ffffff;
         --app-link-hover: #e6e9ef;
         --concert-attended: #e6e9ef;
         --concert-wishlist: #b3bac7;
@@ -87,6 +90,12 @@ a {
 
 a:hover {
     color: inherit;
+}
+
+:where(article, p, blockquote) a:not(.block) {
+    border-bottom: 1px solid var(--app-link-border);
+    text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease;
 }
 
 small {
@@ -156,7 +165,7 @@ p {
 }
 
 a.link {
-    @apply border-b hover:border-b font-semibold;
+    @apply font-semibold;
 }
 
 pre {
