@@ -6,10 +6,25 @@ import type { z as zod } from "zod";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const CollectionWorkSchema = z.object({
+const BaseContentFields = {
 	title: z.string(),
 	description: z.string().optional(),
 	pubDate: z.coerce.date(),
+};
+
+const AuthorContentFields = {
+	author: z.string().optional(),
+	updatedDate: z.date().optional(),
+};
+
+const CoverContentFields = {
+	readingTime: z.number().optional(),
+	cover: z.string().optional(),
+	coverAlt: z.string().optional(),
+};
+
+const CollectionWorkSchema = z.object({
+	...BaseContentFields,
 	draft: z.boolean().default(true),
 	tags: z.array(z.string()).optional(),
 	role: z.string().optional(),
@@ -38,16 +53,11 @@ const work = defineCollection({
 });
 
 const CollectionWritingSchema = z.object({
-	title: z.string(),
-	description: z.string().optional(),
-	pubDate: z.coerce.date(),
+	...BaseContentFields,
 	draft: z.boolean().default(false),
 	tags: z.array(z.string()).optional(),
-	author: z.string().optional(),
-	updatedDate: z.date().optional(),
-	readingTime: z.number().optional(),
-	cover: z.string().optional(),
-	coverAlt: z.string().optional(),
+	...AuthorContentFields,
+	...CoverContentFields,
 });
 
 export type CollectionWritingType = zod.infer<typeof CollectionWritingSchema>;
@@ -60,10 +70,18 @@ const writing = defineCollection({
 	schema: CollectionWritingSchema,
 });
 
+const CollectionBuildingInPublicSchema = CollectionWritingSchema;
+
+const buildingInPublic = defineCollection({
+	loader: glob({
+		pattern: "**/*.mdx",
+		base: path.join(__dirname, "content", "building-in-public"),
+	}),
+	schema: CollectionBuildingInPublicSchema,
+});
+
 const CollectionTilSchema = z.object({
-	title: z.string(),
-	description: z.string().optional(),
-	pubDate: z.coerce.date(),
+	...BaseContentFields,
 	draft: z.boolean().default(true),
 	author: z.string().optional(),
 	tags: z.array(z.string()).optional(),
@@ -85,9 +103,7 @@ const til = defineCollection({
 
 // uses collection - similar to writing/til
 const CollectionUsesSchema = z.object({
-	title: z.string(),
-	description: z.string().optional(),
-	pubDate: z.coerce.date(),
+	...BaseContentFields,
 	draft: z.boolean().default(true),
 	author: z.string().optional(),
 });
@@ -107,4 +123,5 @@ export const collections = {
 	uses,
 	work,
 	writing,
+	buildingInPublic,
 };

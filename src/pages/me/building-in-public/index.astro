@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import PostList from "@/components/PostList.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const allPosts = await getCollection("buildingInPublic");
+const nonDraftPosts = allPosts
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Building in Public" },
+];
+---
+<Layout
+	title="Building in Public - Vinicius Cainelli - Staff Product Engineer"
+	description="Notes and lessons from building projects in public."
+>
+	<ContentWrapper>
+		<main class="my-20">
+			<Breadcrumbs items={BREADCRUMBS} />
+
+			<h1>Building in Public</h1>
+			<PostList
+				posts={nonDraftPosts as CollectionEntry<"writing">[]}
+				basePath="/me/building-in-public"
+				emptyMessage="No building in public posts found yet."
+			/>
+		</main>
+	</ContentWrapper>
+</Layout>

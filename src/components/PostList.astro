@@ -4,21 +4,27 @@ import type { CollectionEntry } from "astro:content";
 // biome-ignore lint/correctness/noUnusedVariables: used by Astro's type system
 interface Props {
 	posts: CollectionEntry<"writing">[];
+	basePath?: string;
+	emptyMessage?: string;
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const { posts } = Astro.props;
+const {
+	posts,
+	basePath = "/me/writing",
+	emptyMessage = "No posts found yet.",
+} = Astro.props;
 ---
 
 {posts.length === 0 ? (
-	<p>No writing posts found yet.</p>
+	<p>{emptyMessage}</p>
 ) : (
 	<ul>
 		{posts.map((post) => (
 			<li>
 				<a
 					class="hover:shadow group transition-all block p-4 -mx-4 my-2 rounded-md"
-					href={`/me/writing/${post.id}`}
+					href={`${basePath}/${post.id}`}
 				>
 					<div class="flex justify-between items-center">
 						<div class=" transition-colors ease-out">{post.data.title}</div>
