@@ -1,0 +1,15 @@
+---
+title: Fallow Quickstart for Repo Cleanup
+description: I tried Fallow's quickstart and got useful dead code signals in minutes.
+pubDate: 2026-04-30
+author: Vinicius Cainelli
+tags: [fallow, tooling, code-quality]
+category: other
+draft: false
+---
+
+I tried the [Fallow quickstart](https://docs.fallow.tools/quickstart) today, and the zero-config flow is great. You can run `npx fallow` from the project root and get useful output right away.
+
+I ran `npx fallow dead-code` on this repo and it immediately flagged 3 unused files, 1 unused export, and 2 unused type exports. It also found 2 dependencies we do not import (`lightningcss`, `motion`) and 2 packages imported but not listed (`axios`, `cheerio`).
+
+If you want a fast cleanup pass before deeper refactors, this is a solid first command.
