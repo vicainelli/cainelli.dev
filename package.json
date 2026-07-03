@@ -24,5 +24,8 @@
 		"tailwind-merge": "^3.5.0",
 		"tailwindcss": "^4.2.4",
 		"zod": "^4.4.1"
+	},
+	"devDependencies": {
+		"@types/node": "^26.1.0"
 	}
 }
