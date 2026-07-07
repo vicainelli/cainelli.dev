@@ -58,6 +58,12 @@ export const CONCERTS: Concert[] = [
 				country: "The Netherlands",
 				notes:
 					"Was nice to see a brazilian band where I'm living now, I can't remember the last time I saw them live.",
+      },
+      {
+				date: "2026-04-19",
+				venue: "Cine Joia",
+				city: "São Paulo",
+				country: "Brazil",
 			},
 		],
 	},
