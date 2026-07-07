@@ -4,34 +4,29 @@ import PostList from "@/components/PostList.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/lib/utils";
 import { getNonDraftPosts } from "@/lib/posts";
+import { getCollection } from "astro:content";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const recentPosts = await getNonDraftPosts({ limit: 5 });
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const WORK_EXPERIENCE = [
-	{
-		company: "IKEA",
-		description:
-			"Building the IKEA Family rewards experience for customers and co-workers across multiple markets.",
-		current: true,
-		url: "/work/ikea",
-	},
-	{
-		company: "JustEat Takeaway",
-		description:
-			"Helped build a Vue design system used by 10+ squads so teams could ship faster with consistent UI.",
-		current: false,
-		url: "/work/justeat-takeaway",
-	},
-	{
-		company: "VIVO / Telefónica",
-		description:
-			"Rebuilt the self-service app in Vue with reusable components and solid tests, reducing support load.",
-		current: false,
-		url: "/work/vivo-telefonica",
-	},
-];
+const workPosts = await getCollection("work", (post) => !post.data.draft);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const WORK_EXPERIENCE = workPosts
+	.sort((a, b) => {
+		if (a.data.current && !b.data.current) return -1;
+		if (!a.data.current && b.data.current) return 1;
+		return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+	})
+	.slice(0, 3)
+	.map((post) => ({
+		company: post.data.title,
+		description: post.data.description,
+		current: post.data.current,
+		url: `/work/${post.id}`,
+		coverImage: post.data.coverImage,
+	}));
 ---
 
 <Layout title="Vinicius Cainelli - Staff Product Engineer">
@@ -58,50 +53,84 @@ const WORK_EXPERIENCE = [
         </div>
       </section>
 
-      <section  class="my-8">
+      <section class="my-12">
           <div>
-              <div class="flex justify-between border-b  py-2 mb-4 items-center">
+              <div class="flex justify-between border-b py-2 mb-6 items-center">
                   <div><h2 class="text-2xl">Work</h2></div>
                   <div>
-                      <a class="" href="/work">view all</a>
+                      <a class="text-sm font-semibold" href="/work">view all</a>
                   </div>
               </div>
-          <div class="my-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="my-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {WORK_EXPERIENCE.map((work) => (
               <a href={work.url} class={cn(
-                // Position
-                // Layout
-                "p-4 rounded-md",
-
-                // Styling
-                "border  hover:bg-",
-                // Dark mode
-                // " dark:border-stone-500 dark:hover:bg-stone-700",
-
-                // Other
+                "block rounded-md border overflow-hidden",
                 "transition-all duration-400 ease-in-out",
                 "group",
-                `${work.current ? 'sm:col-span-2' : ''}`,
+                "hover:shadow-xl",
+                work.current ? 'sm:col-span-2 accent-border' : '',
               )}>
-                  <h3 class="font-semibold mb-1 transition-colors ease-out">{work.company}</h3>
-                  <p class=" text-sm">{work.description}</p>
+                  <!-- {work.coverImage && (
+                      <div class="w-full h-48 overflow-hidden border-b">
+                          <img
+                              src={`/assets/images/work/${work.coverImage}`}
+                              alt={`${work.company} cover`}
+                              class="w-full h-full object-cover object-top transition-transform duration-400 group-hover:scale-105"
+                          />
+                      </div>
+                  )} -->
+                  <div class="p-4">
+                      <h3 class="font-semibold mb-1">{work.company}</h3>
+                      <p class="text-sm text-muted">{work.description}</p>
+                  </div>
               </a>
               ))}
           </div>
           </div>
       </section>
 
-      {recentPosts ?? (<section class="my-8">
+      {recentPosts && recentPosts.length > 0 && (<section class="my-12">
           <div>
-              <div class="flex justify-between border-b  py-2 mb-4 items-center">
+              <div class="flex justify-between border-b py-2 mb-6 items-center">
                   <div><h2 class="text-2xl">Recent Writing</h2></div>
                   <div>
-                      <a class="" href="/me/writing">view all</a>
+                      <a class="text-sm font-semibold" href="/me/writing">view all</a>
                   </div>
               </div>
               <PostList posts={recentPosts} />
           </div>
       </section>)}
+
+      <section class="my-12">
+          <div>
+              <div class="flex justify-between border-b py-2 mb-6 items-center">
+                  <div><h2 class="text-2xl">More from me</h2></div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <a href="/me/concerts" class="block p-4 rounded-md border hover:shadow-lg transition-all duration-300">
+                      <h3 class="font-semibold mb-1">Concerts</h3>
+                      <p class="text-sm text-muted">Shows I've been to and artists I still want to see.</p>
+                  </a>
+                  <a href="/me/til" class="block p-4 rounded-md border hover:shadow-lg transition-all duration-300">
+                      <h3 class="font-semibold mb-1">TIL</h3>
+                      <p class="text-sm text-muted">Small things I learned recently, usually practical.</p>
+                  </a>
+                  <a href="/uses" class="block p-4 rounded-md border hover:shadow-lg transition-all duration-300">
+                      <h3 class="font-semibold mb-1">Uses</h3>
+                      <p class="text-sm text-muted">The tools and setup I use for work and projects.</p>
+                  </a>
+              </div>
+          </div>
+      </section>
+
+      <section class="my-16 py-8 border-t">
+          <div class="text-center">
+              <p class="text-lg mb-4">Want to work together?</p>
+              <a href="/contact" class="inline-block px-6 py-3 rounded-md border-2 border-accent font-semibold hover:bg-accent hover:text-accent-text transition-all duration-300">
+                  Let's talk
+              </a>
+          </div>
+      </section>
 
     </main>
   </ContentWrapper>

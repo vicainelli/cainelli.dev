@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-03-06T00:00:00Z",
+  "title": "Design System: cainelli.dev",
+  "extensions": {
+    "colorMeta": {
+      "warm-stone-bg": {
+        "role": "neutral",
+        "displayName": "Warm Stone Background",
+        "canonical": "#f5f5f4",
+        "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#f5f5f4"]
+      },
+      "warm-stone-text": {
+        "role": "primary",
+        "displayName": "Warm Stone Text",
+        "canonical": "#1c1917",
+        "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#f5f5f4"]
+      },
+      "warm-stone-muted": {
+        "role": "neutral",
+        "displayName": "Warm Stone Muted",
+        "canonical": "#57534e",
+        "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#f5f5f4"]
+      },
+      "warm-stone-border": {
+        "role": "neutral",
+        "displayName": "Warm Stone Border",
+        "canonical": "#d6d3d1",
+        "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#f5f5f4"]
+      },
+      "link-border": {
+        "role": "accent",
+        "displayName": "Link Border",
+        "canonical": "#000000",
+        "tonalRamp": ["#000000", "#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1"]
+      },
+      "accent": {
+        "role": "accent",
+        "displayName": "Amber Terminal",
+        "canonical": "#ffb000",
+        "tonalRamp": ["#7a5500", "#996b00", "#b88100", "#ffb000", "#ffc233", "#ffd466", "#ffe699", "#fff5cc"]
+      }
+    },
+    "typographyMeta": {
+      "mono": {
+        "displayName": "Monospace Body",
+        "purpose": "All body text, captions, metadata. The system's primary voice."
+      },
+      "heading-1": {
+        "displayName": "Page Title",
+        "purpose": "Main page headings. Responsive scale from 30px to 48px."
+      },
+      "heading-2": {
+        "displayName": "Section Heading",
+        "purpose": "Section headings. Always uppercase — the system's visual rhythm."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-hover",
+        "value": "0 20px 25px -5px rgba(0,0,0,0.1)",
+        "purpose": "Hover feedback on interactive cards. Large, diffuse shadow for clear interaction signal."
+      },
+      {
+        "name": "image-shadow",
+        "value": "0 10px 15px -3px rgba(0,0,0,0.1)",
+        "purpose": "Work card cover images. Lifts visual content from the surface."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-card-hover",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Card hover shadow transition. 400ms duration for considered, not snappy, feedback."
+      },
+      {
+        "name": "ease-link",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Link color and border transitions. 180ms for responsive but not jarring."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Bordered card surface for content grouping. Flat at rest, shadow on hover.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Card Title</h3><p class=\"ds-card-text\">Card content goes here with a brief description.</p></div>",
+      "css": ".ds-card { background: var(--colors-warm-stone-surface, #ffffff); color: var(--colors-warm-stone-text, #1c1917); border: 1px solid var(--colors-warm-stone-border, #d6d3d1); border-radius: 6px; padding: 16px; transition: box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .ds-card-title { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 1rem; font-weight: 600; margin: 0 0 8px 0; } .ds-card-text { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 0.875rem; line-height: 1.5; margin: 0; color: var(--colors-warm-stone-muted, #57534e); }"
+    },
+    {
+      "name": "Inline Link",
+      "kind": "button",
+      "refersTo": "inline-link",
+      "description": "Text link with bottom border. Used within content, not for navigation.",
+      "html": "<a href=\"#\" class=\"ds-inline-link\">Example link</a>",
+      "css": ".ds-inline-link { color: var(--colors-warm-stone-text, #1c1917); text-decoration: none; border-bottom: 1px solid var(--colors-link-border, #000000); transition: border-color 180ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-inline-link:hover { border-bottom-color: var(--colors-warm-stone-text, #1c1917); }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "heading-2",
+      "description": "Uppercase section heading. The system's visual rhythm.",
+      "html": "<h2 class=\"ds-section-heading\">Section Title</h2>",
+      "css": ".ds-section-heading { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 1.5rem; font-weight: 600; line-height: 1.3; text-transform: uppercase; margin: 0 0 16px 0; color: var(--colors-warm-stone-text, #1c1917); }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Work portfolio card with image and content. Tighter radius than standard cards.",
+      "html": "<a href=\"#\" class=\"ds-work-card-link\"><div class=\"ds-work-card\"><div class=\"ds-work-card-image\"><img src=\"\" alt=\"\" /></div><div class=\"ds-work-card-content\"><h3>Project Title</h3><p>Project description goes here.</p></div></div></a>",
+      "css": ".ds-work-card-link { display: block; text-decoration: none; color: inherit; transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-work-card-link:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .ds-work-card { border: 1px solid var(--colors-warm-stone-border, #d6d3d1); border-radius: 2px; height: 100%; display: flex; flex-direction: column; } .ds-work-card-image { position: relative; width: 100%; padding: 8px 8px 0 8px; overflow: hidden; display: flex; height: 290px; max-height: 290px; border-bottom: 1px solid var(--colors-warm-stone-border, #d6d3d1); } .ds-work-card-image img { position: relative; z-index: 10; max-width: 100%; object-fit: cover; object-position: top left; flex-grow: 1; flex-shrink: 0; border-radius: 6px 6px 0 0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border: 1px solid var(--colors-warm-stone-border, #d6d3d1); border-bottom: none; } .ds-work-card-content { padding: 8px 16px 16px 16px; flex: 1; } .ds-work-card-content h3 { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 1rem; font-weight: 600; margin: 0 0 8px 0; } .ds-work-card-content p { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 0.875rem; line-height: 1.5; margin: 0; color: var(--colors-warm-stone-muted, #57534e); }"
+    },
+    {
+      "name": "Current Job Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Featured work card for current role. Amber accent border, spans full width on desktop.",
+      "html": "<a href=\"#\" class=\"ds-current-card-link\"><div class=\"ds-current-card\"><div class=\"ds-current-card-image\"><img src=\"\" alt=\"\" /></div><div class=\"ds-current-card-content\"><h3>Current Role</h3><p>Description of current work and responsibilities.</p></div></div></a>",
+      "css": ".ds-current-card-link { display: block; text-decoration: none; color: inherit; transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1); grid-column: span 2; } .ds-current-card-link:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); } .ds-current-card { border: 2px solid var(--colors-accent, #ffb000); border-radius: 6px; height: 100%; display: flex; flex-direction: column; overflow: hidden; } .ds-current-card-image { width: 100%; height: 192px; overflow: hidden; border-bottom: 1px solid var(--colors-warm-stone-border, #d6d3d1); } .ds-current-card-image img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-current-card-link:hover .ds-current-card-image img { transform: scale(1.05); } .ds-current-card-content { padding: 16px; } .ds-current-card-content h3 { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 1rem; font-weight: 600; margin: 0 0 8px 0; } .ds-current-card-content p { font-family: IBM Plex Mono, Courier New, Courier, monospace; font-size: 0.875rem; line-height: 1.5; margin: 0; color: var(--colors-warm-stone-muted, #57534e); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Developer's Notebook",
+    "overview": "This is a monospace-first design system for a personal portfolio and writing surface. The aesthetic is honest, technical, and clear — a developer's notebook rendered as a website. IBM Plex Mono carries the entire system, from headings to body text, creating a unified technical character that reads as confident rather than constrained.\n\nThe system rejects decoration for its own sake. Every element earns its place through function or clarity. Spacing is generous, hierarchy is explicit, and the warm stone neutrals (not cold grays, not cream) ground the interface in something approachable. This is not a terminal cosplay — it's a crafted object that happens to speak the language of code.",
+    "keyCharacteristics": [
+      "Monospace as identity, not limitation",
+      "Warm stone neutrals over cold grays or saturated backgrounds",
+      "Borders over shadows for surface separation",
+      "Explicit typographic hierarchy with uppercase H2s",
+      "Content max-width 768px for focused reading",
+      "Light/dark theme support with system preference detection"
+    ],
+    "rules": [
+      {
+        "name": "The Warmth Rule",
+        "body": "The light theme background is warm-stone (#f5f5f4), never cool gray, never cream, never saturated beige. The warmth is subtle but non-negotiable — it's what makes the site feel approachable rather than clinical.",
+        "section": "colors"
+      },
+      {
+        "name": "The Muted-Text Rule",
+        "body": "Secondary text uses warm-stone-muted (#57534e), never a lighter gray. If the contrast drops below 4.5:1 against the background, bump it darker. Readability over aesthetics.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Rule",
+        "body": "Amber terminal (#ffb000) is the single accent color. It appears on ≤10% of any given surface — the current job card, the CTA button, interactive highlights. Its rarity is the point. Never use amber for body text or large backgrounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Uppercase-H2 Rule",
+        "body": "Section headings (H2) are always uppercase. This is not optional — it's the system's visual rhythm. If you need a non-uppercase heading, it's an H1 or H3, not an H2.",
+        "section": "typography"
+      },
+      {
+        "name": "The Monospace-Only Rule",
+        "body": "IBM Plex Mono is the only active font. VT323 is defined but commented out. Don't introduce new fonts without removing monospace first — the system's identity is monospace-forward.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Cards and surfaces have no shadow at rest. Shadows appear only on hover. If you're tempted to add an ambient shadow 'for depth,' don't — the border is the separator.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Shadow-As-Feedback Rule",
+        "body": "Shadows are interaction feedback, not decoration. If an element isn't interactive (hoverable, clickable), it doesn't get a shadow. Images are the one exception — they're visual content, not UI surfaces.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use IBM Plex Mono for everything. The monospace identity is non-negotiable.",
+      "Do make H2 headings uppercase. This is the system's visual rhythm.",
+      "Do use warm-stone-bg (#f5f5f4) as the page background. Never cool gray, never cream.",
+      "Do use borders for surface separation. Cards have 1px borders at rest, not shadows.",
+      "Do keep content max-width at 768px. This is the reading measure — don't exceed it for prose.",
+      "Do use shadows only as hover feedback. Cards get shadow on hover, not at rest.",
+      "Do maintain 4.5:1 contrast ratio for body text. warm-stone-muted (#57534e) on warm-stone-bg (#f5f5f4) is the minimum.",
+      "Do use amber terminal (#ffb000) as the single accent color. Use it on ≤10% of any surface — the current job card, CTA buttons, interactive highlights."
+    ],
+    "donts": [
+      "Don't use generic AI-generated portfolio patterns: cream/beige backgrounds, gradient text, eyebrow+kicker patterns, identical card grids. If it looks like every AI output of 2025-2026, it's wrong.",
+      "Don't use corporate LinkedIn energy: stock-photo vibes, buzzword-heavy, template layouts, safe-to-the-point-of-bland.",
+      "Don't use over-designed SaaS landing pages: glassmorphism, hero metrics, feature grids, dark-mode-by-default-for-coolness. This is a person, not a product launch.",
+      "Don't introduce new fonts without removing monospace first. The system's identity is monospace-forward.",
+      "Don't add ambient shadows to non-interactive surfaces. Shadows are hover feedback, not decoration.",
+      "Don't use border-left or border-right greater than 1px as a colored accent. Side-stripe borders are prohibited.",
+      "Don't use gradient text (background-clip: text with gradient background). Use solid colors.",
+      "Don't use glassmorphism as default. Blurs and glass cards are rare and purposeful, or nothing.",
+      "Don't use the hero-metric template (big number, small label, supporting stats, gradient accent). This is a portfolio, not a SaaS dashboard.",
+      "Don't use identical card grids (same-sized cards with icon + heading + text, repeated endlessly). Vary the layout.",
+      "Don't use tiny uppercase tracked eyebrows above every section. One named kicker as a deliberate brand system is voice; an eyebrow on every section is AI grammar."
+    ]
+  }
+}

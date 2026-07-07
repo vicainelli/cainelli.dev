@@ -58,6 +58,12 @@ export const CONCERTS: Concert[] = [
 				country: "The Netherlands",
 				notes:
 					"Was nice to see a brazilian band where I'm living now, I can't remember the last time I saw them live.",
+      },
+      {
+				date: "2026-04-19",
+				venue: "Cine Joia",
+				city: "São Paulo",
+				country: "Brazil",
 			},
 		],
 	},
@@ -349,10 +355,72 @@ export const CONCERTS: Concert[] = [
 	{
 		artist: "Millencolin",
 		attends: [],
+  },
+ 	{
+		artist: "Hatebreed",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+  {
+		artist: "Gojira",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+  {
+		artist: "Killswitch Engage",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+ 	{
+		artist: "Limp Bizkt",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+  {
+		artist: "Korn",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
 	},
 	{
 		artist: "Slipknot",
-		attends: [],
+    attends: [
+   			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
 	},
 	{
 		artist: "Foo Fighters",

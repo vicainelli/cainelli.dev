@@ -5,67 +5,119 @@ import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import { CONCERTS, type Concert } from "@/data/concerts.js";
 import Layout from "@/layouts/Layout.astro";
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [
 	{ title: "Home", url: "/" },
 	{ title: "Me", url: "/me" },
 	{ title: "Concerts" },
 ];
+
+const attended = CONCERTS.filter((c) => c.attends.length > 0);
+const wishlist = CONCERTS.filter((c) => c.attends.length === 0);
+const totalShows = CONCERTS.reduce((sum, c) => sum + c.attends.length, 0);
+
+const sortedConcerts = [...CONCERTS].sort((a, b) => {
+	const aHas = a.attends.length > 0;
+	const bHas = b.attends.length > 0;
+	if (aHas && !bHas) return -1;
+	if (!aHas && bHas) return 1;
+	return a.artist.localeCompare(b.artist);
+});
 ---
 <Layout title="Concerts" description="Concerts I have been to and ones I want to see.">
     <ContentWrapper>
 
-        <main class="my-20" id="main-content">
+        <main class="my-16 sm:my-20" id="main-content">
             <Breadcrumbs items={BREADCRUMBS} />
             <h1>Concerts</h1>
-        <div class="flex flex-col gap-6 mb-8">
-            <p class=" text-balance leading-relaxed">
-                Live shows are one of my favorite things to do. <br>
-                When everything clicks - venue, sound, timing, crowd - it sticks with you for years.
 
+            <p class="text-balance leading-relaxed mb-4">
+                Live shows are my favorite thing. When everything clicks - venue, sound, crowd - it stays with you for years.
             </p>
-            <p class=" text-balance leading-relaxed">
-
-                I made this page to keep those memories in one place and track the artists I still want to see.
-
+            <p class="text-balance leading-relaxed text-muted text-sm mb-8">
+                {attended.length} artists seen live across {totalShows} shows. {wishlist.length} more on the wishlist.
             </p>
-        </div>
 
-        <section aria-labelledby="artist-list-heading">
-            <h2 id="artist-list-heading" class="sr-only">List of all artists</h2>
-            <ul data-testid="artist-list" class="columns-2 gap-4 sm:columns-3 space-y-2" aria-label="List of artists. Concerts I've attended appear first, followed by concerts I hope to attend.">
-                {CONCERTS
-                  .sort((a, b) => {
-                    const aHasAttends = a.attends.length > 0;
-                    const bHasAttends = b.attends.length > 0;
-                    if (aHasAttends && !bHasAttends) return -1;
-                    if (!aHasAttends && bHasAttends) return 1;
-                    return a.artist.localeCompare(b.artist);
-                  })
-                  .map((concert: Concert) => <li>
-                    <ArtistCard concert={concert} />
-                  </li>)}
-            </ul>
-        </section>
+            <div class="concert-legend" role="region" aria-label="Legend">
+                <span class="concert-legend__item">
+                    <span class="concert-legend__dot concert-legend__dot--attended" aria-hidden="true"></span>
+                    Attended
+                </span>
+                <span class="concert-legend__item">
+                    <span class="concert-legend__dot concert-wishlist-dot" aria-hidden="true"></span>
+                    Wishlist
+                </span>
+            </div>
 
-        <!-- Legend section for accessibility -->
-        <div class="rounded-lg p-4 mt-8" role="region" aria-labelledby="legend-heading">
-            <h2 id="legend-heading" class="sr-only">Legend</h2>
-            <ul class="space-y-2 text-sm " aria-label="Concert list legend">
-                <li class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded concert-attended-dot" aria-hidden="true"></span>
-                    <span>Concerts I've attended</span>
-                </li>
-                <li class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded concert-wishlist-dot" aria-hidden="true"></span>
-                    <span>Concerts I want to see</span>
-                </li>
-                <li class="flex items-center gap-2">
-                    <span class="font-semibold font-mono border-b" aria-hidden="true">×3</span>
-                    <span>Times I have seen them (when more than once)</span>
-                </li>
-            </ul>
-        </div>
+            <section aria-labelledby="artist-list-heading" class="mt-6">
+                <h2 id="artist-list-heading" class="sr-only">List of all artists</h2>
+                <ul data-testid="artist-list" class="concert-grid" aria-label="List of artists. Concerts I've attended appear first, followed by concerts I hope to attend.">
+                    {sortedConcerts.map((concert: Concert) => <li>
+                        <ArtistCard concert={concert} />
+                    </li>)}
+                </ul>
+            </section>
         </main>
     </ContentWrapper>
 </Layout>
+
+<style>
+    .concert-legend {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 0;
+        border-top: 1px solid var(--app-border);
+        border-bottom: 1px solid var(--app-border);
+        font-size: 0.75rem;
+        color: var(--app-muted);
+    }
+
+    .concert-legend__item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+    }
+
+    .concert-legend__dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .concert-legend__dot--attended {
+        background-color: var(--app-accent);
+    }
+
+    .concert-grid {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        columns: 1;
+        gap: 0.25rem;
+    }
+
+    .concert-grid li {
+        break-inside: avoid;
+    }
+
+    @media (min-width: 480px) {
+        .concert-grid {
+            columns: 2;
+        }
+    }
+
+    @media (min-width: 640px) {
+        .concert-grid {
+            columns: 3;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .concert-legend,
+        .concert-grid {
+            transition: none;
+        }
+    }
+</style>
