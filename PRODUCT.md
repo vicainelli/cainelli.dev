@@ -52,6 +52,7 @@ Voice: first person, conversational, direct. No filler, no buzzwords.
 
 ## Accessibility & Inclusion
 
+- **Mobile-first, always.** Touch devices have no hover state. Never hide essential information behind hover-only interactions. Content must be visible and accessible without requiring a pointer.
 - WCAG AA compliance: semantic HTML, keyboard navigation, sufficient color contrast (4.5:1 body text, 3:1 large text).
 - Light/dark theme support (already implemented) with system preference detection.
 - Respect `prefers-reduced-motion` for any animations.

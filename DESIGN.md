@@ -183,6 +183,7 @@ The elevation model is simple:
 ## 6. Do's and Don'ts
 
 ### Do:
+- **Do** design mobile-first. Touch devices have no hover state. Essential information must always be visible — never hide content behind hover-only interactions.
 - **Do** use IBM Plex Mono for everything. The monospace identity is non-negotiable.
 - **Do** make H2 headings uppercase. This is the system's visual rhythm.
 - **Do** use warm-stone-bg (#f5f5f4) as the page background. Never cool gray, never cream.
@@ -193,6 +194,7 @@ The elevation model is simple:
 - **Do** use amber terminal (#ffb000) as the single accent color. Use it on ≤10% of any surface — the current job card, CTA buttons, interactive highlights.
 
 ### Don't:
+- **Don't** hide essential information behind hover-only interactions. Touch devices (phones, tablets) have no hover state. If content matters, show it by default. Hover is progressive enhancement, not a content delivery mechanism.
 - **Don't** use generic AI-generated portfolio patterns: cream/beige backgrounds, gradient text, eyebrow+kicker patterns, identical card grids. If it looks like every AI output of 2025-2026, it's wrong.
 - **Don't** use corporate LinkedIn energy: stock-photo vibes, buzzword-heavy, template layouts, safe-to-the-point-of-bland.
 - **Don't** use over-designed SaaS landing pages: glassmorphism, hero metrics, feature grids, dark-mode-by-default-for-coolness. This is a person, not a product launch.
