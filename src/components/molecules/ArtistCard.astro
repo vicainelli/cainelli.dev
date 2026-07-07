@@ -16,13 +16,6 @@ const latestConcert = hasAttended
 	: null;
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const detailLine = latestConcert
-	? [latestConcert.venue, latestConcert.city]
-			.filter(Boolean)
-			.join(", ")
-	: "";
-
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const generateAriaLabel = () => {
 	if (attendsCount === 0) {
 		return `${concert.artist}, not yet attended`;
@@ -50,16 +43,6 @@ const generateAriaLabel = () => {
 			>{attendsCount}&times;</span>
 		)}
 	</div>
-	{detailLine && (
-		<div class="artist-item__detail">
-			{detailLine}
-		</div>
-	)}
-	{!hasAttended && (
-		<div class="artist-item__detail artist-item__detail--wishlist">
-			wishlist
-		</div>
-	)}
 </div>
 
 <style>
