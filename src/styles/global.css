@@ -28,8 +28,8 @@
     --app-link-hover: #0f172a;
     --app-accent: #ffb000;
     --app-accent-text: #1c1917;
-    --concert-attended: #44403c;
-    --concert-wishlist: #78716c;
+    --concert-attended: #6b5530;
+    --concert-wishlist: #6b6560;
 }
 
 :root[data-theme="dark"] {

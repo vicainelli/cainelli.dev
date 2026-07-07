@@ -1,13 +1,28 @@
 ---
 import type { Concert } from "@/data/concerts";
-// biome-ignore lint/correctness/noUnusedImports: import used in template
-import { cn } from "@/lib/utils";
 
 const { concert } = Astro.props as { concert: Concert };
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const attendsCount = concert.attends.length;
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const hasAttended = attendsCount >= 1;
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const latestConcert = hasAttended
+	? [...concert.attends].sort(
+			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+		)[0]
+	: null;
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const detailLine = latestConcert
+	? [latestConcert.venue, latestConcert.city]
+			.filter(Boolean)
+			.join(", ")
+	: "";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const generateAriaLabel = () => {
 	if (attendsCount === 0) {
 		return `${concert.artist}, not yet attended`;
@@ -20,22 +35,75 @@ const generateAriaLabel = () => {
 ---
 
 <div
-	class={cn(
-		attendsCount >= 1 ? "concert-attended" : "concert-wishlist",
-		"text-sm"
-	)}
+	class="artist-item {hasAttended ? 'concert-attended' : 'concert-wishlist'}"
 	aria-label={generateAriaLabel()}
 	role="listitem"
 >
-	<span class="font-semibold">{concert.artist}</span>
-	{attendsCount >= 2 && (
-		<>
-			{" "}
+	<div class="artist-item__header">
+		{hasAttended && <span class="artist-item__dot" aria-hidden="true"></span>}
+		<span class="artist-item__name">{concert.artist}</span>
+		{attendsCount >= 2 && (
 			<span
-				class="font-mono border-b"
+				class="artist-item__count"
 				data-testid="attends-count"
 				aria-label={`attended ${attendsCount} times`}
 			>{attendsCount}&times;</span>
-		</>
+		)}
+	</div>
+	{detailLine && (
+		<div class="artist-item__detail">
+			{detailLine}
+		</div>
+	)}
+	{!hasAttended && (
+		<div class="artist-item__detail artist-item__detail--wishlist">
+			wishlist
+		</div>
 	)}
 </div>
+
+<style>
+	.artist-item {
+		padding: 0.5rem 0.625rem;
+		border-radius: 6px;
+	}
+
+	.artist-item__header {
+		display: flex;
+		align-items: baseline;
+		gap: 0.375rem;
+	}
+
+	.artist-item__dot {
+		width: 0.375rem;
+		height: 0.375rem;
+		border-radius: 50%;
+		background-color: var(--app-accent);
+		flex-shrink: 0;
+	}
+
+	.artist-item__name {
+		font-weight: 600;
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	.artist-item__count {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		border-bottom: 1px solid currentColor;
+		line-height: 1;
+		opacity: 0.7;
+	}
+
+	.artist-item__detail {
+		font-size: 0.75rem;
+		line-height: 1.5;
+		color: var(--app-muted);
+		margin-top: 0.125rem;
+	}
+
+	.artist-item__detail--wishlist {
+		font-style: italic;
+	}
+</style>
