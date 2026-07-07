@@ -1,134 +1,90 @@
 ---
+import { getCollection } from "astro:content";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
-import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import { CONCERTS } from "@/data/concerts";
+// biome-ignore lint/correctness/noUnusedImports: used in template
 import Layout from "@/layouts/Layout.astro";
-import { cn } from "@/lib/utils";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Me" }];
+const tilPosts = (await getCollection("til"))
+	.filter((p) => !p.data.draft)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const blockClasses = cn(
-	// Position
-	// Layout
-	"block p-4 rounded-md",
-	// Styling
-	"border",
+const bipPosts = (await getCollection("buildingInPublic"))
+	.filter((p) => !p.data.draft)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-	// Dark mode
-
-	// Other
-	"transition-all duration-400 ease-in-out",
-	"group",
+const attendedConcerts = CONCERTS.filter((c) => c.attends.length > 0);
+const allAttends = attendedConcerts.flatMap((c) =>
+	c.attends.map((a) => ({ artist: c.artist, ...a })),
 );
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const latestConcert = allAttends.sort(
+	(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+)[0];
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const blockTitleClasses = cn(
-	// Position
-
-	// Layout
-
-	// Styling
-	"font-semibold ",
-	// "group-hover",
-
-	// Other
-	"transition-colors ease-out",
-);
+const totalShows = allAttends.length;
 ---
-<Layout title="Vinicius Cainelli - Staff Product Engineer" description="Personal notes, music, and other things I am into.">
+<Layout title="Me - Vinicius Cainelli" description="Personal notes, music, and other things I am into.">
     <ContentWrapper>
-
         <main class="my-20">
-            <Breadcrumbs items={BREADCRUMBS} />
-
             <h1>Me</h1>
-            <div class="flex flex-col gap-6 mb-8">
 
-            <div>
-                <h2 class="mb-2">Content</h2>
+            <p class="text-muted mb-12">Stuff I'm into besides code.</p>
 
-                <ul class="space-y-4">
-                    <!-- <li>
-                        <a class={`${blockClasses}`} href="/me/writing">
-                            <h3 class={`${blockTitleClasses}`}>
-                            Writing
-                            </h3>
-                            <p>
-                                Longer posts on software, product engineering, and career lessons.
+            <section class="mb-12">
+                <h2 class="mb-4">Content</h2>
+
+                <div class="space-y-6">
+                    <div>
+                        <a href="/me/building-in-public" class="font-semibold hover:underline underline-offset-4 decoration-1">Building in Public</a>
+                        <p class="text-muted text-sm mt-1">What I'm building, what's working, and what I'm learning.</p>
+                        {bipPosts.length > 0 && (
+                            <p class="text-sm mt-2">
+                                Latest: <a href={`/me/building-in-public/${bipPosts[0].id}`} class="border-b border-solid border-[var(--app-link-border)]">{bipPosts[0].data.title}</a>
                             </p>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a class={`${blockClasses}`} href="/me/building-in-public">
-                            <h3 class={`${blockTitleClasses}`}>
-                            Building in Public
-                            </h3>
-                            <p>
-                                What I am building, what is working, and what I am learning along the way.
+                        )}
+                    </div>
+
+                    <div>
+                        <a href="/me/til" class="font-semibold hover:underline underline-offset-4 decoration-1">TIL</a>
+                        <p class="text-muted text-sm mt-1">Short notes on things I learned. {tilPosts.length} {tilPosts.length === 1 ? "post" : "posts"} so far.</p>
+                        {tilPosts.length > 0 && (
+                            <p class="text-sm mt-2">
+                                Latest: <a href={`/me/til/${tilPosts[0].id}`} class="border-b border-solid border-[var(--app-link-border)]">{tilPosts[0].data.title}</a>
                             </p>
-                        </a>
-                    </li>
-                    <li>
-                      <a class={`${blockClasses}`} href="/me/til">
-                             <h3 class={`${blockTitleClasses}`}>
-                                TIL (Daily Learnings)
-                             </h3>
-                             <p>
-                                Small notes on things I learned recently, usually short and practical.
-                             </p>
-                         </a>
-                    </li>
-                </ul>
-            </div>
+                        )}
+                    </div>
+                </div>
+            </section>
 
+            <section class="mb-12">
+                <h2 class="mb-4">Music</h2>
+
+                <div class="space-y-6">
+                    <div>
+                        <a href="/me/concerts" class="font-semibold hover:underline underline-offset-4 decoration-1">Concerts</a>
+                        <p class="text-muted text-sm mt-1">{attendedConcerts.length} artists seen live, {totalShows} {totalShows === 1 ? "show" : "shows"} total.</p>
+                        {latestConcert && (
+                            <p class="text-sm mt-2">
+                                Last one: {latestConcert.artist} — {latestConcert.venue || latestConcert.city}, {new Date(latestConcert.date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}
+                            </p>
+                        )}
+                    </div>
+
+                    <div>
+                        <a href="https://www.instagram.com/huzzband/" target="_blank" rel="noopener noreferrer" class="font-semibold hover:underline underline-offset-4 decoration-1">Huzzband <span class="text-muted font-normal text-xs">↗</span></a>
+                        <p class="text-muted text-sm mt-1">Music project with three Brazilian friends.</p>
+                    </div>
+                </div>
+            </section>
 
             <div>
-                <h2 class="mb-2">Music</h2>
-
-                <ul class="space-y-4">
-                    <li>
-                      <a class={`${blockClasses}`} href="/me/concerts">
-                             <h3 class={`${blockTitleClasses}`}>
-                                Concerts
-                             </h3>
-                             <p>
-                                A running list of artists I have seen live and artists still on my wishlist.
-                             </p>
-                         </a>
-                    </li>
-                    <li>
-                        <a class={`${blockClasses}`} href="https://www.instagram.com/huzzband/" target="_blank" rel="noopener noreferrer">
-
-                             <h3 class={`${blockTitleClasses}`}>
-                                Huzzband
-                             </h3>
-                             <p>
-                                Music project with three Brazilian friends.
-                             </p>
-
-                        </a>
-                        </li>
-                </ul>
-            </div>
-            <div>
-                <h2 class="mb-2">Misc</h2>
-
-                <ul class="space-y-4">
-                    <li>
-                        <a class={`${blockClasses}`} href="/uses">
-                             <h3 class={`${blockTitleClasses}`}>
-                                Uses
-                             </h3>
-                             <p>
-                                The hardware and software I use for work and side projects.
-                             </p>
-                         </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        </main>
+                <a href="/uses" class="font-semibold hover:underline underline-offset-4 decoration-1">Uses</a>
+                <span class="text-muted"> — The hardware and software I use.</span>
+            </div>        </main>
     </ContentWrapper>
 </Layout>
