@@ -1,0 +1,129 @@
+---
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import { cn } from "@/lib/utils";
+
+interface Props {
+	before: ImageMetadata | string;
+	after: ImageMetadata | string;
+	beforeAlt?: string;
+	afterAlt?: string;
+	beforeLabel?: string;
+	afterLabel?: string;
+	class?: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const { before, after, beforeAlt = "", afterAlt = "", beforeLabel, afterLabel, class: className } = Astro.props;
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const isBeforeString = typeof before === "string";
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const isAfterString = typeof after === "string";
+---
+
+<div
+	class={cn("relative select-none overflow-hidden rounded-md", className)}
+	data-image-comparison
+>
+	{isAfterString ? (
+		<img src={after} alt={afterAlt} class="block w-full h-auto" loading="lazy" />
+	) : (
+		<Image src={after} alt={afterAlt} class="block w-full h-auto" />
+	)}
+	<div class="absolute inset-0 overflow-hidden" style={`clip-path: inset(0 50% 0 0)`} data-before-container>
+		{isBeforeString ? (
+			<img src={before} alt={beforeAlt} class="block w-full h-auto" loading="lazy" />
+		) : (
+			<Image src={before} alt={beforeAlt} class="block w-full h-auto" />
+		)}
+	</div>
+	<div
+		class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-white/80 dark:bg-white/60 pointer-events-none"
+		data-slider-line
+	>
+		<div
+			class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/90 dark:bg-white/70 border-2 border-white/50 shadow-md flex items-center justify-center pointer-events-none"
+		>
+			<svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="text-gray-700 dark:text-gray-300">
+				<path d="M4 3L1 7L4 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M10 3L13 7L10 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</div>
+	</div>
+	{beforeLabel && (
+		<span class="absolute top-2 left-2 text-xs font-medium bg-black/50 text-white px-2 py-0.5 rounded">
+			{beforeLabel}
+		</span>
+	)}
+	{afterLabel && (
+		<span class="absolute top-2 right-2 text-xs font-medium bg-black/50 text-white px-2 py-0.5 rounded">
+			{afterLabel}
+		</span>
+	)}
+	<div
+		class="absolute inset-0 cursor-ew-resize"
+		data-slider-handle
+		role="slider"
+		aria-label="Image comparison slider"
+		aria-valuemin={0}
+		aria-valuemax={100}
+		aria-valuenow={50}
+		tabindex={0}
+	/>
+</div>
+
+<script>
+	const STEP = 2;
+
+	function initComparison(el: HTMLElement) {
+		const handle = el.querySelector("[data-slider-handle]") as HTMLElement;
+		const line = el.querySelector("[data-slider-line]") as HTMLElement;
+		const beforeContainer = el.querySelector("[data-before-container]") as HTMLElement;
+
+		let isDragging = false;
+		let position = 50;
+
+		function updatePosition(percent: number) {
+			position = Math.max(0, Math.min(100, percent));
+			line.style.left = `${position}%`;
+			beforeContainer.style.clipPath = `inset(0 ${100 - position}% 0 0)`;
+			handle.setAttribute("aria-valuenow", String(Math.round(position)));
+		}
+
+		function getPercentFromEvent(e: PointerEvent): number {
+			const rect = el.getBoundingClientRect();
+			return ((e.clientX - rect.left) / rect.width) * 100;
+		}
+
+		handle.addEventListener("pointerdown", (e) => {
+			isDragging = true;
+			handle.setPointerCapture(e.pointerId);
+			e.preventDefault();
+		});
+
+		handle.addEventListener("pointermove", (e) => {
+			if (!isDragging) return;
+			updatePosition(getPercentFromEvent(e));
+		});
+
+		handle.addEventListener("pointerup", (e) => {
+			isDragging = false;
+			handle.releasePointerCapture(e.pointerId);
+		});
+
+		handle.addEventListener("keydown", (e) => {
+			if (e.key === "ArrowLeft") {
+				updatePosition(position - STEP);
+				e.preventDefault();
+			} else if (e.key === "ArrowRight") {
+				updatePosition(position + STEP);
+				e.preventDefault();
+			}
+		});
+	}
+
+	document.querySelectorAll("[data-image-comparison]").forEach(initComparison);
+</script>
