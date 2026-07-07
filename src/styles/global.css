@@ -4,24 +4,11 @@
 
 @theme {
     --font-mono: "IBM Plex Mono", "Courier New", Courier, monospace;
-    /*--font-display: "VT323", "Courier New", Courier, monospace;*/
 
     /* Brand colors */
     --color-ikea-yellow: #fcd915;
     --color-jet-orange: #ff8001;
     --color-vivo-purple: #609;
-
-    /*
-    CRT Black: 0A0F0A
-    Phosphor Green #33FF66
-    Dim Green #1FAF4A
-    Dark Green #0E5F2F
-    Amber terminal #FFB000
-
-    option 1: ffb000-626c66-434a42-f95738-ffffff
-    option 2: ffb000-333333-48e5c2-fcfaf9-5e5e5e
-    option 3 (neobruta): ffb000-466365-c4c6e7-baa5ff-9be564
-    */
 
     --color-crt-black: #0a0f0a;
     --color-phosphor-green: #33ff66;
@@ -39,6 +26,8 @@
     --app-border: #d6d3d1;
     --app-link-border: #000000;
     --app-link-hover: #0f172a;
+    --app-accent: #ffb000;
+    --app-accent-text: #1c1917;
     --concert-attended: #44403c;
     --concert-wishlist: #78716c;
 }
@@ -52,6 +41,8 @@
     --app-border: #3a3f4b;
     --app-link-border: #ffffff;
     --app-link-hover: #e6e9ef;
+    --app-accent: #ffb000;
+    --app-accent-text: #1c1917;
     --concert-attended: #e6e9ef;
     --concert-wishlist: #b3bac7;
 }
@@ -66,6 +57,8 @@
         --app-border: #3a3f4b;
         --app-link-border: #ffffff;
         --app-link-hover: #e6e9ef;
+        --app-accent: #ffb000;
+        --app-accent-text: #1c1917;
         --concert-attended: #e6e9ef;
         --concert-wishlist: #b3bac7;
     }
@@ -156,10 +149,6 @@ h1 {
     @apply font-semibold mb-8 text-3xl sm:text-5xl tracking-wide transition-all;
 }
 
-/*h1 {*/
-/*@apply font-display;*/
-/*}*/
-
 p {
     @apply text-base leading-7;
 }
@@ -191,6 +180,24 @@ article li {
     @apply list-disc list-inside;
 }
 
-/*article li::marker {
-    @apply text-amber-terminal;
-}*/
+.text-muted {
+    color: var(--app-muted);
+}
+
+.accent-border {
+    border-color: var(--app-accent);
+    border-width: 2px;
+}
+
+.bg-accent {
+    background-color: var(--app-accent);
+}
+
+.text-accent-text {
+    color: var(--app-accent-text);
+}
+
+.border-accent {
+    border-color: var(--app-accent);
+}
+

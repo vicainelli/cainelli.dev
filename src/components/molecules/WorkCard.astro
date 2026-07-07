@@ -32,17 +32,10 @@ if (data.coverImage) {
 <a class="hover:shadow-xl block transition-shadow duration-500 h-full" href={`/work/${data.id}`}>
 <div class="p border rounded-sm h-full flex flex-col">
     <div class={cn(
-      // Position
       "relative",
-      // Layout
       "w-full p-2 pb-0",
       "overflow-clip grow flex h-72.5 max-h-72.5",
-      // Styling
       "border-b",
-      // "border-b border-gray-200 bg-linear-to-b from-electric-violet-50/20 to-electric-violet-50/40",
-      // "dark:border-gray-500/20 dark:from-transparent dark:to-electric-violet-900/20",
-      // Other
-      "",
     )}>
         {coverImageSrc &&
         <Image class={cn(
