@@ -355,10 +355,72 @@ export const CONCERTS: Concert[] = [
 	{
 		artist: "Millencolin",
 		attends: [],
+  },
+ 	{
+		artist: "Hatebreed",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+  {
+		artist: "Gojira",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+  {
+		artist: "Killswitch Engage",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+ 	{
+		artist: "Limp Bizkt",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
+	},
+  {
+		artist: "Korn",
+     attends: [
+    			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
 	},
 	{
 		artist: "Slipknot",
-		attends: [],
+    attends: [
+   			{
+				date: "2013-10-19",
+				venue: "Monsters of Rock Arena Anhembi",
+				city: "São Paulo",
+				country: "Brazil",
+			},
+		],
 	},
 	{
 		artist: "Foo Fighters",
