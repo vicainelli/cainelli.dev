@@ -8,7 +8,9 @@ import Layout from "@/layouts/Layout.astro";
 const allTilPosts = await getCollection("til");
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const nonDraftPosts = allTilPosts.filter((post) => !post.data.draft);
+const nonDraftPosts = allTilPosts
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const BREADCRUMBS = [

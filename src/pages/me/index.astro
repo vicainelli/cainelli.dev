@@ -5,6 +5,13 @@ import ContentWrapper from "@/components/ContentWrapper.astro";
 import { CONCERTS } from "@/data/concerts";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import Layout from "@/layouts/Layout.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me" },
+];
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const tilPosts = (await getCollection("til"))
@@ -31,6 +38,8 @@ const totalShows = allAttends.length;
 <Layout title="Me - Vinicius Cainelli" description="Personal notes, music, and other things I am into.">
     <ContentWrapper>
         <main class="my-20">
+            <Breadcrumbs items={BREADCRUMBS} />
+
             <h1>Me</h1>
 
             <p class="text-muted mb-12">Stuff I'm into besides code.</p>
