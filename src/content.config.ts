@@ -33,7 +33,7 @@ const CollectionWorkSchema = z.object({
 	periodEnd: z.date().optional(),
 	company: z.string().optional(),
 	companyUrl: z.string().optional(),
-	techStack: z.array(z.string()).optional(),
+	skills: z.array(z.string()).optional(),
 	updatedDate: z.date().optional(),
 	companyLogo: z.string().optional(),
 	coverImage: z.string().optional(),

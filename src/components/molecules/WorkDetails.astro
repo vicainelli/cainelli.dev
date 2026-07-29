@@ -16,7 +16,9 @@ const logos = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 // Build the full path and get the logo
-const logoPath = `/src/assets/images/${post.data.companyLogo.split("assets/images/")[1]}`;
+const logoPath = post.data.companyLogo
+	? `/src/assets/images/${post.data.companyLogo.split("assets/images/")[1]}`
+	: null;
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const logoImage = logos[logoPath]?.default;
 
@@ -50,11 +52,18 @@ const formattedEndDate = post.data.periodEnd
 
 )}}>
 
+    {post.data.logoBackground && (
     <div class="flex items-center justify-center"
     style={{ backgroundColor: `var(--color-${post.data.logoBackground})` }}
     >
         {logoImage && <Image class="" src={logoImage} alt={post.data.company} />}
-  </div>
+  	</div>
+    )}
+    {!post.data.logoBackground && logoImage && (
+    <div class="flex items-center justify-center">
+        <Image class="" src={logoImage} alt={post.data.company} />
+  	</div>
+    )}
 
   <div class="experience-details col-span-2">
     <dl class="text-sm flex flex-col gap-4">
@@ -71,12 +80,14 @@ const formattedEndDate = post.data.periodEnd
         </dd>
       </div>
 
+      {post.data.skills && post.data.skills.length > 0 && (
       <div class="info-item">
-        <dt class="font-semibold">Tech</dt>
+        <dt class="font-semibold">Skills</dt>
         <dd class="opacity-70">
-            {post.data.techStack.join(', ')}
+            {post.data.skills.join(', ')}
         </dd>
       </div>
+      )}
 
       <div class="info-item">
         <dt class="font-semibold">Location</dt>
@@ -86,9 +97,11 @@ const formattedEndDate = post.data.periodEnd
       <div class="info-item">
         <dt class="font-semibold">Website</dt>
         <dd class="opacity-70">
+            {post.data.companyUrl ? (
             <ExternalLink href={`https://${post.data.companyUrl}`}>
                 {post.data.companyUrl}
             </ExternalLink>
+        ) : '—'}
         </dd>
       </div>
     </dl>
