@@ -1,16 +1,15 @@
 import { defineCollection, z } from "astro:content";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { glob } from "astro/loaders";
-import path from "path";
-import { fileURLToPath } from "url";
 import type { z as zod } from "zod";
+import {
+	BaseContentFields,
+	CollectionProjectSchema,
+	type CollectionProjectType,
+} from "@/lib/schemas";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const BaseContentFields = {
-	title: z.string(),
-	description: z.string().optional(),
-	pubDate: z.coerce.date(),
-};
 
 const AuthorContentFields = {
 	author: z.string().optional(),
@@ -118,10 +117,21 @@ const uses = defineCollection({
 	schema: CollectionUsesSchema,
 });
 
+export type { CollectionProjectType };
+
+const projects = defineCollection({
+	loader: glob({
+		pattern: "**/*.{md,mdx}",
+		base: path.join(__dirname, "content", "projects"),
+	}),
+	schema: CollectionProjectSchema,
+});
+
 export const collections = {
 	til,
 	uses,
 	work,
 	writing,
 	buildingInPublic,
+	projects,
 };

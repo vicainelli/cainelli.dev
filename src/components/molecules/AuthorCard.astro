@@ -1,10 +1,12 @@
 ---
 
-import type { CollectionTilType } from "@/content.config";
+interface PostData {
+	author?: string;
+	pubDate: Date;
+}
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 type Props = {
-	postData: CollectionTilType;
+	postData: PostData;
 };
 
 const { postData } = Astro.props;

@@ -2,21 +2,22 @@
 import { getCollection } from "astro:content";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import ContentWrapper from "@/components/ContentWrapper.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
 import { CONCERTS } from "@/data/concerts";
 // biome-ignore lint/correctness/noUnusedImports: used in template
 import Layout from "@/layouts/Layout.astro";
-import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import { filterAndSortProjects } from "@/lib/projects";
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
-const BREADCRUMBS = [
-	{ title: "Home", url: "/" },
-	{ title: "Me" },
-];
+const BREADCRUMBS = [{ title: "Home", url: "/" }, { title: "Me" }];
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const tilPosts = (await getCollection("til"))
 	.filter((p) => !p.data.draft)
 	.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const projectPosts = filterAndSortProjects(await getCollection("projects"));
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const bipPosts = (await getCollection("buildingInPublic"))
@@ -54,6 +55,16 @@ const totalShows = allAttends.length;
                         {bipPosts.length > 0 && (
                             <p class="text-sm mt-2">
                                 Latest: <a href={`/me/building-in-public/${bipPosts[0].id}`} class="border-b border-solid border-[var(--app-link-border)]">{bipPosts[0].data.title}</a>
+                            </p>
+                        )}
+                    </div>
+
+                    <div>
+                        <a href="/me/projects" class="font-semibold hover:underline underline-offset-4 decoration-1">Projects</a>
+                        <p class="text-muted text-sm mt-1">Side projects I am building, shipping, and learning from. {projectPosts.length} {projectPosts.length === 1 ? "project" : "projects"} so far.</p>
+                        {projectPosts.length > 0 && (
+                            <p class="text-sm mt-2">
+                                Latest: <a href={`/me/projects/${projectPosts[0].id}`} class="border-b border-solid border-[var(--app-link-border)]">{projectPosts[0].data.title}</a>
                             </p>
                         )}
                     </div>

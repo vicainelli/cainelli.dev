@@ -1,14 +1,18 @@
 ---
-import type { CollectionEntry } from "astro:content";
+interface Post {
+	id: string;
+	data: {
+		title: string;
+		pubDate: Date;
+	};
+}
 
-// biome-ignore lint/correctness/noUnusedVariables: used by Astro's type system
 interface Props {
-	posts: CollectionEntry<"writing">[];
+	posts: Post[];
 	basePath?: string;
 	emptyMessage?: string;
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 const {
 	posts,
 	basePath = "/me/writing",

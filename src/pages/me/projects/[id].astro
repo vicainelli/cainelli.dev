@@ -1,0 +1,69 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import ExternalLink from "@/components/atoms/ExternalLink.astro";
+import ContentWrapper from "@/components/ContentWrapper.astro";
+import AuthorCard from "@/components/molecules/AuthorCard.astro";
+import Breadcrumbs from "@/components/molecules/Breadcrumbs.astro";
+import Layout from "@/layouts/Layout.astro";
+
+interface Props {
+	post: CollectionEntry<"projects">;
+}
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects");
+	return projects.map((project) => ({
+		params: { id: project.id },
+		props: { post: project },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const BREADCRUMBS = [
+	{ title: "Home", url: "/" },
+	{ title: "Me", url: "/me" },
+	{ title: "Projects", url: "/me/projects" },
+	{ title: post.data.title },
+];
+---
+<Layout
+	title={`${post.data.title} / Projects / Vinicius Cainelli - Staff Product Engineer`}
+	description={post.data.description}
+>
+	<ContentWrapper>
+		<main class="my-20">
+			<Breadcrumbs items={BREADCRUMBS} />
+			<article class="project">
+				<h1>{post.data.title}</h1>
+
+				{post.data.description && (
+					<p class="text-muted">{post.data.description}</p>
+				)}
+
+				{(post.data.url || post.data.repoUrl) && (
+					<div class="flex flex-wrap gap-4 my-4">
+						{post.data.url && (
+							<a href={post.data.url} target="_blank" rel="noopener noreferrer" class="font-semibold hover:underline underline-offset-4 decoration-1">
+								Live site <span class="text-muted font-normal text-xs">↗</span>
+							</a>
+						)}
+						{post.data.repoUrl && (
+							<a href={post.data.repoUrl} target="_blank" rel="noopener noreferrer" class="font-semibold hover:underline underline-offset-4 decoration-1">
+								Source code <span class="text-muted font-normal text-xs">↗</span>
+							</a>
+						)}
+					</div>
+				)}
+
+				<AuthorCard postData={post.data} />
+
+				<hr class="my-4 border" />
+
+				<Content components={{ a: ExternalLink }} />
+			</article>
+		</main>
+	</ContentWrapper>
+</Layout>
