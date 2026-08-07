@@ -46,6 +46,7 @@ const PRIMARY_CONTACTS = [
               {PRIMARY_CONTACTS.map((contact) => (
                   <a
                       href={contact.url}
+                      data-contact-method={contact.name.toLowerCase()}
                       class="block p-6 rounded-md border-2 border-accent hover:bg-accent hover:text-accent-text transition-all duration-300 group"
                   >
                       <div class="flex items-start gap-4">
@@ -64,3 +65,20 @@ const PRIMARY_CONTACTS = [
     </main>
   </ContentWrapper>
 </Layout>
+
+<script is:inline>
+	const trackContactMethodSelection = (event) => {
+		const link = event.currentTarget;
+		if (!(link instanceof HTMLAnchorElement)) {
+			return;
+		}
+
+		window.posthog?.capture("contact_method_selected", {
+			contact_method: link.dataset.contactMethod,
+		});
+	};
+
+	document.querySelectorAll("[data-contact-method]").forEach((link) => {
+		link.addEventListener("click", trackContactMethodSelection);
+	});
+</script>

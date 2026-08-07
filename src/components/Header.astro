@@ -97,6 +97,9 @@ const isHomePage: boolean = Astro.url.pathname === "/";
 				localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
 			} catch (_error) {}
 
+			window.posthog?.capture("theme_preference_changed", {
+				theme: nextTheme,
+			});
 			setThemeSwitcherState();
 		});
 

@@ -84,6 +84,7 @@ const isAfterString = typeof after === "string";
 		const beforeContainer = el.querySelector("[data-before-container]") as HTMLElement;
 
 		let isDragging = false;
+		let hasTrackedInteraction = false;
 		let position = 50;
 
 		function updatePosition(percent: number) {
@@ -100,6 +101,12 @@ const isAfterString = typeof after === "string";
 
 		handle.addEventListener("pointerdown", (e) => {
 			isDragging = true;
+			if (!hasTrackedInteraction) {
+				hasTrackedInteraction = true;
+				window.posthog?.capture("image_comparison_interacted", {
+					interaction_method: "pointer",
+				});
+			}
 			handle.setPointerCapture(e.pointerId);
 			e.preventDefault();
 		});
@@ -115,11 +122,14 @@ const isAfterString = typeof after === "string";
 		});
 
 		handle.addEventListener("keydown", (e) => {
-			if (e.key === "ArrowLeft") {
-				updatePosition(position - STEP);
-				e.preventDefault();
-			} else if (e.key === "ArrowRight") {
-				updatePosition(position + STEP);
+			if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+				if (!hasTrackedInteraction) {
+					hasTrackedInteraction = true;
+					window.posthog?.capture("image_comparison_interacted", {
+						interaction_method: "keyboard",
+					});
+				}
+				updatePosition(position + (e.key === "ArrowLeft" ? -STEP : STEP));
 				e.preventDefault();
 			}
 		});
