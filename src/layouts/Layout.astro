@@ -5,6 +5,9 @@ import { ClientRouter } from "astro:transitions";
 import Footer from "@/components/Footer.astro";
 // biome-ignore lint/correctness/noUnusedImports: import used in template
 import Header from "@/components/Header.astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
+import SpotifyFloat from "@/components/molecules/SpotifyFloat.astro";
+// biome-ignore lint/correctness/noUnusedImports: import used in template
 import PostHog from "@/components/posthog.astro";
 import "@/styles/global.css";
 
@@ -104,5 +107,6 @@ const { title, description } = Astro.props;
 		</div>
 
 		<Footer />
+		<SpotifyFloat />
 	</body>
 </html>

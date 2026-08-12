@@ -1,6 +1,7 @@
 {
 	"name": "cainelli-dev",
 	"compatibility_date": "2026-02-23",
+	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"directory": "./dist"
 	}
