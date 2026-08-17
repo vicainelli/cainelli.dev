@@ -65,6 +65,22 @@ const isDevelopment = import.meta.env.DEV;
 				capture_unhandled_rejections: true,
 				capture_console_errors: false,
 			},
+			before_send: (data) => {
+				if (data && data.event === "$exception") {
+					const values = data.properties && data.properties.$exception_values;
+					if (
+						Array.isArray(values) &&
+						values.some(
+							(value) =>
+								typeof value === "string" &&
+								value.includes("Object Not Found Matching Id"),
+						)
+					) {
+						return null;
+					}
+				}
+				return data;
+			},
 		});
 	}
 </script>
