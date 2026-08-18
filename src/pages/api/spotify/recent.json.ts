@@ -7,10 +7,10 @@ type LatestTrackProvider = () => Promise<LatestTrack | null>;
 type TrackCache = Pick<Cache, "match" | "put">;
 
 function unavailableResponse() {
-	return Response.json(
-		{ error: "Spotify unavailable" },
-		{ status: 503, headers: { "Cache-Control": "no-store" } },
-	);
+	return new Response(null, {
+		status: 204,
+		headers: { "Cache-Control": "no-store" },
+	});
 }
 
 export function createRecentTrackHandler(

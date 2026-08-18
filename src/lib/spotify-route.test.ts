@@ -63,7 +63,7 @@ describe("recent Spotify track endpoint", () => {
 		expect(response.headers.get("Cache-Control")).toBe("no-store");
 	});
 
-	it("returns a non-sensitive unavailable response for integration failures", async () => {
+	it("returns an empty response for integration failures", async () => {
 		const handler = createRecentTrackHandler(
 			vi.fn().mockRejectedValue(new SpotifyUnavailableError()),
 			emptyCache(),
@@ -71,8 +71,8 @@ describe("recent Spotify track endpoint", () => {
 
 		const response = await handler(request);
 
-		expect(response.status).toBe(503);
+		expect(response.status).toBe(204);
 		expect(response.headers.get("Cache-Control")).toBe("no-store");
-		expect(await response.json()).toEqual({ error: "Spotify unavailable" });
+		expect(await response.text()).toBe("");
 	});
 });

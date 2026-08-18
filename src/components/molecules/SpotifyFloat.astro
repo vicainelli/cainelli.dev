@@ -34,6 +34,8 @@
 <script>
 	import type { LatestTrack as TrackResponse } from "../../lib/spotify";
 
+	const SPOTIFY_FEATURE_FLAG = "spotify-float";
+
 	function isTrackResponse(value: unknown): value is TrackResponse {
 		if (!value || typeof value !== "object") return false;
 
@@ -54,8 +56,13 @@
 		);
 	}
 
-	async function initializeSpotifyFloat() {
-		const float = document.querySelector<HTMLElement>("[data-spotify-float]");
+	function hideSpotifyFloat(float: HTMLElement) {
+		float.hidden = true;
+		delete float.dataset.state;
+		document.body.classList.remove("spotify-float-visible");
+	}
+
+	async function loadSpotifyFloat(float: HTMLElement) {
 		if (!float || float.dataset.state === "loading") return;
 		if (float.dataset.state === "loaded") {
 			document.body.classList.add("spotify-float-visible");
@@ -90,13 +97,38 @@
 			float.dataset.state = "loaded";
 			document.body.classList.add("spotify-float-visible");
 		} catch {
-			float.hidden = true;
-			document.body.classList.remove("spotify-float-visible");
+			hideSpotifyFloat(float);
 		} finally {
 			if (float.dataset.state !== "loaded") {
 				delete float.dataset.state;
 			}
 		}
+	}
+
+	function initializeSpotifyFloat() {
+		const float = document.querySelector<HTMLElement>("[data-spotify-float]");
+		const posthog = window.posthog;
+		if (
+			!float ||
+			float.dataset.featureFlagListener ||
+			!posthog?.getFeatureFlagResult ||
+			!posthog.onFeatureFlags
+		) {
+			return;
+		}
+
+		float.dataset.featureFlagListener = "true";
+		posthog.onFeatureFlags((_flags, _flagVariants, { errorsLoading }) => {
+			const isEnabled =
+				!errorsLoading &&
+				posthog.getFeatureFlagResult(SPOTIFY_FEATURE_FLAG)?.enabled === true;
+			if (!isEnabled) {
+				hideSpotifyFloat(float);
+				return;
+			}
+
+			void loadSpotifyFloat(float);
+		});
 	}
 
 	document.addEventListener("astro:page-load", initializeSpotifyFloat);
