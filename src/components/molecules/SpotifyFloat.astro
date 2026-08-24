@@ -107,17 +107,21 @@
 
 	function initializeSpotifyFloat() {
 		const float = document.querySelector<HTMLElement>("[data-spotify-float]");
-		const posthog = window.posthog;
-		if (
-			!float ||
-			float.dataset.featureFlagListener ||
-			!posthog?.getFeatureFlagResult ||
-			!posthog.onFeatureFlags
-		) {
+		if (!float || float.dataset.featureFlagListener) {
 			return;
 		}
 
 		float.dataset.featureFlagListener = "true";
+		if (import.meta.env.DEV) {
+			void loadSpotifyFloat(float);
+			return;
+		}
+
+		const posthog = window.posthog;
+		if (!posthog?.getFeatureFlagResult || !posthog.onFeatureFlags) {
+			return;
+		}
+
 		posthog.onFeatureFlags((_flags, _flagVariants, { errorsLoading }) => {
 			const isEnabled =
 				!errorsLoading &&
