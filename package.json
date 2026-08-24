@@ -15,22 +15,22 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "14.2.2",
-		"@astrojs/mdx": "^7.0.6",
-		"@biomejs/biome": "^2.5.9",
-		"@lucide/astro": "^1.32.0",
+		"@astrojs/cloudflare": "14.2.4",
+		"@astrojs/mdx": "^7.0.8",
+		"@biomejs/biome": "^2.5.10",
+		"@lucide/astro": "^1.34.0",
 		"@tailwindcss/vite": "^4.3.3",
-		"astro": "^7.2.3",
+		"astro": "^7.2.6",
 		"clsx": "^2.1.1",
 		"lightningcss": "^1.33.0",
 		"motion": "^12.42.2",
-		"posthog-js": "^1.418.1",
+		"posthog-js": "^1.418.15",
 		"tailwind-merge": "^3.6.0",
 		"tailwindcss": "^4.3.3",
 		"zod": "^4.4.3"
 	},
 	"devDependencies": {
-		"@types/node": "^26.2.0",
+		"@types/node": "^26.3.0",
 		"vitest": "^4.1.11"
 	}
 }
