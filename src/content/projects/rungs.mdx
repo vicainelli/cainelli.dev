@@ -1,0 +1,42 @@
+---
+title: rungs
+description: A plugin marketplace for Claude Code, Codex and opencode. Not every task needs the most capable agent.
+pubDate: 2026-10-07
+author: Vinicius Cainelli
+draft: false
+tags: [product, agents, claude-code]
+repoUrl: https://github.com/vicainelli/rungs
+---
+
+Most of what I ask a coding agent to do is medium to complex work, so I keep it on a big model. But boring stuff still shows up in the middle of it. Rename this across twenty files. Apply the same edit in six places. None of that needs the biggest model, so I end up switching models by hand, and then switching back.
+
+[rungs](https://github.com/vicainelli/rungs) is my attempt to stop doing that. It's a plugin marketplace for Claude Code, Codex and opencode, and right now it ships a single plugin called `agents`: five subagents and a skill that decides which one gets the job.
+
+## The rungs
+
+The agents are sorted by how much judgment a task needs. I skipped job titles like "frontend dev" or "QA engineer" because they say nothing about how hard the work is.
+
+Three of them write code. `operator` takes work where the files and edits are already named and there is nothing left to decide, so it runs on the cheapest model. `builder` handles tasks that follow a pattern the codebase already has and stay within a few files. `specialist` gets everything else: no pattern to copy, changes that cut across the codebase, or cases where a wrong call is expensive.
+
+The other two only read. `researcher` finds facts before a decision gets made. `reviewer` looks at a plan or a diff before I commit to it.
+
+## How it works
+
+The main session stays in charge. It picks the agent, writes the brief, and is the only one that talks to me. The `orchestrate` skill tells it whether to delegate at all, and to whom.
+
+Agents can't start other agents. If one thinks it needs a reviewer, it says so in its report and the main session decides. Every report uses the same handoff block, and any agent that changed files has to paste the verification command and its output. "It works" doesn't count. Questions meant for me come back to me unanswered, so nobody guesses on my behalf.
+
+## Install
+
+On Claude Code:
+
+```
+/plugin marketplace add vicainelli/rungs
+/plugin install agents@rungs
+```
+
+Claude Code is the primary target. Codex and opencode work through generated agent profiles and take a few more steps, which are in the [plugin README](https://github.com/vicainelli/rungs/blob/main/plugins/agents/README.md). Fair warning: I haven't run the Codex profiles yet.
+
+## Feedback
+
+If you try it and something is off, or an agent ends up on the wrong rung, [open an issue](https://github.com/vicainelli/rungs/issues). I'd like to hear how it behaves in other people's setups.
